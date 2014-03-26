@@ -7,6 +7,10 @@ function TileEngine(node) {
 		this.clearMap();
 	};
 	
+	this.clearMap = function() {
+		
+	};
+	
 	this.drawPlayer = function() {
 		this.clearPlayer();
 	};
