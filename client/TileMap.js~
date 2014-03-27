@@ -61,13 +61,13 @@ function TileMap() {
 	
 	//Creates a 2D array with the specified width and height
 	this.createArray = function(width,height) {
-		var 2DArr = new Array(width);
+		var arr = new Array(width);
 		
 		for(var i = 0; i < width; i++) {
-			2DArr[i] = new Array(height);
+			arr[i] = new Array(height);
 		}
 	
-		return 2DArr;
+		return arr;
 	};
 	
 	this.printTiles = function() {

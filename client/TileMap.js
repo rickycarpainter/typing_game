@@ -61,19 +61,19 @@ function TileMap() {
 	
 	//Creates a 2D array with the specified width and height
 	this.createArray = function(width,height) {
-		var 2DArr = new Array(width);
+		var arr = new Array(width);
 		
 		for(var i = 0; i < width; i++) {
-			2DArr[i] = new Array(height);
+			arr[i] = new Array(height);
 		}
 	
-		return 2DArr;
+		return arr;
 	};
 	
 	this.printTiles = function() {
 		for(var i = 0; i < this.width; i++) {
 			for(var j = 0; j < this.height; j++) {
-				console.log(this.tiles[i][j]);
+				console.log(this.tiles[j][i]);
 			}
 		}		
 	};
@@ -81,7 +81,7 @@ function TileMap() {
 	this.printMask = function() {
 		for(var i = 0; i < this.width; i++) {
 			for(var j = 0; j < this.height; j++) {
-				console.log(this.mask[i][j]);
+				console.log(this.mask[j][i]);
 			}
 		}		
 	};
