@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<title>gameQuery - Tutorial 1 - Final result</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+		<script type="text/javascript" src="http://cdn.gamequeryjs.com/jquery.gamequery.js"></script>
+		<script src="TileEngine.js"></script>
+		<script src="TileMap.js"></script>
+		<style type="text/css">
+			html,body{
+				margin: 0;
+				padding: 0;
+				background: black;
+			}
+		</style>
+	</head>
+	<body>
+	<center>
+	<div id="playground" style="width: 320px; height: 320px; background: black;">
+		<script>
+		
+			$("#playground").playground({height: 320, width: 320});
+			$("#playground").addGroup("mapgroup", {width: 320, height: 320});
+			$("#mapgroup").addGroup("mapbackground", {width: 320, height: 320});
+			$("#mapgroup").addGroup("maptiles", {width: 320, height: 320});
+			$("#mapgroup").addGroup("mapobjects", {width: 320, height: 320});
+			
+			var m = new TileMap();
+			var json = eval("("+ m.testPackage + ")");
+			m.loadMap(json);
+			m.draw();
+		</script>
+	</div>
+	</center>
+	</body>
+</html>

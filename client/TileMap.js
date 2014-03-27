@@ -13,14 +13,54 @@ function TileMap() {
 	this.tiles = null;
 	this.mask = null;
 	
-	
+	/*The map is drawn through #mapgroup
+		#mapgroup has:
+			#mapbackground
+			#maptiles
+			#mapobjects
+	*/
 	this.draw = function() {
 		this.clear();
-		
+		this.drawTiles();
 	};
 	
 	this.clear = function() {
+		$("#mapbackground").clearAll(false);
+		$("#maptiles").clearAll(false);
+		$("#mapobjects").clearAll(false);
+	};
 	
+	this.drawTiles = function() {
+	
+		for(var i = 0; i < this.width; i++) {
+			for(var j = 0; j < this.height; j++) {
+				
+				var tilesetX;
+				var tilesetY = 0;
+				if (gid == 1) {
+					tilesetX = 0;
+				}
+				else {
+					tilesetX = 32;
+				}
+				var posX = j * this.tileWidth;
+				var posX = i * this.tileHeight;
+				var anim = new $.gQ.Animation({ imageURL: "./testtiles.png",
+					numberOfFrame: 1,
+					delta: 32,
+					offsetx: tilesetX,
+					offsety: tilesetY,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+				$("#maptiles").addSprite("tile " + j.toString() + "," + i.toString(), 
+										{animation: anim,
+										width: this.tileWidth,
+										height: this.tileHeight,
+										posx: posX,
+										posy: posY
+										});
+					
+			}
+		}	
 	};
 	
 	//This function loads map information from the server(a JSON object) 
@@ -85,7 +125,11 @@ function TileMap() {
 			}
 		}		
 	};
-	
-	this.testPackage = '{ "width" : 3, "height" : 3, "tileWidth" : 10, "tileHeight" : 10, ' +
-							 '"tiles" : [[1,4,7],[2,5,8],[3,6,9]], "mask" : [[1,0,0],[1,0,0],[1,1,1]] }'
+	//10X10
+	this.testPackage = '{ "width" : 10, "height" : 10, "tileWidth" : 32, "tileHeight" : 32, ' +
+							 '"tiles" : [[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],' +
+							 '[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1]], '
+							 '"mask" : [[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],' +
+							 '[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1]] }'
+					
 }
