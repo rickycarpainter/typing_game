@@ -13,6 +13,9 @@ function TileMap() {
 	this.tiles = null;
 	this.mask = null;
 	
+	this.tileSet = null;
+	this.tileSetHeight = null
+	this.tileSetWidth = null
 	/*The map is drawn through #mapgroup
 		#mapgroup has:
 			#mapbackground
@@ -130,6 +133,14 @@ function TileMap() {
 			}
 		}		
 	};
+	
+	this.getGIDX = function(gid) {
+		return ((gid - 1) % this.tilesetWidth)) * this.tileWidth;
+	}
+	
+	this.getGIDY = function(gid) {
+		return ((gid - 1) / this.tilesetHeight) * this.tileHeight;
+	}
 	//10X10
 	this.testPackage = '{ "width" : 10, "height" : 10, "tileWidth" : 32, "tileHeight" : 32, ' +
 							 '"tiles" : [ [1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],' +
@@ -138,6 +149,7 @@ function TileMap() {
 							 '[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1] ] }';
 							 
 	this.testPackageSimple = '{ "width" : 3, "height" : 3, "tileWidth" : 32, "tileHeight" : 32, ' +
-							 '"tiles" : [[1,0,0],[1,0,0],[1,1,1]], "mask" : [[1,0,0],[1,0,0],[1,1,1]] }'
+							 '"tiles" : [[1,0,0],[1,0,0],[1,1,1]], "mask" : [[1,0,0],[1,0,0],[1,1,1]], ' +
+							 '"tileset" : "terrain.png", "tilesetHeight" : 32, "tilesetWidth" : 32 }'
 					
 }
