@@ -20,8 +20,8 @@ function TileMap() {
 			#mapobjects
 	*/
 	this.draw = function() {
-		this.clear();
-		
+		//this.clear();
+		this.drawTiles();
 	};
 	
 	this.clear = function() {
@@ -32,9 +32,9 @@ function TileMap() {
 	
 	this.drawTiles = function() {
 	
-		for(var i = 0; i < this.width; i++) {
-			for(var j = 0; j < this.height; j++) {
-				
+		for(var i = 0; i < this.height; i++) {
+			for(var j = 0; j < this.width; j++) {
+				var gid = this.tiles[j][i];
 				var tilesetX;
 				var tilesetY = 0;
 				if (gid == 1) {
@@ -44,21 +44,26 @@ function TileMap() {
 					tilesetX = 32;
 				}
 				var posX = j * this.tileWidth;
-				var posX = i * this.tileHeight;
-				var anim = new $.gQ.Animation({ imageURL: "./testtiles.png",
+				var posY = i * this.tileHeight;
+				console.log(posX);
+				console.log(posY);
+				var anim = new $.gQ.Animation({ imageURL: "testtiles.png",
 					numberOfFrame: 1,
 					delta: 32,
 					offsetx: tilesetX,
 					offsety: tilesetY,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
-				$("#maptiles").addSprite("tile " + j.toString() + "," + i.toString(), 
-										{animation: anim,
+				console.log("tileAdded");
+				var id = "tile" + j.toString() + "," + i.toString();
+				$("#maptiles").addSprite( id, {animation: anim,
 										width: this.tileWidth,
 										height: this.tileHeight,
 										posx: posX,
 										posy: posY
 										});
-					
+				console.log(id);
+				//$("#" + id).css("left", posX);
+				//$("#" + id).css("top", posY);
 			}
 		}	
 	};
@@ -82,8 +87,8 @@ function TileMap() {
 	this.loadTiles = function(mapInfo) {
 		
 		this.tiles = this.createArray(this.width, this.height);
-		for(var i = 0; i < this.width; i++) {
-			for(var j = 0; j < this.height; j++) {
+		for(var i = 0; i < this.height; i++) {
+			for(var j = 0; j < this.width; j++) {
 				this.tiles[i][j] = mapInfo.tiles[i][j]
 			}
 		}	
@@ -92,8 +97,8 @@ function TileMap() {
 	//Loads the mask values into the 2d mask array
 	this.loadMask = function(mapInfo) {
 		this.mask = this.createArray(this.width, this.height);
-		for(var i = 0; i < this.width; i++) {
-			for(var j = 0; j < this.height; j++) {
+		for(var i = 0; i < this.height; i++) {
+			for(var j = 0; j < this.width; j++) {
 				this.mask[i][j] = mapInfo.mask[i][j]
 			}
 		}	
@@ -111,25 +116,28 @@ function TileMap() {
 	};
 	
 	this.printTiles = function() {
-		for(var i = 0; i < this.width; i++) {
-			for(var j = 0; j < this.height; j++) {
+		for(var i = 0; i < this.height; i++) {
+			for(var j = 0; j < this.width; j++) {
 				console.log(this.tiles[j][i]);
 			}
 		}		
 	};
 	
 	this.printMask = function() {
-		for(var i = 0; i < this.width; i++) {
-			for(var j = 0; j < this.height; j++) {
+		for(var i = 0; i < this.height; i++) {
+			for(var j = 0; j < this.width; j++) {
 				console.log(this.mask[j][i]);
 			}
 		}		
 	};
 	//10X10
 	this.testPackage = '{ "width" : 10, "height" : 10, "tileWidth" : 32, "tileHeight" : 32, ' +
-							 '"tiles" : [[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],' +
-							 '[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1]], '
-							 '"mask" : [[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],' +
-							 '[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1]] }'
+							 '"tiles" : [ [1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],' +
+							 '[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1] ], '
+							 '"mask" : [ [1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],' +
+							 '[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1] ] }';
+							 
+	this.testPackageSimple = '{ "width" : 3, "height" : 3, "tileWidth" : 32, "tileHeight" : 32, ' +
+							 '"tiles" : [[1,4,7],[2,5,8],[3,6,9]], "mask" : [[1,0,0],[1,0,0],[1,1,1]] }'
 					
 }

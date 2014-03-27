@@ -16,18 +16,39 @@
 	<body>
 	<center>
 	<div id="playground" style="width: 320px; height: 320px; background: black;">
+    <div id="welcomeScreen" style="width: 320px; height: 320px; position: absolute; z-index: 100;">
+        <div style="position: absolute; top: 120px; width: 320px; color: white;">
+            <center><a style="cursor: pointer;" id="startbutton">click here to show the demo</a></center>
+        </div>
+    </div>	
 		<script>
 		
-			$("#playground").playground({height: 320, width: 320});
-			$("#playground").addGroup("mapgroup", {width: 320, height: 320});
-			$("#mapgroup").addGroup("mapbackground", {width: 320, height: 320});
-			$("#mapgroup").addGroup("maptiles", {width: 320, height: 320});
-			$("#mapgroup").addGroup("mapobjects", {width: 320, height: 320});
+			// Initialize the game:
+    		$("#playground").playground({
+        		height: 320, 
+        		width: 320, 
+        		keyTracker: true});
+        	//var a = new $.gameQuery.Animation({ imageURL: "testtiles.png"});
+			$.playground().addGroup("mapgroup", {width: 320, height: 320, posx: 0, posy: 0})
+				.addGroup("mapbackground", {width: 320, height: 320, posx: 0, posy: 0}).end()
+				.addGroup("maptiles", {width: 320, height: 320, posx: 0, posy: 0}).end()
+				.addGroup("mapobjects", {width: 320, height: 320, posx: 0, posy: 0}).end();
+			//$.playground().addSprite("tester", a);
+
+   	 	$("#startbutton").click(function(){
+       	 $.playground().startGame(function(){
+            $("#welcomeScreen").fadeTo(1000,0,function(){$(this).remove();});
+            var m = new TileMap();
+				var json = eval("("+ m.testPackageSimple + ")");
+				m.loadMap(json);
+				m.draw();
+        	});
+    		});			
+
+
+			console.log(m.height);
+			console.log(m.width);
 			
-			var m = new TileMap();
-			var json = eval("("+ m.testPackage + ")");
-			m.loadMap(json);
-			m.draw();
 		</script>
 	</div>
 	</center>
