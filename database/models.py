@@ -1,11 +1,10 @@
-#import models in database.py then Base.metadata.create_all(bind=engine)
 from sqlalchemy import Column, Integer, String
 #still figuring out the Base concept
-#from ourapplication.database import Base
+from database.py import Base
 
 class Scores(Base):
     __tablename__ = 'scores'
-    #sqlalchemy automaticall sets the first int primary key to autoincrement
+    #sqlalchemy automatically sets the first int primary key to autoincrement
     id = Column(Integer, primary_key=True)
     map_id = Column(Integer, db.ForeignKey(maps.id))
     initials = Column(String(3))
