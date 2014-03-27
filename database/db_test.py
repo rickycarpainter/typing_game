@@ -12,7 +12,7 @@ M = Maps(100, 100, "3456792847582")
 db_session.add(M)
 db_session.commit()
 
-S = Scores(1, KMJ, 9001)
+S = Scores(1, "KMJ", 9001)
 db_session.add(S)
 db_session.commit()
 
