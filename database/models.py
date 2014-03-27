@@ -1,5 +1,4 @@
 from sqlalchemy import Column, Integer, String
-#still figuring out the Base concept
 from database import Base
 
 class Scores(Base):
