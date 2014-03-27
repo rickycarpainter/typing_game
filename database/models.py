@@ -1,12 +1,13 @@
 from sqlalchemy import Column, Integer, String
 #still figuring out the Base concept
-from database.py import Base
+from database import Base
 
 class Scores(Base):
     __tablename__ = 'scores'
     #sqlalchemy automatically sets the first int primary key to autoincrement
     id = Column(Integer, primary_key=True)
-    map_id = Column(Integer, db.ForeignKey(maps.id))
+    map_id = Column(Integer)
+    #map_id = Column(Integer, primary_key=True, db.ForeignKey(maps.id)) foreign keys not working
     initials = Column(String(3))
     score = Column(Integer)
 
@@ -38,7 +39,7 @@ class Passwords(Base):
     __tablename__ = 'passwords'
     id = Column(Integer, primary_key=True)
     password = Column(Integer)
-    map_id = Column(Integer, db.ForeignKey(maps.id))
+    map_id = Column(Integer)
 
     def __init__(self, password=None, map_id=None):
         self.password = password
@@ -49,8 +50,8 @@ class Passwords(Base):
     
 class MapItems(Base):
     __tablename__ = 'mapitems'
-    map_id = Column(Integer, primary_key=True, db.ForeignKey(maps.id))
-    item_id = Column(Integer, db.ForeignKey(items.id))
+    map_id = Column(Integer, primary_key=True)
+    item_id = Column(Integer)
 
     def __init__(self, map_id=None, item_id=None):
         self.map_id = map_id
