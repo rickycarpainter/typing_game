@@ -14,10 +14,10 @@
 		</style>
 	</head>
 	<body>
-	<center>
-	<div id="playground" style="width: 320px; height: 320px; background: black;">
-    <div id="welcomeScreen" style="width: 320px; height: 320px; position: absolute; z-index: 100;">
-        <div style="position: absolute; top: 120px; width: 320px; color: white;">
+
+	<div id="playground" style="width: 320px; height: 320px; background: black; padding: 20">
+    <div id="welcomeScreen" style="width: 320px; height: 320px; position: absolute;">
+        <div style="position: absolute; top: 120px; width: 320px; color: white; margin:0 auto;">
             <center><a style="cursor: pointer;" id="startbutton">click here to show the demo</a></center>
         </div>
     </div>	
@@ -28,10 +28,13 @@
         		height: 320, 
         		width: 320, 
         		keyTracker: true});
+
         	//var a = new $.gameQuery.Animation({ imageURL: "testtiles.png"});
-			$.playground().addGroup("mapgroup", {width: 320, height: 320, posx: 0, posy: 0})
+			$.playground().addGroup("mapgroup", {width: 320, height: 320, posx: 160, posy: 160})
+				.scale(2,false)
 				.addGroup("mapbackground", {width: 320, height: 320, posx: 0, posy: 0}).end()
 				.addGroup("maptiles", {width: 320, height: 320, posx: 0, posy: 0}).end()
+
 				.addGroup("mapobjects", {width: 320, height: 320, posx: 0, posy: 0}).end();
 			//$.playground().addSprite("tester", a);
 
@@ -47,6 +50,5 @@
 			
 		</script>
 	</div>
-	</center>
 	</body>
 </html>

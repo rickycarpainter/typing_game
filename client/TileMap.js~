@@ -25,7 +25,9 @@ function TileMap() {
 	*/
 	this.draw = function() {
 		//this.clear();
+		$("#mapgroup").scale(2,false);
 		this.drawTiles();
+		
 	};
 	
 	this.clear = function() {
@@ -57,9 +59,14 @@ function TileMap() {
 				$("#maptiles").addSprite( id, {animation: anim,
 										width: this.tileWidth,
 										height: this.tileHeight,
-										posx: posX,
-										posy: posY
+										posx: posX * 2,
+										posy: posY  * 2
 										});
+										//.scale(2.0,false)
+										//.gameQuery.posx = posX
+										//.gameQuery.posy = posY
+										//.end();
+										
 				console.log(id);
 				//$("#" + id).css("left", posX);
 				//$("#" + id).css("top", posY);

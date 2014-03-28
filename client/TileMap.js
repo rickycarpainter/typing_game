@@ -26,6 +26,7 @@ function TileMap() {
 	this.draw = function() {
 		//this.clear();
 		this.drawTiles();
+		
 	};
 	
 	this.clear = function() {
@@ -58,8 +59,13 @@ function TileMap() {
 										width: this.tileWidth,
 										height: this.tileHeight,
 										posx: posX,
-										posy: posY
+										posy: posY 
 										});
+										//.scale(2.0,false)
+										//.gameQuery.posx = posX
+										//.gameQuery.posy = posY
+										//.end();
+										
 				console.log(id);
 				//$("#" + id).css("left", posX);
 				//$("#" + id).css("top", posY);
