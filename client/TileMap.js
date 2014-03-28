@@ -13,9 +13,10 @@ function TileMap() {
 	this.tiles = null;
 	this.mask = null;
 	
-	this.tileSet = null;
-	this.tileSetHeight = null
-	this.tileSetWidth = null
+	this.tileset = null;
+	this.tilesetHeight = null
+	this.tilesetWidth = null
+	
 	/*The map is drawn through #mapgroup
 		#mapgroup has:
 			#mapbackground
@@ -38,19 +39,14 @@ function TileMap() {
 		for(var i = 0; i < this.height; i++) {
 			for(var j = 0; j < this.width; j++) {
 				var gid = this.tiles[j][i];
-				var tilesetX;
-				var tilesetY = 0;
-				if (gid == 1) {
-					tilesetX = 32;
-				}
-				else {
-					tilesetX = 0;
-				}
+				console.log(gid);
+				var tilesetX = this.getGIDX(gid);
+				var tilesetY = this.getGIDY(gid);
+				console.log(tilesetX);
+				console.log(tilesetY);
 				var posX = j * this.tileWidth;
 				var posY = i * this.tileHeight;
-				console.log(posX);
-				console.log(posY);
-				var anim = new $.gQ.Animation({ imageURL: "testtiles.png",
+				var anim = new $.gQ.Animation({ imageURL: this.tileset,
 					numberOfFrame: 1,
 					delta: 32,
 					offsetx: tilesetX,
@@ -80,6 +76,10 @@ function TileMap() {
 		
 		this.tileWidth = mapInfo.tileWidth;
 		this.tileHeight = mapInfo.tileHeight;
+		
+		this.tileset = mapInfo.tileset;
+		this.tilesetWidth = mapInfo.tilesetWidth;
+		this.tilesetHeight = mapInfo.tilesetHeight;
 		
 		this.loadTiles(mapInfo);
 		this.loadMask(mapInfo);
@@ -134,12 +134,15 @@ function TileMap() {
 		}		
 	};
 	
+	//Returns the xOffset of the tile on the tileset based on tile GID
 	this.getGIDX = function(gid) {
-		return ((gid - 1) % this.tilesetWidth)) * this.tileWidth;
+		console.log();
+		return (((gid - 1) % this.tilesetWidth) * this.tileWidth);
 	}
 	
+	//Returns the yOffset of the tile on the tileset based on tile GID
 	this.getGIDY = function(gid) {
-		return ((gid - 1) / this.tilesetHeight) * this.tileHeight;
+		return (Math.floor(((gid - 1) / this.tilesetHeight)) * this.tileHeight);
 	}
 	//10X10
 	this.testPackage = '{ "width" : 10, "height" : 10, "tileWidth" : 32, "tileHeight" : 32, ' +
@@ -149,7 +152,7 @@ function TileMap() {
 							 '[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1],[1,0,0,1,0,1,1,1,0,1] ] }';
 							 
 	this.testPackageSimple = '{ "width" : 3, "height" : 3, "tileWidth" : 32, "tileHeight" : 32, ' +
-							 '"tiles" : [[1,0,0],[1,0,0],[1,1,1]], "mask" : [[1,0,0],[1,0,0],[1,1,1]], ' +
-							 '"tileset" : "terrain.png", "tilesetHeight" : 32, "tilesetWidth" : 32 }'
+							 '"tiles" : [[65,97,129],[66,98,130],[67,99,131]], "mask" : [[1,0,0],[1,0,0],[1,1,1]], ' +
+							 '"tileset" : "terrain.png", "tilesetHeight" : 32, "tilesetWidth" : 32 }';
 					
 }
