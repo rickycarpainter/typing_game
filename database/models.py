@@ -17,7 +17,7 @@ class Scores(Base):
 
     #seems to be the standard for a toString() function
     def __repr__(self):
-        return '<id- %d\nMap - %d\nInitials - %s\nScore - %d>' % (self.id, self.map_id, self.initials, self.score)
+        return "{id: %d,\nmap_id: %d,\ninitials:  %s,\nscore: %d,}" % (self.id, self.map_id, self.initials, self.score)
 
 class Maps(Base):
     __tablename__ = 'maps'
@@ -32,7 +32,7 @@ class Maps(Base):
         self.tiles = tiles
 
     def __repr__(self):
-        return '<id- %d\nHeight - %d\nWidth - %d\nTiles - %s>' % (self.id, self.height, self.width, self.tiles)
+        return "{id: %d,\nheight: %d,\nwidth: %d,\ntiles: %s}" % (self.id, self.height, self.width, self.tiles)
 
 class Passwords(Base):
     __tablename__ = 'passwords'
@@ -45,7 +45,7 @@ class Passwords(Base):
         self.map_id = map_id
 
     def __repr__(self):
-        return '<id- %d\nPassword - %d\nMap - %d>' % (self.id, self.password, self.map_id)
+        return "{id- %d,\npassword: %d,\nmap_id: %d}" % (self.id, self.password, self.map_id)
     
 class MapItems(Base):
     __tablename__ = 'mapitems'
@@ -57,7 +57,7 @@ class MapItems(Base):
         self.item_id = item_id
 
     def __repr__(self):
-        return '<Map - %d\nItem - %d>' % (self.map_id, self.item_id)
+        return "{map_id: %d,\nitem_id: %d}" % (self.map_id, self.item_id)
 
 class Items(Base):
     __tablename__ = 'items'
@@ -76,4 +76,4 @@ class Items(Base):
         self.type = type
 
     def __repr__(self):
-        return '<id - %d\nX - %d\nY - %d\nWidth - %d\nHeight - %d\nType - %s>' % (self.id, self.sprite_x, self.sprite_y, self.width, self.height, self.type)
+        return "{id: %d,\nsprite_x: %d,\nsprite_y: %d,\nwidth: %d,\nheight: %d,\ntype: %s}" % (self.id, self.sprite_x, self.sprite_y, self.width, self.height, self.type)
