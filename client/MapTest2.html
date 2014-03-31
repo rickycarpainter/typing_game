@@ -1,10 +1,12 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<html>
 	<head>
 		<title>gameQuery - Tutorial 1 - Final result</title>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 		<script type="text/javascript" src="http://cdn.gamequeryjs.com/jquery.gamequery.js"></script>
 		<script src="TileEngine.js"></script>
 		<script src="TileMap.js"></script>
+		<script src="TileMapLayer.js"></script>
+		<script src="TileSet.js"></script>
 		<style type="text/css">
 			html,body{
 				margin: 0;
@@ -30,8 +32,8 @@
         		keyTracker: true});
 
         	//var a = new $.gameQuery.Animation({ imageURL: "testtiles.png"});
-			$.playground().addGroup("mapgroup", {width: 320, height: 320, posx: 160, posy: 160})
-				.scale(2,false)
+			$.playground().addGroup("mapgroup", {width: 320, height: 320, posx: 0, posy: 0})
+				//.scale(2,false)
 				.addGroup("mapbackground", {width: 320, height: 320, posx: 0, posy: 0}).end()
 				.addGroup("maptiles", {width: 320, height: 320, posx: 0, posy: 0}).end()
 
@@ -42,8 +44,7 @@
        	 $.playground().startGame(function(){
             $("#welcomeScreen").fadeTo(1000,0,function(){$(this).remove();});
             var m = new TileMap();
-				var json = eval("("+ m.testPackageSimple + ")");
-				m.loadMap(json);
+				m.loadMap('jsonphase1.txt');
 				m.draw();
         	});
     		});			
