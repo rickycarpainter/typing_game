@@ -2,25 +2,35 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-
 		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="my_styles.css" />
 
 		<title>CS360</title>
 	</head>
 
 	<body>
+		<script src="gallery.js"></script>
 		<header>
 			<h1>Key Hopper</h1>
 		</header>
 
+
 		<nav>
-			<a href="#">About</a>
-			<a href="Gallery/index.html">Images</a>
+			<a href="#">Home</a>
 			<a href="#">Play</a>
 		</nav>
 
 		<section id="main">
-			<img src="http://lorempixel.com/300/200/abstract/1" />
+			<div id = "connection"></div>
+		
+			<div id="image_container">
+				<img class="landscape" src="images/landscape.jpg" alt="Visiting an old friend." title=""/>
+				<img class="aspire" src="images/aspire.jpg" alt="Get Cape. Wear Cape. Fly." title=""/>
+				<img class="nes" src="images/nes.jpg" alt="Classic." title=""/>
+				<img class="natural_beauty" src="images/natural_beauty.jpg" alt="Second star to the right..." title=""/>
+				<img class="serenity" src="images/serenity.jpg" alt="Ah, curse your sudden but inevitable betrayal!" title=""/>
+				<img class="lake_view" src="images/lake_view.jpg" alt="Just enjoying the view." title=""/>
+			</div>
 
 			<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
 
@@ -30,9 +40,6 @@
 
 			<p class = "clear">The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
 
-			<img class = "alt-image"  src="http://lorempixel.com/150/150/abstract/2" />
-
-			<img class = "alt-image clear"  src="http://lorempixel.com/150/150/abstract/3" />
 
 			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
 
@@ -41,20 +48,11 @@
 			<p>The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their</p>
 		</section>
 
-		<aside>
-			<p class="type-1">Type 1</p>
-			<p class="type-1">Type 1</p>
-			<p class="type-1">Type 1</p>
-			<p class="type-2">Type 2</p>
-			<p class="type-2">Type 2</p>
-			<p class="type-2">Type 2</p>
-			<p class="type-3">Type 3</p>
-			<p class="type-3">Type 3</p>
-			<p class="type-3">Type 3</p>
-		</aside>
 
 		<footer class = "clear-all">
 			<h3>View our <a href = "http://github.com/ritchiejc/typing_game">Github</a></h3>
 		</footer>
+			
+			
 	</body>
 </html>

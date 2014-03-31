@@ -1,17 +1,17 @@
 document.body.onload = function()
 {
+	console.log('test');	
 	document.body.className = "jsReady";		
 	
 	var shell = document.createElement("div");
-	
 	shell.id = "test";
 	
 	var thumbnail_container = document.createElement("div");
 	thumbnail_container.id = "thumbnail_container";
 	
-	document.body.appendChild(shell);
+	var anchor = document.getElementById("connection");
 	
-	
+	anchor.appendChild(shell);
 	
 	var image_container = document.getElementById("image_container");
 	
@@ -24,10 +24,13 @@ document.body.onload = function()
 		
 	image_container.appendChild(span);
 
+	console.log("Getting images");
 	var gallery = image_container.getElementsByTagName("img");
+	console.log("Finished images");
 	
 	for (var i = 0; i < gallery.length; i++)
 	{
+		console.log("images");
 		gallery[i].style.display = "none";
 		var img_src = gallery[i].src;
 		var img_alt = gallery[i].alt;

@@ -17,8 +17,7 @@ header, footer {
 }
 
 nav {
-	overflow: hidden;
-	
+	overflow: hidden;	
 }
 
 nav a {
@@ -29,7 +28,7 @@ nav a {
 	text-align: center;
 	text-decoration: none;
 	
-	width: 33.33%;
+	width: 50%;
 	display: block;
 	float: left;
 	
@@ -43,9 +42,7 @@ nav a:hover {
 #main {
 	color: rgb(242,242,242);
 	padding: 30px;
-	overflow: hidden;
-	width: 640px;
-	float: left;
+	width: 840px;
 }
 
 #main img

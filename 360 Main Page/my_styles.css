@@ -1,26 +1,21 @@
 html { background-color: rgb(255,255,255); }
 
-body
-{
-	
-}
-
 #test
 {
 	overflow: auto;
 	background-color: rgba(153,153,153, .75);
 	border: 3px solid rgb(0,0,0);
 	margin: 25px auto;
-	padding: 10px;
-	position: absolute;
-
+	padding: 5px;
+	position: relative;
+	width: 830px;
 }
 
 .clear { clear: both; }
 
 /* JavaScript enabled styles
 -----------------------------------------*/
-	.jsReady { width: 700px; }
+	.jsReady { width: 900px; }
 
 	.jsReady #image_container
 	{
@@ -56,6 +51,7 @@ body
 
 	#description
 	{
+		color: rgb(0,0,0);
 		background: rgba(255,255,255,.6);
 		display: block;
 		font: normal 13px/16px arial,verdana,sans-serif;
