@@ -1,0 +1,69 @@
+html { background-color: rgb(255,255,255); }
+
+body
+{
+	
+}
+
+#test
+{
+	overflow: auto;
+	background-color: rgba(153,153,153, .75);
+	border: 3px solid rgb(0,0,0);
+	margin: 25px auto;
+	padding: 10px;
+	position: absolute;
+
+}
+
+.clear { clear: both; }
+
+/* JavaScript enabled styles
+-----------------------------------------*/
+	.jsReady { width: 700px; }
+
+	.jsReady #image_container
+	{
+		float: left;
+		border: 1px solid rgb(0,0,0);
+		height: 333px;
+		position: relative;
+		width: 58%;
+	}
+
+
+	#thumbnail_container
+	{
+		overflow: hidden;
+		float: right;
+		padding: 0;
+		position: relative;
+		width: 35%;
+	}
+		#thumbnail_container div
+		{
+			float: right;
+			cursor: pointer;
+			height: 105px;
+			margin: 0 10px 10px 0;
+			width: 130px;
+		}
+
+	#thumbnail_container div {
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+	}
+
+	#description
+	{
+		background: rgba(255,255,255,.6);
+		display: block;
+		font: normal 13px/16px arial,verdana,sans-serif;
+		padding: 5px 0;
+		text-align: center;
+		width: 100%;
+
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
