@@ -27,28 +27,22 @@
     </div>	
 		<script>
 		
-			// Initialize the game:
-    		$("#playground").playground({
-        		height: 480, 
-        		width: 320, 
-        		keyTracker: true});
 
         	//var a = new $.gameQuery.Animation({ imageURL: "testtiles.png"});
-			$.playground().addGroup("mapgroup", {width: 640, height: 640, posx: 0, posy: 0})
+			//$.playground().addGroup("mapgroup", {width: 640, height: 640, posx: 0, posy: 0})
 				//.scale(2)
-				.addGroup("mapBackground", {width: 640, height: 640, posx: 0, posy: 0}).end()
-				.addGroup("mapObjects", {width: 640, height: 640, posx: 0, posy: 0}).end()
-				.addGroup("mapForeground", {width: 640, height: 640, posx: 0, posy: 0}).end()
+			//	.addGroup("mapBackground", {width: 640, height: 640, posx: 0, posy: 0}).end()
+			//	.addGroup("mapObjects", {width: 640, height: 640, posx: 0, posy: 0}).end()
+			//	.addGroup("mapForeground", {width: 640, height: 640, posx: 0, posy: 0}).end()
 			//$.playground().addSprite("tester", a);
 
    	 	$("#startbutton").click(function(){
        	 $.playground().startGame(function(){
             $("#welcomeScreen").fadeTo(1000,0,function(){$(this).remove();});
-            var m = new TileMap();
             
-				m.loadMap(eval("(" + m.masktest + ")"));
-				m.draw();	
-
+					var gameEngine = new GameEngine();
+					
+					
 
         	});
     		});			

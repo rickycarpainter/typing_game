@@ -1,14 +1,9 @@
-function TileEngine(node) {
+function TileEngine() {
 	
-	this.node = $(node);
 	this.map = null;
 	
 	this.drawMap = function() {
 		this.clearMap();
-	};
-	
-	this.clearMap = function() {
-		
 	};
 	
 	this.drawPlayer = function() {
@@ -28,7 +23,6 @@ function TileEngine(node) {
 	}
 	
 	this.canMoveUp = function(node) {
-	
 	};
 	
 	this.canMoveDown = function(node) {

@@ -1,0 +1,8 @@
+function GroupManager() {
+
+	this.init = function(gameWidth, gameHeight) {
+	
+	
+	};
+
+}

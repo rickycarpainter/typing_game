@@ -1,6 +1,5 @@
-function TileEngine(node) {
+function TileEngine() {
 	
-	this.node = $(node);
 	this.map = null;
 	
 	this.drawMap = function() {
@@ -24,7 +23,6 @@ function TileEngine(node) {
 	}
 	
 	this.canMoveUp = function(node) {
-	
 	};
 	
 	this.canMoveDown = function(node) {
@@ -36,6 +34,14 @@ function TileEngine(node) {
 	};
 	
 	this.canMoveRight = function(node) {
+	
+	};
+	
+	this.setMovePrompts = function() {
+	
+	};
+	
+	this.clearMovePrompts = function() {
 	
 	};
 	
