@@ -15,7 +15,7 @@ function TileSet(firstgID,image,tileheight,tilewidth,imageheight,imagewidth) {
 	
 	//Returns the xOffset of the tile on the tileset based on tile GID
 	this.getgIDXOffset = function(gID) {
-		return Math.floor((((gID - 1) % this.widthInTiles) * this.tileWidth));
+		return (Math.floor(((gID - 1) % this.widthInTiles) * this.tileWidth));
 	};
 	
 	this.getgIDYOffset = function(gID) {
@@ -27,8 +27,7 @@ function TileSet(firstgID,image,tileheight,tilewidth,imageheight,imagewidth) {
 	// 	if gID = 45 this function returns 1
 	//    if gID = 48 this function returns 4
 	this.convertgID = function(gID) {
-
-		return (gID - firstgid + 1);
+		return (gID - this.firstgID + 1);
 	};
 	
 	this.gIDInTileset = function(gID) {

@@ -29,13 +29,13 @@
 		
 			// Initialize the game:
     		$("#playground").playground({
-        		height: 640, 
-        		width: 640, 
+        		height: 480, 
+        		width: 320, 
         		keyTracker: true});
 
         	//var a = new $.gameQuery.Animation({ imageURL: "testtiles.png"});
-			$.playground().addGroup("mapgroup", {width: 640, height: 640, posx: 320, posy: 320})
-				.scale(2)
+			$.playground().addGroup("mapgroup", {width: 640, height: 640, posx: 0, posy: 0})
+				//.scale(2)
 				.addGroup("mapbackground", {width: 640, height: 640, posx: 0, posy: 0}).end()
 				.addGroup("maptiles", {width: 640, height: 640, posx: 0, posy: 0}).end()
 
@@ -47,7 +47,7 @@
             $("#welcomeScreen").fadeTo(1000,0,function(){$(this).remove();});
             var m = new TileMap();
             
-				m.loadMap(eval("(" + m.testPackage + ")"));
+				m.loadMap(eval("(" + m.masktest + ")"));
 				m.draw();	
 
 

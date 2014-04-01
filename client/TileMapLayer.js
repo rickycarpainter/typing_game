@@ -22,17 +22,16 @@ function TileMapLayer() {
 				var gID = this.tiles[j][i];
 				if (gID != 0) {
 				var tileset = this.getgIDTileset(gID,tilesets);
+				console.log(tileset.firstgID);
+				console.log("oldgID");
 				console.log(gID);
-				console.log('tileset');
-				console.log(tileset);
+				gID = tileset.convertgID(gID);
+				console.log(gID);
 				var tilesetX = tileset.getgIDXOffset(gID);
 				var tilesetY = tileset.getgIDYOffset(gID);
 				var posX = Math.floor(j * tileset.tileWidth);
 				var posY = Math.floor(i * tileset.tileHeight);
-				//console.log(posX);
-				//console.log(posY);
-			//	console.log(tilesetX);
-				//console.log(tilesetY);
+
 				var anim = new $.gQ.Animation({ imageURL: tileset.image,
 					numberOfFrame: 1,
 					delta: 32,
