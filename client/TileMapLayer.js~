@@ -22,7 +22,7 @@ function TileMapLayer() {
 				var gID = this.tiles[j][i];
 				if (gID != 0) {
 				var tileset = this.getgIDTileset(gID,tilesets);
-				console.log(tileset);
+				console.log(tileset.firstgID);
 				console.log("oldgID");
 				console.log(gID);
 				gID = tileset.convertgID(gID);
