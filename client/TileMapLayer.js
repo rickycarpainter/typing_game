@@ -18,18 +18,21 @@ function TileMapLayer() {
 			
 			for(var j = 0; j < this.width; j++) {
 				
+			
 				var gID = this.tiles[j][i];
+				if (gID != 0) {
 				var tileset = this.getgIDTileset(gID,tilesets);
+				console.log(gID);
 				console.log('tileset');
 				console.log(tileset);
 				var tilesetX = tileset.getgIDXOffset(gID);
 				var tilesetY = tileset.getgIDYOffset(gID);
-				var posX = j * tileset.tileWidth;
-				var posY = i * tileset.tileHeight;
-				console.log(posX);
-				console.log(posY);
-				console.log(tilesetX);
-				console.log(tilesetY);
+				var posX = Math.floor(j * tileset.tileWidth);
+				var posY = Math.floor(i * tileset.tileHeight);
+				//console.log(posX);
+				//console.log(posY);
+			//	console.log(tilesetX);
+				//console.log(tilesetY);
 				var anim = new $.gQ.Animation({ imageURL: tileset.image,
 					numberOfFrame: 1,
 					delta: 32,
@@ -45,6 +48,7 @@ function TileMapLayer() {
 										posx: posX,
 										posy: posY 
 										});
+				}
 			}
 		}		
 	

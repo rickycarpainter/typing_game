@@ -10,16 +10,16 @@ function TileSet(firstgID,image,tileheight,tilewidth,imageheight,imagewidth) {
 	this.firstgID = firstgID;
 	this.lastgID = this.heightInTiles * this.widthInTiles + firstgID - 1;
 	
-	this.tileheight = tileheight;
-	this.tilewidth = tileheight;
+	this.tileHeight = tileheight;
+	this.tileWidth = tileheight;
 	
 	//Returns the xOffset of the tile on the tileset based on tile GID
 	this.getgIDXOffset = function(gID) {
-		return (((gID - 1) % this.tilesetWidth) * this.tileWidth);
+		return (((gID - 1) % this.widthInTiles) * this.tileWidth);
 	};
 	
 	this.getgIDYOffset = function(gID) {
-		return (Math.floor(((gID - 1) / this.tilesetHeight)) * this.tileHeight);
+		return (Math.floor(((gID - 1) / this.heightInTiles)) * this.tileHeight);
 	};
 	
 	//converts the gID to the gID schema of this tileset

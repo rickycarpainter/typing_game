@@ -15,7 +15,7 @@ function TileSet(firstgID,image,tileheight,tilewidth,imageheight,imagewidth) {
 	
 	//Returns the xOffset of the tile on the tileset based on tile GID
 	this.getgIDXOffset = function(gID) {
-		return (((gID - 1) % this.widthInTiles) * this.tileWidth);
+		return Math.floor((((gID - 1) % this.widthInTiles) * this.tileWidth));
 	};
 	
 	this.getgIDYOffset = function(gID) {

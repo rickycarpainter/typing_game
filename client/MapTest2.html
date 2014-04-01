@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="https://github.com/ritchiejc/typing_game/blob/master/client/" xml:lang="fr">
 	<head>
 		<title>gameQuery - Tutorial 1 - Final result</title>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
@@ -7,6 +8,7 @@
 		<script src="TileMap.js"></script>
 		<script src="TileMapLayer.js"></script>
 		<script src="TileSet.js"></script>
+		<script type="text/plain" src="layers.json"></script>
 		<style type="text/css">
 			html,body{
 				margin: 0;
@@ -27,30 +29,28 @@
 		
 			// Initialize the game:
     		$("#playground").playground({
-        		height: 320, 
-        		width: 320, 
+        		height: 640, 
+        		width: 640, 
         		keyTracker: true});
 
         	//var a = new $.gameQuery.Animation({ imageURL: "testtiles.png"});
-<<<<<<< HEAD
-			$.playground().addGroup("mapgroup", {width: 320, height: 320, posx: 0, posy: 0})
-				//.scale(2,false)
-=======
-			$.playground().addGroup("mapgroup", {width: 320, height: 320, posx: 160, posy: 160})
-				.scale(1.5,false)
->>>>>>> 34687af2d2aa1b73a74382f250e726a21dafd01b
-				.addGroup("mapbackground", {width: 320, height: 320, posx: 0, posy: 0}).end()
-				.addGroup("maptiles", {width: 320, height: 320, posx: 0, posy: 0}).end()
+			$.playground().addGroup("mapgroup", {width: 640, height: 640, posx: 320, posy: 320})
+				.scale(2)
+				.addGroup("mapbackground", {width: 640, height: 640, posx: 0, posy: 0}).end()
+				.addGroup("maptiles", {width: 640, height: 640, posx: 0, posy: 0}).end()
 
-				.addGroup("mapobjects", {width: 320, height: 320, posx: 0, posy: 0}).end();
+				.addGroup("mapobjects", {width: 640, height: 640, posx: 0, posy: 0}).end();
 			//$.playground().addSprite("tester", a);
 
    	 	$("#startbutton").click(function(){
        	 $.playground().startGame(function(){
             $("#welcomeScreen").fadeTo(1000,0,function(){$(this).remove();});
             var m = new TileMap();
-				m.loadMap('jsonphase1.txt');
-				m.draw();
+            
+				m.loadMap(eval("(" + m.testPackage + ")"));
+				m.draw();	
+
+
         	});
     		});			
 			
