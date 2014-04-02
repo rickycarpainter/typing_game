@@ -1,13 +1,32 @@
 function GroupManager() {
 
 	this.init = function(gameWidth, gameHeight) {
-		$.playground().addGroup("mapgroup", {width: 640, height: 640, posx: 0, posy: 0})
+		
+		var anim = new $.gQ.Animation({ imageURL: "titlescreen.png",
+					numberOfFrame: 1,
+					delta: 707,
+					offsetx: 0,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		$.playground().addGroup("mapgroup", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
 			//.scale(2)
-			.addGroup("mapBackground", {width: 640, height: 640, posx: 0, posy: 0}).end()
-			.addGroup("mapObjects", {width: 640, height: 640, posx: 0, posy: 0}).end()
-			.addGroup("mapForeground", {width: 640, height: 640, posx: 0, posy: 0}).end()	
-			
+			.addGroup("mapBackground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("mapObjects", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("mapForeground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()	
+			.addGroup("titlescreen", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
+				.addSprite( "title", {animation: anim,
+										width: gameWidth,
+										height: gameHeight,
+										posx: 0,
+										posy: 0 
+										});
 			//ADD OTHER GROUPS HERE EX: HUD GROUP, OTHER SCREENS
+			
+			
+
+					
+				
+
 	};
 	
 	this.update = function() {

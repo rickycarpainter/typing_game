@@ -11,7 +11,7 @@ function GameEngine() {
         	keyTracker: true});
 
 		this.gameManager = new GameManager();
-		this.gameManager.init();
+		this.gameManager.init(gameWidth, gameHeight);
 		
 	};
 	

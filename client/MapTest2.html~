@@ -7,7 +7,9 @@
 		<script src="TileEngine.js"></script>
 		<script src="TileMap.js"></script>
 		<script src="TileMapLayer.js"></script>
-		<script src="TileSet.js"></script>
+		<script src="GameEngine.js"></script>
+		<script src="GroupManager.js"></script>
+		<script src="GameManager.js"></script>
 		<script type="text/plain" src="layers.json"></script>
 		<style type="text/css">
 			html,body{
@@ -37,15 +39,13 @@
 			//$.playground().addSprite("tester", a);
 
    	 	$("#startbutton").click(function(){
-       	 $.playground().startGame(function(){
             $("#welcomeScreen").fadeTo(1000,0,function(){$(this).remove();});
-            var m = new TileMap();
             
-				m.loadMap(eval("(" + m.masktest + ")"));
-				m.draw();	
-
-
-        	});
+					var gameEngine = new GameEngine();
+					gameEngine.init(707,477);
+					gameEngine.run();
+					
+					
     		});			
 			
 		</script>
