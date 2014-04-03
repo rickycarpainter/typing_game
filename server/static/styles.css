@@ -48,6 +48,10 @@ nav a:hover {
 	width: 100%;
 }
 
+#main p {
+	text-align: center;
+}
+
 .button
 {
 	float: right;

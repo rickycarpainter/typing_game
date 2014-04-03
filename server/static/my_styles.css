@@ -8,7 +8,7 @@ html { background-color: #000000; }
 	margin: 25px auto;
 	padding: 5px;
 	position: relative;
-	width: 70%;
+	width: 60%;
 	border-radius: .5em;
 }
 
@@ -16,7 +16,7 @@ html { background-color: #000000; }
 
 /* JavaScript enabled styles
 -----------------------------------------*/
-	.jsReady { width: 900px; }
+	.jsReady { width: 1100px; }
 
 	.jsReady #image_container
 	{
@@ -24,7 +24,7 @@ html { background-color: #000000; }
 		border: 1px solid rgb(0,0,0);
 		height: 333px;
 		position: relative;
-		width: 60%;
+		width: 75%;
 	}
 
 
@@ -34,7 +34,7 @@ html { background-color: #000000; }
 		float: right;
 		padding: 0;
 		position: relative;
-		width: 35%;
+		width: 24%;
 	}
 		#thumbnail_container div
 		{
