@@ -1,6 +1,9 @@
 body {
 	background-color: #000000;
 	margin: 0;
+	position: center;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 header, footer {
@@ -10,6 +13,7 @@ header, footer {
 	text-align: center;
 	font-size: 3em;
 	width: 100%;
+	padding: .5em;
 }
 
 header{
@@ -41,8 +45,7 @@ nav a:hover {
 
 #main {
 	color: rgb(242,242,242);
-	padding: 30px;
-	width: 840px;
+	width: 100%;
 }
 
 .button
