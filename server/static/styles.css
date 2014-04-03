@@ -1,0 +1,105 @@
+body {
+	background-color: rgb(2,40,89);
+	width: 1000px;
+	margin: 0 auto;
+}
+
+html
+{
+	background-color: #222233;
+}
+
+header, footer {
+	background: rgb(89,89,89);
+	color: rgb(255,255,255);
+	padding: 20px;
+	text-align: center;
+}
+
+nav {
+	overflow: hidden;	
+}
+
+nav a {
+	background-color: rgb(68,175,242);
+	color: rgb(242,242,242);
+	font-variant: small-caps;
+	padding: 5px 0;
+	text-align: center;
+	text-decoration: none;
+	
+	width: 50%;
+	display: block;
+	float: left;
+	
+}
+
+nav a:hover {
+	background-color: rgb(242,242,242);
+	color: rgb(68,175,242);
+}
+
+#main {
+	color: rgb(242,242,242);
+	padding: 30px;
+	width: 840px;
+}
+
+#main img
+{
+	float: left;
+	margin-bottom: 10px;
+	margin-right: 20px;
+}
+
+#main .alt-image
+{
+	float: right;
+	margin-left: 20px;
+}
+
+aside 
+{
+	padding: 30px;
+	width: 240px;
+	float: right;
+}
+
+aside p {
+	line-height: 40px;
+	padding: 5px;
+	text-align: center;
+	width: 50px;
+	float: right;
+}
+
+.type-1 
+{ 
+	background-color: rgb(244,93,93); 
+	margin-right: 10px;
+	float: left;
+}
+
+.type-2 
+{ 
+	background-color: rgb(191,189,35); 
+	margin-right: 10px;
+	float: left;
+}
+
+.type-3 
+{ 
+	background-color: rgb(58,249,220); 
+	margin-right: 10px;
+	float: left; 
+}
+
+.clear
+{
+	clear: right;
+}
+
+.clear-all
+{
+	clear: both;
+}
