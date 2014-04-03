@@ -33,4 +33,23 @@ function GroupManager() {
 	
 	};
 
+	this.titleToSelection = function(){
+
+	};
+
+	this.openPasswordPrompt = function(){
+
+	};
+
+	this.closePasswordPrompt = function(){
+
+	};
+
+	this.selectionToLevels = function(){
+
+	};
+
+	this.levelsToGame = function(){
+
+	};
 }
