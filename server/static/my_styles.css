@@ -3,12 +3,12 @@ html { background-color: #000000; }
 #test
 {
 	overflow: auto;
-	background-color: #990033;
+	background-color: #A05B82;
 	border: 3px solid rgb(0,0,0);
 	margin: 25px auto;
 	padding: 5px;
 	position: relative;
-	width: 35%;
+	width: 46%;
 	border-radius: .5em;
 }
 
