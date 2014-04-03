@@ -1,5 +1,5 @@
 body {
-	background-color: #000000;
+	background-color: #341717;
 	margin: 0;
 	position: center;
 	margin-right: auto;
@@ -18,32 +18,9 @@ header, footer {
 }
 
 header{
+	background-image:url('banner.png');
 	text-align: left;
 }
-
-nav {
-	overflow: hidden;	
-}
-
-nav a {
-	background-color: #990033;
-	color: rgb(242,242,242);
-	font-variant: small-caps;
-	padding: 5px 0;
-	text-align: center;
-	text-decoration: none;
-	
-	width: 50%;
-	display: block;
-	float: left;
-	
-}
-
-nav a:hover {
-	background-color: rgb(242,242,242);
-	color: rgb(68,175,242);
-}
-
 #main {
 	color: rgb(242,242,242);
 	width: 100%;
