@@ -3,12 +3,13 @@ html { background-color: #000000; }
 #test
 {
 	overflow: auto;
-	background-color: rgba(153,153,153, .75);
+	background-color: #990033;
 	border: 3px solid rgb(0,0,0);
 	margin: 25px auto;
 	padding: 5px;
 	position: relative;
-	width: 830px;
+	width: 70%;
+	border-radius: .5em;
 }
 
 .clear { clear: both; }
@@ -23,7 +24,7 @@ html { background-color: #000000; }
 		border: 1px solid rgb(0,0,0);
 		height: 333px;
 		position: relative;
-		width: 58%;
+		width: 60%;
 	}
 
 
@@ -41,7 +42,9 @@ html { background-color: #000000; }
 			cursor: pointer;
 			height: 105px;
 			margin: 0 10px 10px 0;
-			width: 130px;
+			width: 100px;
+			padding: 0;
+			border-radius: .5em;
 		}
 
 	#thumbnail_container div {
