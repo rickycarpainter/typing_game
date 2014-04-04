@@ -3,7 +3,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    print "Home page requested"
     return render_template('index.html', name="name")
 
 if __name__ == '__main__':
