@@ -18,17 +18,16 @@ header, footer {
 
 header{
 	text-align: left;
-}
-
-#topbar{
 	background-image:url('banner.png');
-	width:89.5%;
 	padding: .75em;
 	padding-right: 2em;
 	padding-top: .3em;
+	
 }
 
-
+#topbar{
+	
+}
 
 #main {
 	color: rgb(242,242,242);
