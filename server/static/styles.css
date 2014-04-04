@@ -18,7 +18,7 @@ header, footer {
 
 header{
 	text-align: left;
-	/*background-image:url('banner.png');*/
+	background-image:url('banner.png');
 	padding: .75em;
 	padding-right: 2em;
 	padding-top: .3em;
