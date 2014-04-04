@@ -24,15 +24,16 @@ class Maps(Base):
     id = Column(Integer, primary_key=True)
     height = Column(Integer)
     width = Column(Integer)
-    tiles = Column(String(200))
+    url = Column(String(200))
 
-    def __init__(self, height=0, width=0, tiles=None):
+    def __init__(self, height=0, width=0, url=None):
         self.height = height
         self.width = width
-        self.tiles = tiles
+        self.url = url
 
     def __repr__(self):
-        return "{id: %d,\nheight: %d,\nwidth: %d,\ntiles: %s}" % (self.id, self.height, self.width, self.tiles)
+        f = open(self.url, "r")
+        return f.read()
 
 class Passwords(Base):
     __tablename__ = 'passwords'
