@@ -1,18 +1,20 @@
 
 from models import *
 from database import *
+from database_access import *
 
 #Can query model objects directly for database results. 
 
-init_db()
+DAC = database_access()
 
-m = Maps(5,5,"test.txt")
-db_session.add(m)
-db_session.commit()
+DAC.clear_database()
 
+print (DAC.get_all_scores())
 
-result = Maps.query.order_by(Maps.id).all()
-print (result)
+print (DAC.get_all_maps())
+
+print (DAC.get_all_passwords())
+
 
 
 
