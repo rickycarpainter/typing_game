@@ -21,14 +21,9 @@ function GameEngine() {
 	this.run = function() {
 		console.log("GameEngine run");
 		$.playground().registerCallback(function(){
-<<<<<<< HEAD
-
 			parent.update();			
-
-=======
 			console.log("GameEngine callback");
 			this.update();			
->>>>>>> dbbdd4e60681c733ba4a600522cf9abb227919c0
 			parent.update();	
 		}, this.REFRESH_RATE);
 		
