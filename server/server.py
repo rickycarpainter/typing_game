@@ -8,6 +8,7 @@ def index():
 
 @app.route('/game')
 def game():
+    print ("requesting game page")
     return render_template('MapTest2.html')
 
 if __name__ == '__main__':
