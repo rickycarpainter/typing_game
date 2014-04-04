@@ -31,11 +31,12 @@
 		
 			<script>
 				$("#playbutton").click(function(){
-					$("#title").slideUp("fast");
-					$("#playbutton").slideUp("fast");
-					$("#git").fadeOut("fast");
+					$("#git").fadeOut("medium");
 					$(".switchable").fadeOut("fast");
-					$("#game").fadeIn("fast");
+					$("header").slideUp("400");
+					$("#playbutton").slideUp("slow");
+					$("body").css("background-color","#000000");
+					$("#game").fadeIn("medium");
 				});
 				
 			</script>
