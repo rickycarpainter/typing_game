@@ -12,7 +12,7 @@ function TileMapLayer() {
 		}
 	};
 
-	this.draw = function(tilesets) {
+	this.draw = function(tilesets,groupID) {
 		
 		for(var i = 0; i < this.height; i++) {
 			
@@ -41,7 +41,7 @@ function TileMapLayer() {
 					
 				var id = "tile" + j.toString() + "," + i.toString();
 				
-				$("#maptiles").addSprite( id, {animation: anim,
+				$(groupID).addSprite( id, {animation: anim,
 										width: tileset.tileWidth,
 										height: tileset.tileHeight,
 										posx: posX,

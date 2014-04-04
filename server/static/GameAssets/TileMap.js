@@ -79,7 +79,7 @@ function TileMap() {
 				layer.width = layers[i].width;
 				layer.tiles = this.loadLayerTiles(layers[i].data,layers[i].width, layers[i].height);
 				
-				if (maskLoaded) {
+				if (!maskLoaded) {
 					this.backgroundLayers[bgCounter] = layer;
 					bgCounter++;
 				}
