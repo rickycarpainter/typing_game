@@ -3,6 +3,8 @@ function GameEngine() {
 	this.REFRESH_RATE = 30;
 	this.gameManager = null;
 	
+	var parent = this;
+	
 	this.init = function(gameWidth,gameHeight) {
 			// Initialize the game:
     	$("#playground").playground({
@@ -16,14 +18,16 @@ function GameEngine() {
 	};
 	
 	this.run = function() {
-		
+		console.log("GameEngine run");
 		$.playground().registerCallback(function(){
-			this.update();			
+			console.log("GameEngine callback");
+			parent.update();	
 		}, this.REFRESH_RATE);
 		
 	};
 	
 	this.update = function() {
+		console.log("GameEngine update");
 		this.gameManager.update();
 	};
 
