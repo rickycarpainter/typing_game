@@ -37,5 +37,13 @@ function TileEngine() {
 	
 	};
 	
+	this.setMovePrompts = function() {
+	
+	};
+	
+	this.clearMovePrompts = function() {
+	
+	};
+	
 
 }

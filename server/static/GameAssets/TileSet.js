@@ -27,8 +27,7 @@ function TileSet(firstgID,image,tileheight,tilewidth,imageheight,imagewidth) {
 	// 	if gID = 45 this function returns 1
 	//    if gID = 48 this function returns 4
 	this.convertgID = function(gID) {
-
-		return (gID - this.firstgid + 1);
+		return (gID - this.firstgID + 1);
 	};
 	
 	this.gIDInTileset = function(gID) {
