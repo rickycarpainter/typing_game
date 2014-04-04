@@ -14,15 +14,20 @@ header, footer {
 	text-align: center;
 	font-size: 3em;
 	width: auto;
+}
+
+header{
+	text-align: left;
+}
+
+#topbar{
+	background-image:url('banner.png');
+	width:89.5%;
 	padding: .75em;
 	padding-right: 2em;
 	padding-top: .3em;
 }
 
-header{
-	background-image:url('banner.png');
-	text-align: left;
-}
 #main {
 	color: rgb(242,242,242);
 	width: 100%;
