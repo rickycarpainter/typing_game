@@ -15,6 +15,7 @@ header, footer {
 	font-size: 3em;
 	width: auto;
 	padding: .5em;
+	padding-right: 1em;
 }
 
 header{
