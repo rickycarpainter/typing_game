@@ -21,11 +21,8 @@ function GameEngine() {
 		console.log("GameEngine run");
 		$.playground().registerCallback(function(){
 			console.log("GameEngine callback");
-<<<<<<< HEAD:server/static/GameAssets/GameEngine.js
 			this.update();			
-=======
 			parent.update();	
->>>>>>> 63f885e18275c17d3a81c4d1acdfc17f9ab4871d:client/GameEngine.js~
 		}, this.REFRESH_RATE);
 		
 	};
