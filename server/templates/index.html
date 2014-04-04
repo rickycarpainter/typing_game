@@ -2,10 +2,16 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="styles.css" />
-		<link rel="stylesheet" href="my_styles.css" />
+		<!-- <link rel="stylesheet" href="styles.css" /> -->
+		<!-- <link rel="stylesheet" href="my_styles.css" /> -->
+		<!-- <script src="jquery-1.11.0.js"></script> -->
+		
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='my_styles.css') }}" />
+		<script src="{{ url_for('static', filename='jquery-1.11.0.js') }}" />
+		
 		<link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
-		<script src="jquery-1.11.0.js"></script>
+		
 		
 		
 		<title>CS360</title>
