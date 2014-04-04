@@ -28,9 +28,18 @@ header{
 	padding-top: .3em;
 }
 
+
+
 #main {
 	color: rgb(242,242,242);
 	width: 100%;
+}
+
+#game {
+	display: none;
+	color: rgb(242,242,242);
+	width: 100%;
+	text-align: center;
 }
 
 #main p {
