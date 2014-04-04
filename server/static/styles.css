@@ -48,6 +48,7 @@ header{
 #playbutton
 {
 	float: right;
+	cursor: pointer;
 }
 
 .clear-all
