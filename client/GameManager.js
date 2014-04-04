@@ -15,12 +15,11 @@ function GameManager() {
 	this.currentPassword = null;
 	
 	this.init = function(gameWidth, gameHeight) {
-		
 		this.tileEngine = new TileEngine();
 		
 		this.groupManager = new GroupManager();
 		this.groupManager.init(gameWidth, gameHeight);
-	
+		console.log("initialized GameManager");
 	};
 	
 	this.update = function() {
@@ -50,14 +49,14 @@ function GameManager() {
 		//if mouse over mode, hignlight that mode
 
 
-		if(){//if campaign mode selected, pull up password prompt
+		if(false){//if campaign mode selected, pull up password prompt
 			this.currentPassword = null;
 			this.groupManager.openPasswordPrompt();
 			this.currentGameState = this.GameStates.PasswordPrompt;
 			this.lastGameState = this.GameStates.ModeSelection;
 		}
 
-		if(){ //campaign mode picked and valid password entered
+		if(false){ //campaign mode picked and valid password entered
 			this.groupManager.selectionToLevels();
 			this.currentGameState = this.GameStates.LevelSelection;
 			this.lastGameState = this.GameStates.ModeSelection;
@@ -68,7 +67,7 @@ function GameManager() {
 
 		//if mouse over level, hignlight that level
 
-		if(){ //level selected
+		if(false){ //level selected
 			this.groupManager.levelsToGame();
 			this.currentGameState = this.GameStates.PlayMode;
 			this.lastGameState = this.GameStates.LevelSelection;
@@ -79,11 +78,11 @@ function GameManager() {
 
 		
 	
-		if(){// if enter clicked, check if password is valid
+		if(false){// if enter clicked, check if password is valid
 
 		}
 
-		if(){ //if password is confirmed valid or new game selected or 'X' clicked
+		if(false){ //if password is confirmed valid or new game selected or 'X' clicked
 			this.groupManager.closePasswordPrompt();
 			this.currentGameState = this.GameStates.ModeSelection;
 			this.lastGameState = this.GameStates.PasswordPrompt;

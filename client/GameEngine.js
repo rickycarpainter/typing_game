@@ -16,14 +16,16 @@ function GameEngine() {
 	};
 	
 	this.run = function() {
-		
+		console.log("GameEngine run");
 		$.playground().registerCallback(function(){
+			console.log("GameEngine callback");
 			this.update();			
 		}, this.REFRESH_RATE);
 		
 	};
 	
 	this.update = function() {
+		console.log("GameEngine update");
 		this.gameManager.update();
 	};
 
