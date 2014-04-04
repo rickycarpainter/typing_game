@@ -14,8 +14,9 @@ header, footer {
 	text-align: center;
 	font-size: 3em;
 	width: auto;
-	padding: .5em;
-	padding-right: 1em;
+	padding: .75em;
+	padding-right: 2em;
+	padding-top: .3em;
 }
 
 header{

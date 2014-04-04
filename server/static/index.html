@@ -11,6 +11,13 @@
 
 	<body>
 		<script src="gallery.js"></script>
+
+		<script>
+			$("#playbutton").click(function(){
+				$("#topbar").slideUp();
+			});
+		</script>
+		
 		<header id="topbar">
 			<img id="title" src="title.png" title=""  height="150" width="300"/>
 			<img src="playbutton.png" id="playbutton" onmousedown=downbutton(this) onmouseup=upbutton(this) height="100" width="150" title=""/>
@@ -25,12 +32,6 @@
 			}
 			</script>
 		</header>
-
-		<script>
-			$("#playbutton").click(function(){
-				$("#topbar").slideUp();
-			});
-		</script>
 
 		<section id="main">
 			<div id = "connection"></div>
