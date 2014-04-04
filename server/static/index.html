@@ -5,15 +5,32 @@
 		<link rel="stylesheet" href="styles.css" />
 		<link rel="stylesheet" href="my_styles.css" />
 		<link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
+		<script src="jquery.com/jquery-1.11.0.js"></script>
 		<title>CS360</title>
 	</head>
 
 	<body>
 		<script src="gallery.js"></script>
-		<header>
+		<header id="topbar">
 			<img id="title" src="title.png" title=""  height="150" width="300"/>
-			<img class="button" src="playbutton.png"  height="100" width="150" title=""/>
+			<img src="playbutton.png" id="playbutton" onmousedown=downbutton(this) onmouseup=upbutton(this) height="100" width="150" title=""/>
+
+			<script>
+			function downbutton(img){
+				img.src="playbuttondown.png";
+			}
+
+			function upbutton(img){
+				img.src="playbutton.png";
+			}
+			</script>
 		</header>
+
+		<script>
+			$("#playbutton").click(function(){
+				$("#topbar").slideUp();
+			});
+		</script>
 
 		<section id="main">
 			<div id = "connection"></div>
