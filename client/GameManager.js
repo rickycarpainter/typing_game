@@ -89,9 +89,19 @@ function GameManager() {
 	};
 	
 	this.updatePlayMode = function() {
-	
-		//switch()
 
-		//this is gonna be the hard part
+		//map and object should be drawn
+		//draw character's initial position
+		//generate random letters/numbers
+		//draw buttons based off those letters/numbers
+		//bring up any captions needed
+
+		//start game loop
+			//wait for input
+			//check input for matching letter
+			//animate buttons down
+			//move character
+			//check surroundings/collisions
+			//draw new buttons, only if direction isnt a wall
 	};
 }
