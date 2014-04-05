@@ -2,7 +2,7 @@ function GroupManager() {
 
 	this.init = function(gameWidth, gameHeight) {
 		
-		var anim = new $.gQ.Animation({ imageURL: "images/titlescreen.png",
+		var anim = new $.gQ.Animation({ imageURL: "static/GameAssets/images/titlescreen.png",
 					numberOfFrame: 1,
 					delta: 707,
 					offsetx: 0,
