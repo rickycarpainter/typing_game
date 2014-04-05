@@ -2,27 +2,39 @@ function GroupManager() {
 
 	this.init = function(gameWidth, gameHeight) {
 		
-		var anim = new $.gQ.Animation({ imageURL: "images/titlescreen.png",
+		var title = new $.gQ.Animation({ imageURL: "images/titlescreen.png",
 					numberOfFrame: 1,
-					delta: 707,
+					delta: gameWidth,
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		var spacebar = new $.gQ.Animation({ imageURL: "images/spacebar.png",
+					numberOfFrame: 2,
+					delta: 46,
+					offsetx: 0,
+					offsety: 0,
+					rate: 600,
+					type: $.gQ.ANIMATION_VERTICAL});
 					
 		$.playground().addGroup("mapgroup", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
 			.addGroup("mapBackground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("mapObjects", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("mapForeground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
-
+			.addGroup("selectionScreen", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("titlescreen", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
-				.addSprite( "title", {animation: anim,
+				.addSprite( "title", {animation: title,
 										width: gameWidth,
 										height: gameHeight,
 										posx: 0,
 										posy: 0 
-										});
-			.addGroup("selectionScreen", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
-			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+										})
+				.addSprite( "spacebar", {animation: spacebar,
+										width: 227,
+										height: 51,
+										posx: 240,
+										posy: 350 
+										})
 			//ADD OTHER GROUPS HERE EX: HUD GROUP, OTHER SCREENS			
 
 	};
