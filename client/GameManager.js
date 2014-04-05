@@ -72,11 +72,14 @@ function GameManager() {
 	
 	this.updatePasswordPrompt = function() {
 
+		//put focus on text field
+
+		//if hover over first time button, highlight
 		
 	
 		if(false){// if enter clicked, check if password is valid
-
-		}
+			//send query to server to check password
+		}	
 
 		if(false){ //if password is confirmed valid or new game selected or 'X' clicked
 			this.groupManager.closePasswordPrompt();
