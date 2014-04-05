@@ -2,13 +2,13 @@ function GroupManager() {
 
 	this.init = function(gameWidth, gameHeight) {
 		
-		var title = new $.gQ.Animation({ imageURL: "static/GameAssets/images/titlescreen.png",
+		var title = new $.gQ.Animation({ imageURL: "{{ url_for('static', filename='GameAssets/images/titlescreen.png') }}",
 					numberOfFrame: 1,
 					delta: gameWidth,
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
-		var spacebar = new $.gQ.Animation({ imageURL: "static/GameAssets/images/spacebar.png",
+		var spacebar = new $.gQ.Animation({ imageURL: "{{ url_for('static', filename='GameAssets/images/spacebar.png') }}",
 					numberOfFrame: 2,
 					delta: 46,
 					offsetx: 0,
