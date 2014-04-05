@@ -35,7 +35,7 @@ function GroupManager() {
 	};
 
 	this.titleToSelection = function(){
-
+		$("#titlescreen").hide();
 	};
 
 	this.openPasswordPrompt = function(){

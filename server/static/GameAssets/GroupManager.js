@@ -2,7 +2,7 @@ function GroupManager() {
 
 	this.init = function(gameWidth, gameHeight) {
 		
-		var anim = new $.gQ.Animation({ imageURL: "static/GameAssets/images/titlescreen.png",
+		var anim = new $.gQ.Animation({ imageURL: "images/titlescreen.png",
 					numberOfFrame: 1,
 					delta: 707,
 					offsetx: 0,
@@ -35,7 +35,7 @@ function GroupManager() {
 	};
 
 	this.titleToSelection = function(){
-
+		$("#titlescreen").hide();
 	};
 
 	this.openPasswordPrompt = function(){

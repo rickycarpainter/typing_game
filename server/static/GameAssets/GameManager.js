@@ -19,11 +19,9 @@ function GameManager() {
 		
 		this.groupManager = new GroupManager();
 		this.groupManager.init(gameWidth, gameHeight);
-		console.log("initialized GameManager");
 	};
 	
 	this.update = function() {
-		console.log("GAMEMANAGER UPDATE CALLED");
 		switch(this.currentGameState) {
 			
 			case this.GameStates.TitleScreen: 		this.updateTitlescreen();		break;
@@ -36,7 +34,6 @@ function GameManager() {
 	};
 	
 	this.updateTitlescreen = function() {
-		console.log("WE here");
 		if(jQuery.gameQuery.keyTracker[32]) { //Was space pressed?
 			this.groupManager.titleToSelection();
 			this.currentGameState = this.GameStates.ModeSelection;
@@ -45,7 +42,6 @@ function GameManager() {
 	};
 	
 	this.updateModeSelection = function() {
-
 		//if mouse over mode, hignlight that mode
 
 

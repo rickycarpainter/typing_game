@@ -20,36 +20,19 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body style="margin-left: auto; margin-right: auto; width: 50%; padding-top: 2em">
+	<div id="playground" style="width: 10px; height: 10px; background: black;">
 
-	<div id="playground" style="width: 320px; height: 320px; background: black; padding: 20">
-	    <div id="welcomeScreen" style="width: 320px; height: 320px; position: absolute;">
-	        <div style="position: absolute; top: 120px; width: 320px; color: white; margin:0 auto;">
-	            <center><a style="cursor: pointer;" id="startbutton">click here to show the demo</a></center>
-	        </div>
-	    </div>	
 			<script>
-			
 
-	        	//var a = new $.gameQuery.Animation({ imageURL: "images/testtiles.png"});
-				//$.playground().addGroup("mapgroup", {width: 640, height: 640, posx: 0, posy: 0})
-					//.scale(2)
-				//	.addGroup("mapBackground", {width: 640, height: 640, posx: 0, posy: 0}).end()
-				//	.addGroup("mapObjects", {width: 640, height: 640, posx: 0, posy: 0}).end()
-				//	.addGroup("mapForeground", {width: 640, height: 640, posx: 0, posy: 0}).end()
-				//$.playground().addSprite("tester", a);
-
-	   	 	$("#startbutton").click(function(){
-	            $("#welcomeScreen").fadeTo(1000,0,function(){$(this).remove();});
 				var gameEngine = new GameEngine();
 				gameEngine.init(707,477);
 
 				$.playground().startGame(function(){
 					gameEngine.run();
-				});	
-	    	});			
+				});				
 				
 			</script>
-		</div>
+	</div>
 	</body>
 </html>

@@ -19,7 +19,6 @@ function GameEngine() {
 	};
 	
 	this.run = function() {
-		console.log("GameEngine run");
 		$.playground().registerCallback(function(){
 			parent.update();	
 		}, this.REFRESH_RATE);
