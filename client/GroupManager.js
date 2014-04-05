@@ -16,12 +16,7 @@ function GroupManager() {
 					rate: 600,
 					type: $.gQ.ANIMATION_VERTICAL});
 					
-		$.playground().addGroup("mapgroup", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
-			.addGroup("mapBackground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
-			.addGroup("mapObjects", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
-			.addGroup("mapForeground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
-			.addGroup("selectionScreen", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
-			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+		$.playground()
 			.addGroup("titlescreen", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
 				.addSprite( "title", {animation: title,
 										width: gameWidth,
@@ -35,6 +30,13 @@ function GroupManager() {
 										posx: 240,
 										posy: 350 
 										})
+			.addGroup("selectionScreen", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("mapgroup", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
+			.addGroup("mapBackground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("mapObjects", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("mapForeground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			//ADD OTHER GROUPS HERE EX: HUD GROUP, OTHER SCREENS			
 
 	};
@@ -44,7 +46,7 @@ function GroupManager() {
 	};
 
 	this.titleToSelection = function(){
-		$("#titlescreen").hide();
+		$("#titlescreen").fadeOut("medium");
 		//draw mode selection assets
 			//background
 			//mode buttons/images
@@ -65,6 +67,7 @@ function GroupManager() {
 	};
 
 	this.selectionToLevels = function(){
+		//close mose selectio 
 		//check password that was entered
 		//draw all level selection assets
 			//backgound
@@ -72,6 +75,7 @@ function GroupManager() {
 	};
 
 	this.levelsToGame = function(){
+		//close level selection
 		//draw game
 			//background/tiles
 			//obects 
