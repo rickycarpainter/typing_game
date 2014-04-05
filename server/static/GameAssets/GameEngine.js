@@ -12,7 +12,7 @@ function GameEngine() {
         	width: gameWidth,
         	keyTracker: true});
 		
-		$("#playground").css("margin-right", "auto", "margin-left", "auto");
+		//$("#playground").css("margin-right", "auto", "margin-left", "auto");
 		this.gameManager = new GameManager();
 		this.gameManager.init(gameWidth, gameHeight);
 		
@@ -20,8 +20,7 @@ function GameEngine() {
 	
 	this.run = function() {
 		console.log("GameEngine run");
-		$.playground().registerCallback(function(){				
-			console.log("GameEngine callback");			
+		$.playground().registerCallback(function(){
 			parent.update();	
 		}, this.REFRESH_RATE);
 		

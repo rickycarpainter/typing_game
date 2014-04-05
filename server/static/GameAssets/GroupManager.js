@@ -18,8 +18,8 @@ function GroupManager() {
 				.addSprite( "title", {animation: anim,
 										width: gameWidth,
 										height: gameHeight,
-										posx: 100,
-										posy: 100 
+										posx: 0,
+										posy: 0 
 										});
 			//ADD OTHER GROUPS HERE EX: HUD GROUP, OTHER SCREENS
 			
