@@ -72,11 +72,14 @@ function GameManager() {
 	
 	this.updatePasswordPrompt = function() {
 
+		//put focus on text field
+
+		//if hover over first time button, highlight
 		
 	
 		if(false){// if enter clicked, check if password is valid
-
-		}
+			//send query to server to check password
+		}	
 
 		if(false){ //if password is confirmed valid or new game selected or 'X' clicked
 			this.groupManager.closePasswordPrompt();
@@ -86,9 +89,19 @@ function GameManager() {
 	};
 	
 	this.updatePlayMode = function() {
-	
-		//switch()
 
-		//this is gonna be the hard part
+		//map and object should be drawn
+		//draw character's initial position
+		//generate random letters/numbers
+		//draw buttons based off those letters/numbers
+		//bring up any captions needed
+
+		//start game loop
+			//wait for input
+			//check input for matching letter
+			//animate buttons down
+			//move character
+			//check surroundings/collisions
+			//draw new buttons, only if direction isnt a wall
 	};
 }
