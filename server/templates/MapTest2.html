@@ -2,8 +2,8 @@
 <html xmlns="https://github.com/ritchiejc/typing_game/blob/master/client/" xml:lang="fr">
 	<head>
 		<title>gameQuery - Tutorial 1 - Final result</title>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-		<script type="text/javascript" src="http://cdn.gamequeryjs.com/jquery.gamequery.js"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='GameAssets/jquery.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='GameAssets/jquery.gamequery.js') }}"></script>
 		<script src="{{ url_for('static', filename='GameAssets/GameManager.js') }}"></script>
 		<script src="{{ url_for('static', filename='GameAssets/GroupManager.js') }}"></script>
 		<script src="{{ url_for('static', filename='GameAssets/TileEngine.js') }}"></script>
