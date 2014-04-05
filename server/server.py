@@ -8,8 +8,7 @@ def index():
 
 @app.route('/game')
 def game():
-    print ("requesting game page")
-    return render_template('MapTest2.html')
+    return render_template('Game.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 80))
