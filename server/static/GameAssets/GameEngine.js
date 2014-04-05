@@ -20,10 +20,8 @@ function GameEngine() {
 	
 	this.run = function() {
 		console.log("GameEngine run");
-		$.playground().registerCallback(function(){
-			parent.update();				
-			console.log("GameEngine callback");
-			this.update();			
+		$.playground().registerCallback(function(){				
+			console.log("GameEngine callback");			
 			parent.update();	
 		}, this.REFRESH_RATE);
 		
