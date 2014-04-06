@@ -12,7 +12,15 @@ function GameManager() {
 	this.tileEngine = null;
 	this.groupManager = null;
 
-	this.currentPassword = null;
+	//for mode selcetion screen
+	this.selectedMode = null;
+
+	//for password prompt and level selection
+	this.givenPassword = null;
+	this.passwordLevel = null;
+
+	//for level selection
+	this.levelSelected = null;
 	
 	this.init = function(gameWidth, gameHeight) {
 		this.tileEngine = new TileEngine();
@@ -29,7 +37,6 @@ function GameManager() {
 			case this.GameStates.LevelSelection:   this.updateLevelSelection();		break;
 			case this.GameStates.PasswordPrompt: 	this.updatePasswordPrompt();	break;
 			case this.GameStates.PlayMode: 			this.updatePlayMode();			break;
-		
 		}
 	};
 	
@@ -38,58 +45,90 @@ function GameManager() {
 			this.groupManager.titleToSelection();
 			this.currentGameState = this.GameStates.ModeSelection;
 			this.lastGameState = this.GameStates.TitleScreen;
+			this.selectedMode = "story";
 		}
 	};
 	
 	this.updateModeSelection = function() {
 		//if mouse over mode, hignlight that mode
+		this.groupManager.checkButton();
+		this.groupManager.highlightButton(this.selectedMode);
 
+		if(jQuery.gameQuery.keyTracker[37]){//left button
+			this.selectedMode = "story";
+		}
+		else if(jQuery.gameQuery.keyTracker[39]){//right button
+			this.selectedMode = "random";
+		}
 
-		if(false){//if campaign mode selected, pull up password prompt
-			this.currentPassword = null;
+		//track to open password prompt
+		if((jQuery.gameQuery.keyTracker[13]) && this.selectedMode === "story" && this.passwordLevel === null){//if campaign mode selected, pull up password prompt
+			console.log("story mode selected");
+			this.givenPassword = null;
+			this.passwordLevel = null;
 			this.groupManager.openPasswordPrompt();
 			this.currentGameState = this.GameStates.PasswordPrompt;
 			this.lastGameState = this.GameStates.ModeSelection;
 		}
 
-		if(false){ //campaign mode picked and valid password entered
-			this.groupManager.selectionToLevels();
+		//track returning from password prompt and proceeding to level selection
+		if(this.passwordLevel != null){ //campaign mode picked and valid password entered
+			console.log("valid password");
+			this.levelSelected = this.passwordLevel;
+			this.groupManager.selectionToLevels(this.passwordLevel);
 			this.currentGameState = this.GameStates.LevelSelection;
 			this.lastGameState = this.GameStates.ModeSelection;
 		}
 	};
-	
-	this.updateLevelSelection = function() {
 
-		//if mouse over level, hignlight that level
-
-		if(false){ //level selected
-			this.groupManager.levelsToGame();
-			this.currentGameState = this.GameStates.PlayMode;
-			this.lastGameState = this.GameStates.LevelSelection;
-		}
-	};
-	
 	this.updatePasswordPrompt = function() {
-
 		//put focus on text field
-
 		//if hover over first time button, highlight
+
+
+		if(this.givenPassword === null && this.passwordLevel === null){
+			console.log("PasswordPrompt");
+			var answer = false;//confirm("Is this your first time playing?");
+			if(answer){
+				this.passwordLevel = 1;
+			}
+			else{
+				this.givenPassword = "rabbit";//prompt("Please enter password");
+			}
+
+		}
 		
-	
-		if(false){// if enter clicked, check if password is valid
+
+		if(this.givenPassword != null && (jQuery.gameQuery.keyTracker[13])){// if enter clicked, check if password is valid\
+			console.log("checking password");
 			//send query to server to check password
+
+			//temporary fix until able to query and return valid number
+			this.passwordLevel = 1;
 		}	
 
-		if(false){ //if password is confirmed valid or new game selected or 'X' clicked
+		if(this.passwordLevel != null || (jQuery.gameQuery.keyTracker[27])){ //if password is confirmed valid or new game selected or 'X' clicked
+			console.log("PasswordPrompt over");
 			this.groupManager.closePasswordPrompt();
 			this.currentGameState = this.GameStates.ModeSelection;
 			this.lastGameState = this.GameStates.PasswordPrompt;
 		}
 	};
 	
-	this.updatePlayMode = function() {
+	this.updateLevelSelection = function() {
+		console.log("level selection mode");
+		//if mouse over level, chenge levelSelected to that
+		//highlight levelselected
 
+		if(jQuery.gameQuery.keyTracker[13]){ //level selected
+			this.groupManager.levelsToGame();
+			this.currentGameState = this.GameStates.PlayMode;
+			this.lastGameState = this.GameStates.LevelSelection;
+		}
+	};
+	
+	this.updatePlayMode = function() {
+		console.log("play mode");
 		//map and object should be drawn
 		//draw character's initial position
 		//generate random letters/numbers
@@ -99,7 +138,7 @@ function GameManager() {
 		//start game loop
 			//wait for input
 			//check input for matching letter
-			//animate buttons down
+			//animate buttons down if letter matched
 			//move character
 			//check surroundings/collisions
 			//draw new buttons, only if direction isnt a wall

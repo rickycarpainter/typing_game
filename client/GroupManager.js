@@ -102,9 +102,9 @@ function GroupManager() {
 
 	};
 
-	this.selectionToLevels = function(){
-		//close mose selectio 
-		//check password that was entered
+	this.selectionToLevels = function(passwordLevel){
+		//close mode selection 
+		$("#selectionScreen").fadeOut("medium");
 		//draw all level selection assets
 			//backgound
 			//level images up to level of password entered

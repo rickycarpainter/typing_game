@@ -12,7 +12,6 @@ function GameEngine() {
         	width: gameWidth,
         	keyTracker: true});
 		
-		//$("#playground").css("margin-right", "auto", "margin-left", "auto");
 		this.gameManager = new GameManager();
 		this.gameManager.init(gameWidth, gameHeight);
 		

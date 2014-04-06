@@ -12,9 +12,15 @@ function GameManager() {
 	this.tileEngine = null;
 	this.groupManager = null;
 
+	//for mode selcetion screen
 	this.selectedMode = null;
 
-	this.currentPassword = null;
+	//for password prompt and level selection
+	this.givenPassword = null;
+	this.passwordLevel = null;
+
+	//for level selection
+	this.levelSelected = null;
 	
 	this.init = function(gameWidth, gameHeight) {
 		this.tileEngine = new TileEngine();
@@ -55,17 +61,21 @@ function GameManager() {
 			this.selectedMode = "random";
 		}
 
-		if((jQuery.gameQuery.keyTracker[13] || jQuery.gameQuery.keyTracker[32]) && this.selectedMode === "story"){//if campaign mode selected, pull up password prompt
+		//track to open password prompt
+		if((jQuery.gameQuery.keyTracker[13]) && this.selectedMode === "story" && this.passwordLevel === null){//if campaign mode selected, pull up password prompt
 			console.log("story mode selected");
-			this.currentPassword = null;
+			this.givenPassword = null;
+			this.passwordLevel = null;
 			this.groupManager.openPasswordPrompt();
 			this.currentGameState = this.GameStates.PasswordPrompt;
 			this.lastGameState = this.GameStates.ModeSelection;
 		}
 
-		if(this.currentPassword != null){ //campaign mode picked and valid password entered
+		//track returning from password prompt and proceeding to level selection
+		if(this.passwordLevel != null){ //campaign mode picked and valid password entered
 			console.log("valid password");
-			this.groupManager.selectionToLevels();
+			this.levelSelected = this.passwordLevel;
+			this.groupManager.selectionToLevels(this.passwordLevel);
 			this.currentGameState = this.GameStates.LevelSelection;
 			this.lastGameState = this.GameStates.ModeSelection;
 		}
@@ -73,15 +83,32 @@ function GameManager() {
 
 	this.updatePasswordPrompt = function() {
 		//put focus on text field
-
 		//if hover over first time button, highlight
+
+
+		if(this.givenPassword === null && this.passwordLevel === null){
+			console.log("PasswordPrompt");
+			var answer = false;//confirm("Is this your first time playing?");
+			if(answer){
+				this.passwordLevel = 1;
+			}
+			else{
+				this.givenPassword = "rabbit";//prompt("Please enter password");
+			}
+
+		}
 		
-	
-		if(false){// if enter clicked, check if password is valid
+
+		if(this.givenPassword != null && (jQuery.gameQuery.keyTracker[13])){// if enter clicked, check if password is valid\
+			console.log("checking password");
 			//send query to server to check password
+
+			//temporary fix until able to query and return valid number
+			this.passwordLevel = 1;
 		}	
 
-		if(false){ //if password is confirmed valid or new game selected or 'X' clicked
+		if(this.passwordLevel != null || (jQuery.gameQuery.keyTracker[27])){ //if password is confirmed valid or new game selected or 'X' clicked
+			console.log("PasswordPrompt over");
 			this.groupManager.closePasswordPrompt();
 			this.currentGameState = this.GameStates.ModeSelection;
 			this.lastGameState = this.GameStates.PasswordPrompt;
@@ -89,10 +116,11 @@ function GameManager() {
 	};
 	
 	this.updateLevelSelection = function() {
+		console.log("level selection mode");
+		//if mouse over level, chenge levelSelected to that
+		//highlight levelselected
 
-		//if mouse over level, hignlight that level
-
-		if(false){ //level selected
+		if(jQuery.gameQuery.keyTracker[13]){ //level selected
 			this.groupManager.levelsToGame();
 			this.currentGameState = this.GameStates.PlayMode;
 			this.lastGameState = this.GameStates.LevelSelection;
@@ -100,7 +128,7 @@ function GameManager() {
 	};
 	
 	this.updatePlayMode = function() {
-
+		console.log("play mode");
 		//map and object should be drawn
 		//draw character's initial position
 		//generate random letters/numbers
