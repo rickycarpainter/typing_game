@@ -60,13 +60,13 @@ function GroupManager() {
 										width: 230,
 										height: 340,
 										posx: 100,
-										posy: 75 
+										posy: 67 
 										})
 				.addSprite("ucbutton", {animation: ucbutton,
 										width: 300,
 										height: 400,
 										posx: 360,
-										posy: 48 
+										posy: 40 
 										}).end()
 			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
@@ -117,9 +117,23 @@ function GroupManager() {
 			//obects 
 	};
 
+	//for mode selection
 	this.checkButton = function(){
 		$("#selectionScreen").click(function(){
-			console.log("test");
+			
 		});
+	};
+
+	//for mode selection
+	this.highlightButton = function(mode){
+		if(mode === "story"){
+			console.log("story selected");
+
+		}
+		else if(mode === "random"){
+			console.log("random selected");
+
+		}
+
 	};
 }

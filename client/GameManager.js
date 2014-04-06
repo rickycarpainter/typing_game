@@ -12,6 +12,8 @@ function GameManager() {
 	this.tileEngine = null;
 	this.groupManager = null;
 
+	this.selectedMode = null;
+
 	this.currentPassword = null;
 	
 	this.init = function(gameWidth, gameHeight) {
@@ -37,40 +39,39 @@ function GameManager() {
 			this.groupManager.titleToSelection();
 			this.currentGameState = this.GameStates.ModeSelection;
 			this.lastGameState = this.GameStates.TitleScreen;
+			this.selectedMode = "story";
 		}
 	};
 	
 	this.updateModeSelection = function() {
 		//if mouse over mode, hignlight that mode
 		this.groupManager.checkButton();
+		this.groupManager.highlightButton(this.selectedMode);
 
-		if(false){//if campaign mode selected, pull up password prompt
+		if(jQuery.gameQuery.keyTracker[37]){//left button
+			this.selectedMode = "story";
+		}
+		else if(jQuery.gameQuery.keyTracker[39]){//right button
+			this.selectedMode = "random";
+		}
+
+		if((jQuery.gameQuery.keyTracker[13] || jQuery.gameQuery.keyTracker[32]) && this.selectedMode === "story"){//if campaign mode selected, pull up password prompt
+			console.log("story mode selected");
 			this.currentPassword = null;
 			this.groupManager.openPasswordPrompt();
 			this.currentGameState = this.GameStates.PasswordPrompt;
 			this.lastGameState = this.GameStates.ModeSelection;
 		}
 
-		if(false){ //campaign mode picked and valid password entered
+		if(this.currentPassword != null){ //campaign mode picked and valid password entered
+			console.log("valid password");
 			this.groupManager.selectionToLevels();
 			this.currentGameState = this.GameStates.LevelSelection;
 			this.lastGameState = this.GameStates.ModeSelection;
 		}
 	};
-	
-	this.updateLevelSelection = function() {
 
-		//if mouse over level, hignlight that level
-
-		if(false){ //level selected
-			this.groupManager.levelsToGame();
-			this.currentGameState = this.GameStates.PlayMode;
-			this.lastGameState = this.GameStates.LevelSelection;
-		}
-	};
-	
 	this.updatePasswordPrompt = function() {
-
 		//put focus on text field
 
 		//if hover over first time button, highlight
@@ -87,6 +88,17 @@ function GameManager() {
 		}
 	};
 	
+	this.updateLevelSelection = function() {
+
+		//if mouse over level, hignlight that level
+
+		if(false){ //level selected
+			this.groupManager.levelsToGame();
+			this.currentGameState = this.GameStates.PlayMode;
+			this.lastGameState = this.GameStates.LevelSelection;
+		}
+	};
+	
 	this.updatePlayMode = function() {
 
 		//map and object should be drawn
@@ -98,7 +110,7 @@ function GameManager() {
 		//start game loop
 			//wait for input
 			//check input for matching letter
-			//animate buttons down
+			//animate buttons down if letter matched
 			//move character
 			//check surroundings/collisions
 			//draw new buttons, only if direction isnt a wall
