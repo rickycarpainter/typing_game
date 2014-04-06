@@ -29,7 +29,6 @@ function GameManager() {
 			case this.GameStates.LevelSelection:   this.updateLevelSelection();		break;
 			case this.GameStates.PasswordPrompt: 	this.updatePasswordPrompt();	break;
 			case this.GameStates.PlayMode: 			this.updatePlayMode();			break;
-		
 		}
 	};
 	
@@ -43,7 +42,7 @@ function GameManager() {
 	
 	this.updateModeSelection = function() {
 		//if mouse over mode, hignlight that mode
-
+		this.groupManager.checkButton();
 
 		if(false){//if campaign mode selected, pull up password prompt
 			this.currentPassword = null;
