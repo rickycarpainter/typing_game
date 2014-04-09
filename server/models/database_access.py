@@ -19,6 +19,9 @@ class database_access():
 
     def get_all_passwords(self):
         return Passwords.query.order_by(Passwords.id).all()
+        
+    def get_map_with_items(self, mapID):
+		return None #I can't think of what this is supposed to do
     
     def clear_database(self):
         self.clear_scores()
