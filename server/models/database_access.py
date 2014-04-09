@@ -1,4 +1,3 @@
-from database import *
 from models import *
 
 class database_access():

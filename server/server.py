@@ -1,14 +1,13 @@
 import os
 from flask import Flask, render_template
-app = Flask(__name__)
+from config import *
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+from views.index import index
+app.register_blueprint(index)
 
-@app.route('/Game')
-def game():
-    return render_template('Game.html')
+from views.auth import auth
+app.register_blueprint(auth, url_prefix="/auth")
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 80))
