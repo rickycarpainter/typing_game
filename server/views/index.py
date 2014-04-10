@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request
 from flask.ext.login import login_required
 from flask.ext.login import current_user
 
-from models.item import *
+from models import *
 
 index = Blueprint('index', __name__)
 

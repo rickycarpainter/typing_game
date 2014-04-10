@@ -18,12 +18,14 @@
 		
 		<header>
 			
+			<img id="title" src="{{ url_for('static', filename='title.png') }}" title=""  height="150" width="300"/>
+			
 			{% if login %}
 			<a href="/auth/logout">Logout</a>
 			{% else %}
 			<a href="/auth/login"><img src="/static/images/sign-in-with-twitter-gray.png"></a>
+			{% endif %}
 			
-			<img id="title" src="{{ url_for('static', filename='title.png') }}" title=""  height="150" width="300"/>
 			<img src="{{ url_for('static', filename='playbutton.png') }}" id="playbutton" onmousedown=downbutton(this) onmouseup=upbutton(this) height="100" width="150" title=""/>
 
 			<script>
