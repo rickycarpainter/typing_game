@@ -12,6 +12,6 @@ app.secret_key = SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 
-from models import *
+from models.models import *
 
 db.create_all()

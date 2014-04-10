@@ -47,11 +47,15 @@ class Scores(db.Model):
     def __repr__(self):
         return "{id: %d,\nmap_id: %d,\ninitials:  %s,\nscore: %d,}" % (self.id, self.map_id, self.initials, self.score)
 
+map_items = db.Table('map-items', db.Column('item_id', db.Integer, db.ForeignKey('items.id')), db.Column('map_id', db.Integer, db.ForeignKey('maps.id')))
+
+
 class Maps(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     height = db.Column(db.Integer)
     width = db.Column(db.Integer)
     url = db.Column(db.String(200))
+    items = db.relationship('Items', secondary=map_items, backref=db.backref('maps', lazy='joined'))
 
     def __init__(self, height=0, width=0, url=None):
         self.height = height
@@ -61,29 +65,6 @@ class Maps(db.Model):
     def __repr__(self):
         f = open(self.url, "r")
         return f.read()
-
-class Passwords(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    password = db.Column(db.Integer)
-    map_id = db.Column(db.Integer)
-
-    def __init__(self, password=None, map_id=None):
-        self.password = password
-        self.map_id = map_id
-
-    def __repr__(self):
-        return "{id- %d,\npassword: %d,\nmap_id: %d}" % (self.id, self.password, self.map_id)
-    
-class MapItems(db.Model):
-    map_id = db.Column(db.Integer, primary_key=True)
-    item_id = db.Column(db.Integer)
-
-    def __init__(self, map_id=None, item_id=None):
-        self.map_id = map_id
-        self.item_id = item_id
-
-    def __repr__(self):
-        return "{map_id: %d,\nitem_id: %d}" % (self.map_id, self.item_id)
 
 class Items(db.Model):
     id = db.Column(db.Integer, primary_key=True)
