@@ -2,32 +2,32 @@ function GroupManager() {
 
 	this.init = function(gameWidth, gameHeight) {
 		
-		var title = new $.gQ.Animation({ imageURL: "images/titlescreen.png",
+		var title = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/titlescreen.png",
 					numberOfFrame: 1,
 					delta: gameWidth,
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
-		var spacebar = new $.gQ.Animation({ imageURL: "images/spacebar.png",
+		var spacebar = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/spacebar.png",
 					numberOfFrame: 2,
 					delta: 46,
 					offsetx: 0,
 					offsety: 0,
 					rate: 600,
 					type: $.gQ.ANIMATION_VERTICAL});
-		var modebackground = new $.gQ.Animation({ imageURL: "images/modescreen.png",
+		var modebackground = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/modescreen.png",
 					numberOfFrame: 1,
 					delta: gameWidth,
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
-		var storybutton = new $.gQ.Animation({ imageURL: "images/storybutton.png",
+		var storybutton = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/storybutton.png",
 					numberOfFrame: 1,
 					delta: 230,
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
-		var ucbutton = new $.gQ.Animation({ imageURL: "images/underconstructionbutton.png",
+		var ucbutton = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/underconstructionbutton.png",
 					numberOfFrame: 1,
 					delta: 230,
 					offsetx: 0,
