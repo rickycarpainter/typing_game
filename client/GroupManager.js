@@ -127,13 +127,13 @@ function GroupManager() {
 	this.highlightButton = function(mode){
 		if(mode === "story"){
 			console.log("story selected");
-			$("#sbutton").scale(1.2);
+			$("#sbutton").scale(1.1);
 			$("#ucbutton").scale(1);
 		}
 		else if(mode === "random"){
 			console.log("random selected");
 			$("#sbutton").scale(1);
-			$("#ucbutton").scale(1.2);
+			$("#ucbutton").scale(1.1);
 		}
 
 	};

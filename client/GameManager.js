@@ -90,7 +90,7 @@ function GameManager() {
 			console.log("PasswordPrompt");
 			var answer = false;//confirm("Is this your first time playing?");
 			if(answer){
-				this.passwordLevel = 1;
+				this.passwordLevel = 10;
 			}
 			else{
 				this.givenPassword = "rabbit";//prompt("Please enter password");
@@ -104,7 +104,7 @@ function GameManager() {
 			//send query to server to check password
 
 			//temporary fix until able to query and return valid number
-			this.passwordLevel = 1;
+			this.passwordLevel = 10;
 		}	
 
 		if(this.passwordLevel != null || (jQuery.gameQuery.keyTracker[27])){ //if password is confirmed valid or new game selected or 'X' clicked
