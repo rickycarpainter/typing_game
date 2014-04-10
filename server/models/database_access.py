@@ -23,7 +23,11 @@ class database_access():
     def get_map_with_items(self, mapID):
         m = db.session.query(Maps).get(mapID)
         item_list = m.items
-        return m + item_list
+        result = m.__repr__()
+        for item in item_list:
+            result += "\n"
+            result += item.__repr__()
+        return result
     
     def clear_database(self):
         self.clear_scores()
