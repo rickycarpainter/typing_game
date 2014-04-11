@@ -10,5 +10,5 @@ app.register_blueprint(auth, url_prefix="/auth")
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 80))
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)

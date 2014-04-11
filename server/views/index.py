@@ -2,7 +2,9 @@ from flask import Blueprint, render_template, request
 from flask.ext.login import login_required
 from flask.ext.login import current_user
 
-from models import *
+import os, sys
+
+from models.database_access import *
 
 index = Blueprint('index', __name__)
 
@@ -21,3 +23,10 @@ def show():
 @index.route('/Game')
 def game():
     return render_template('Game.html')
+
+@index.route('/Game/DownloadMap')
+def downloadMap():
+	mapID = int(request.data)
+	dac = database_access()
+	return dac.get_map_with_items(mapID)
+	
