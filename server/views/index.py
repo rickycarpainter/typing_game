@@ -22,6 +22,8 @@ def show():
 
 @index.route('/Game')
 def game():
+    login = False
+    name = None
     if current_user.is_authenticated():
         login = True 
         if current_user.name:
