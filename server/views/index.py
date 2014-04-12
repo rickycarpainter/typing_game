@@ -24,7 +24,7 @@ def show():
 def game():
     return render_template('Game.html')
 
-@index.route('/Game/DownloadMap')
+@index.route('/Game/DownloadMap', methods=['POST'])
 def downloadMap():
 	mapID = int(request.data)
 	dac = database_access()

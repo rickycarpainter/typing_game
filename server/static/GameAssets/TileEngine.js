@@ -17,13 +17,14 @@ function TileEngine() {
 	this.downloadMap = function(mapID) {
 		
 		$.ajax({
-			url: '/DownloadMap',
+			url: '/Game/DownloadMap',
+			type: 'POST',
 			data: mapID,
 			success: function (result) {
 				console.log(result);
 			}
 		});
-	}
+	};
 	
 	this.drawPlayer = function() {
 		this.clearPlayer();
