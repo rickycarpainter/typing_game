@@ -145,33 +145,47 @@ function GameManager() {
 			case this.PlayModeState.Playing: 		this.playing(); 	break;
 			case this.PlayModeState.DialogOpen: 	this.playing(); 	break;
 			case this.PlayModeState.HighScores: 	this.playing(); 	break;
-
 		}
-
-		//map and object should be drawn
-		//draw character's initial position
-		//generate random letters/numbers
-		//draw buttons based off those letters/numbers
-		//bring up any captions needed
-
-		//start game loop
-			//wait for input
-			//check input for matching letter
-			//animate buttons down if letter matched
-			//move character
-			//check surroundings/collisions
-			//draw new buttons, only if direction isnt a wall
 	};
 
 	this.playing = function(){
-
+		//check for dialog on queue
+		//if dialog available
+			//change mode to dialogOpen
+		//check button input on controller buttons
+		//if button matched
+			//animate button down
+			//move character
+			//check collision with object (carrot or hole)
+			//if collision
+				//if carrot
+					//add to score
+					//animate carrot to disappear
+				//if hole
+					//add to score
+					//animate victory dance or exit animation
+					//change mode to highscores
+				//return
+			//randomize keys in controller
+			//draw buttons with random keys (only in directions without walls)
 	};
 
 	this.dialogOpen = function(){
-
+		//pull dialog off queue
+		//print dialog on screen
+		//check for input
+		//if input
+			//remove current dialog
+		//if queue is empty
+			//change mode to playings
 	};
 
 	this.highscores = function(){
-
+		//query highscores for level
+		//print highscore screen
+		//print option for next level or not
+		//if next level selected
+			//groupManager.GameToGame()
+			
 	};
 }
