@@ -19,7 +19,7 @@ function TileEngine() {
 		$.ajax({
 			url: '/Game/DownloadMap',
 			type: 'POST',
-			data: mapID,
+			data: '1',
 			success: function (result) {
 				console.log(result);
 			}
