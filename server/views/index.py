@@ -26,7 +26,7 @@ def game():
 
 @index.route('/Game/DownloadMap', methods=['POST'])
 def downloadMap():
-	mapID = int(request.data)
+	mapID = int(request.form['id'])
 	dac = database_access()
 	return dac.get_map_with_items(mapID)
 	
