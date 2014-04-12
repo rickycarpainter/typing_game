@@ -5,6 +5,11 @@ from models.database_access import *
 print ("Direct query for all maps in database:\n")
 #database has values already filled in. You can query for a map object, and then pull out its items list by using the following
 
+Map = Maps(13, 20, 'test.txt')
+db.session.add(Map)
+db.session.commit()
+
+
 #getting the map with id 1
 m = db.session.query(Maps).get(1)
 

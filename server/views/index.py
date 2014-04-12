@@ -22,7 +22,14 @@ def show():
 
 @index.route('/Game')
 def game():
-    return render_template('Game.html')
+    if current_user.is_authenticated():
+        login = True 
+        if current_user.name:
+            name = current_user.name
+            level = current_user.highest_level
+        else:
+            name = current_user.username
+    return render_template('Game.html', login=login, name=name, level_selected=level)
 
 @index.route('/Game/DownloadMap', methods=['POST'])
 def downloadMap():

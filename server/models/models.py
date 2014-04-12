@@ -3,9 +3,10 @@ from config import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True)
-    name = db.Column(db.String(100),)
+    name = db.Column(db.String(100))
     token = db.Column(db.String(100))
     secret = db.Column(db.String(100))
+    highest_level = db.Column(db.Integer)
 
     def __init__(self,username,token,secret):
         self.username = username
@@ -47,7 +48,7 @@ class Scores(db.Model):
     def __repr__(self):
         return "{id: %d,\nmap_id: %d,\ninitials:  %s,\nscore: %d,}" % (self.id, self.map_id, self.initials, self.score)
 
-map_items = db.Table('map-items', db.Column('item_id', db.Integer, db.ForeignKey('items.id')), db.Column('map_id', db.Integer, db.ForeignKey('maps.id')))
+map_items = db.Table('map_items', db.Column('item_id', db.Integer, db.ForeignKey('items.id')), db.Column('map_id', db.Integer, db.ForeignKey('maps.id')), db.Column('pos_x', db.Integer), db.Column('pos_y', db.Integer))
 
 
 class Maps(db.Model):
