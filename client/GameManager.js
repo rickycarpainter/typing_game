@@ -24,13 +24,13 @@ function GameManager() {
 	this.levelSelected = null;
 	
 	this.init = function(gameWidth, gameHeight) {
-		this.tileEngine = new TileEngine();
+		this.gameController = new GameController();
+		this.gameController.init();
+
+		this.tileEngine = new TileEngine(gameController);
 		
 		this.groupManager = new GroupManager();
 		this.groupManager.init(gameWidth, gameHeight);
-
-		this.gameController = new GameController();
-		this.gameController.init();
 	};
 	
 	this.update = function() {
