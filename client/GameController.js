@@ -33,18 +33,17 @@ function GameController(){
 	};
 
 	this.queryKey = function(keyCode){
-		switch(keyCode)
-		{
-		case this.keyUp:
-			return true;
-		case this.keyDown:
-			return true;
-		case this.keyLeft:
-			return true;
-		case this.keyRight:
-			return true;
-		default:
-			return false;
+		switch(keyCode){
+			case this.keyUp:
+				return true;
+			case this.keyDown:
+				return true;
+			case this.keyLeft:
+				return true;
+			case this.keyRight:
+				return true;
+			default:
+				return false;
 		}
 	};
 

@@ -1,7 +1,7 @@
 function GameManager() {
 
 	this.GameStates = {"TitleScreen" : 0, "ModeSelection" : 1, "LevelSelection" : 2, "PasswordPrompt" : 3, "PlayMode" : 4};
-	//enum PlayModeState {Playing = 0, DialogOpen = 1, HighScores = 2}
+	this.PlayModeState = {"Playing" : 0, "DialogOpen" : 1, "HighScores" : 2};
 	
 	this.currentGameState = this.GameStates.TitleScreen;
 	this.lastGameState = this.GameStates.TitleScreen;
@@ -22,6 +22,9 @@ function GameManager() {
 
 	//for level selection
 	this.levelSelected = null;
+
+	//for game mode
+	this.score = null;
 	
 	this.init = function(gameWidth, gameHeight) {
 		this.gameController = new GameController();
@@ -38,7 +41,7 @@ function GameManager() {
 			
 			case this.GameStates.TitleScreen: 		this.updateTitlescreen();		break;
 			case this.GameStates.ModeSelection: 	this.updateModeSelection();		break;
-			case this.GameStates.LevelSelection:   this.updateLevelSelection();		break;
+			case this.GameStates.LevelSelection:   	this.updateLevelSelection();	break;
 			case this.GameStates.PasswordPrompt: 	this.updatePasswordPrompt();	break;
 			case this.GameStates.PlayMode: 			this.updatePlayMode();			break;
 		}
@@ -94,7 +97,7 @@ function GameManager() {
 			console.log("PasswordPrompt");
 			var answer = false;//confirm("Is this your first time playing?");
 			if(answer){
-				this.passwordLevel = 10;
+				this.passwordLevel = 1;
 			}
 			else{
 				this.givenPassword = "rabbit";//prompt("Please enter password");
@@ -108,7 +111,7 @@ function GameManager() {
 			//send query to server to check password
 
 			//temporary fix until able to query and return valid number
-			this.passwordLevel = 10;
+			this.passwordLevel = 1;
 		}	
 
 		if(this.passwordLevel != null || (jQuery.gameQuery.keyTracker[27])){ //if password is confirmed valid or new game selected or 'X' clicked
@@ -130,11 +133,20 @@ function GameManager() {
 			this.groupManager.levelsToGame();
 			this.currentGameState = this.GameStates.PlayMode;
 			this.lastGameState = this.GameStates.LevelSelection;
+			this.currentPlayModeState = this.PlayModeState.Playing;
+			this.score = 0;
 		}
 	};
 	
 	this.updatePlayMode = function() {
 		console.log("play mode");
+
+		switch(this.currentPlayModeState){
+			case this.PlayModeState.Playing: 		this.playing(); 	break;
+			case this.PlayModeState.DialogOpen: 	this.playing(); 	break;
+			case this.PlayModeState.HighScores: 	this.playing(); 	break;
+
+		}
 
 		//map and object should be drawn
 		//draw character's initial position
@@ -149,5 +161,17 @@ function GameManager() {
 			//move character
 			//check surroundings/collisions
 			//draw new buttons, only if direction isnt a wall
+	};
+
+	this.playing = function(){
+
+	};
+
+	this.dialogOpen = function(){
+
+	};
+
+	this.highscores = function(){
+
 	};
 }
