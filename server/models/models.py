@@ -3,10 +3,9 @@ from config import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True)
-    name = db.Column(db.String(100))
+    name = db.Column(db.String(100),)
     token = db.Column(db.String(100))
     secret = db.Column(db.String(100))
-    highest_level = db.Column(db.Integer)
 
     def __init__(self,username,token,secret):
         self.username = username
@@ -48,7 +47,21 @@ class Scores(db.Model):
     def __repr__(self):
         return "{id: %d,\nmap_id: %d,\ninitials:  %s,\nscore: %d,}" % (self.id, self.map_id, self.initials, self.score)
 
-map_items = db.Table('map_items', db.Column('item_id', db.Integer, db.ForeignKey('items.id')), db.Column('map_id', db.Integer, db.ForeignKey('maps.id')), db.Column('pos_x', db.Integer), db.Column('pos_y', db.Integer))
+class MapItems(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	item_id = db.Column('item_id', db.Integer, db.ForeignKey('items.id'))
+	map_id = db.Column('map_id', db.Integer, db.ForeignKey('maps.id'))
+	pos_x = db.Column('pos_x', db.Integer)
+	pos_y = db.Column('pos_y', db.Integer)
+
+	def __init__(self, map_id=0, item_id=0, pos_x=0,pos_y=0):
+		self.item_id = item_id
+		self.map_id = map_id
+		self.pos_x = pos_x
+		self.pos_y = pos_y
+
+	def __repr__(self):
+		return '"pos_x": %d,\n"pos_y": %d,' % ( self.pos_x, self.pos_y )
 
 
 class Maps(db.Model):
@@ -56,7 +69,7 @@ class Maps(db.Model):
     height = db.Column(db.Integer)
     width = db.Column(db.Integer)
     url = db.Column(db.String(200))
-    items = db.relationship('Items', secondary=map_items, backref=db.backref('maps', lazy='joined'))
+    #items = db.relationship('Items', secondary=map_items, backref=db.backref('maps', lazy='joined'))
 
     def __init__(self, height=0, width=0, url=None):
         self.height = height
@@ -83,4 +96,4 @@ class Items(db.Model):
         self.type = type
 
     def __repr__(self):
-        return "{id: %d,\nsprite_x: %d,\nsprite_y: %d,\nwidth: %d,\nheight: %d,\ntype: %s}" % (self.id, self.sprite_x, self.sprite_y, self.width, self.height, self.type)
+        return '"sprite_x": %d,\n"sprite_y": %d,\n"width": %d,\n"height": %d,\n"type": %s' % ( self.sprite_x, self.sprite_y, self.width, self.height, self.type)

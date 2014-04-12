@@ -1,8 +1,10 @@
-function TileEngine() {
+function TileEngine(gameController) {
 	
 	this.map = null;
 	this.player = null;
 	this.mapItems = null;
+
+	this.gameController = gameController;
 	
 	//Clears and draws a new map if the map exists
 	//Only call this function once per map
@@ -18,13 +20,44 @@ function TileEngine() {
 		
 		$.ajax({
 			url: '/DownloadMap',
-			data: mapID,
+			type: 'POST',
+			data: {id:mapID},
 			success: function (result) {
-				console.log(result);
+				this.importMap(result);
 			}
 		});
-	}
-	
+	};
+
+	this.importMap = function(mapJSON) {
+
+		var mapInfo = eval("(" + mapJSON + ")");
+
+		this.map = new TileMap();
+		this.map.loadMap(mapInfo.map);
+		
+		this.loadMapItems(mapInfo.mapitems);
+	};
+
+	this.loadMapItems = function(mapitems) {
+		this.mapItems = new Array();
+		
+		for(var i = 0; i < mapitems.length; i++) {
+			
+			switch(mapitems[i].type) {
+
+				case "Player":	
+					var player = new Player();
+					// posX and posYplayer.
+					player.spriteX = mapitems[i].sprite_x;
+					player.spriteY = mapitems[i]
+				case "Carrot":
+				case "Tunnel":
+
+			}
+
+		}
+	};
+
 	this.drawPlayer = function() {
 		this.clearPlayer();
 	};

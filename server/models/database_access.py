@@ -23,18 +23,21 @@ class database_access():
     
     #Changed this function to return the map and the items in JSON format    
     def get_map_with_items(self, mapID):
-        m = db.session.query(Maps).get(mapID)
-        item_list = m.items
-        result = '{ "map" : '
-        result += m.__repr__() + ', \n"mapitems" : [\n'
-        for item in item_list:
-            result += item.__repr__()
-            result += ', \n'
-        
-        result = result[0:-3] #cut off that last comma    
+        q = db.session.query(Maps, MapItems, Items).filter(Maps.id == MapItems.map_id).filter(MapItems.item_id == Items.id).filter(Maps.id == mapID).all();
+	result = '{ "map" : '
+	
+	count = 0
+	for m,mi,i in q:
+        	if count == 0:
+			result += m.__repr__()
+			result += ', mapitems : ['
+			count = 1
+
+		result += "{" + mi.__repr__() + "\n" + i.__repr__() + "},"	
+        result = result[0:-1] #cut off that last comma    
         result += ']\n}'
         return result
-    
+		
     def clear_database(self):
         self.clear_scores()
         self.clear_maps()
