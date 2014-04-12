@@ -24,6 +24,7 @@ def show():
 def game():
     login = False
     name = None
+    level = None
     if current_user.is_authenticated():
         login = True 
         if current_user.name:
