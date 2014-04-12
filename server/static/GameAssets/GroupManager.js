@@ -69,7 +69,6 @@ function GroupManager() {
 										posy: 40 
 										}).end()
 			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
-			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("mapgroup", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
 			.addGroup("mapBackground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("mapObjects", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
@@ -128,10 +127,14 @@ function GroupManager() {
 	this.highlightButton = function(mode){
 		if(mode === "story"){
 			console.log("story selected");
+			$("#sbutton").scale(1.1);
+			$("#ucbutton").scale(1);
 
 		}
 		else if(mode === "random"){
 			console.log("random selected");
+			$("#sbutton").scale(1);
+			$("#ucbutton").scale(1.1);
 
 		}
 
