@@ -78,8 +78,6 @@ function GameManager() {
 		//track returning from password prompt and proceeding to level selection
 		if(this.passwordLevel != null){ //campaign mode picked and valid password entered
 			console.log("valid password");
-			var eng = new TileEngine();
-			eng.downloadMap(1)
 			this.levelSelected = this.passwordLevel;
 			this.groupManager.selectionToLevels(this.passwordLevel);
 			this.currentGameState = this.GameStates.LevelSelection;
@@ -127,6 +125,8 @@ function GameManager() {
 		//highlight levelselected
 
 		if(jQuery.gameQuery.keyTracker[13]){ //level selected
+			this.tileEngine.downloadMap(this.levelSelected);
+			this.tileEngine.drawMap();
 			this.groupManager.levelsToGame();
 			this.currentGameState = this.GameStates.PlayMode;
 			this.lastGameState = this.GameStates.LevelSelection;

@@ -104,6 +104,7 @@ function GroupManager() {
 	this.selectionToLevels = function(passwordLevel){
 		//close mode selection 
 		$("#selectionScreen").fadeOut("medium");
+		$("#levelSelection").fadeIn("medium");
 		//draw all level selection assets
 			//backgound
 			//level images up to level of password entered
@@ -111,6 +112,8 @@ function GroupManager() {
 
 	this.levelsToGame = function(){
 		//close level selection
+		$("#levelSelection").fadeOut("medium");
+		$("#mapgroup").fadeIn("medium");
 		//draw game
 			//background/tiles
 			//obects 
