@@ -1,6 +1,6 @@
 function GameManager() {
 
-	this.GameStates = {"TitleScreen" : 0, "ModeSelection" : 1, "LevelSelection" : 2, "PasswordPrompt" : 3, "PlayMode" : 4};
+	this.GameStates = {"TitleScreen" : 0, "ModeSelection" : 1, "LevelSelection" : 2,"PlayMode" : 3};
 	this.PlayModeState = {"Playing" : 0, "DialogOpen" : 1, "HighScores" : 2};
 	
 	this.currentGameState = this.GameStates.TitleScreen;
@@ -15,10 +15,6 @@ function GameManager() {
 
 	//for mode selcetion screen
 	this.selectedMode = null;
-
-	//for password prompt and level selection
-	this.givenPassword = null;
-	this.passwordLevel = null;
 
 	//for level selection
 	this.levelSelected = null;
@@ -42,7 +38,6 @@ function GameManager() {
 			case this.GameStates.TitleScreen: 		this.updateTitlescreen();		break;
 			case this.GameStates.ModeSelection: 	this.updateModeSelection();		break;
 			case this.GameStates.LevelSelection:   	this.updateLevelSelection();	break;
-			case this.GameStates.PasswordPrompt: 	this.updatePasswordPrompt();	break;
 			case this.GameStates.PlayMode: 			this.updatePlayMode();			break;
 		}
 	};
@@ -68,57 +63,14 @@ function GameManager() {
 			this.selectedMode = "random";
 		}
 
-		//track to open password prompt
-		if((jQuery.gameQuery.keyTracker[13]) && this.selectedMode === "story" && this.passwordLevel === null){//if campaign mode selected, pull up password prompt
+		//track to level selection screen
+		if((jQuery.gameQuery.keyTracker[13]) && this.selectedMode === "story"){
 			console.log("story mode selected");
-			this.givenPassword = null;
-			this.passwordLevel = null;
-			this.groupManager.openPasswordPrompt();
-			this.currentGameState = this.GameStates.PasswordPrompt;
-			this.lastGameState = this.GameStates.ModeSelection;
-		}
-
-		//track returning from password prompt and proceeding to level selection
-		if(this.passwordLevel != null){ //campaign mode picked and valid password entered
-			console.log("valid password");
-			this.levelSelected = this.passwordLevel;
-			this.groupManager.selectionToLevels(this.passwordLevel);
+			//levelSelected = query for max level based on userID
+			this.levelSelected = 1; //TEMPORARY
+			this.groupManager.selectionToLevels(this.levelSelected);
 			this.currentGameState = this.GameStates.LevelSelection;
 			this.lastGameState = this.GameStates.ModeSelection;
-		}
-	};
-
-	this.updatePasswordPrompt = function() {
-		//put focus on text field
-		//if hover over first time button, highlight
-
-
-		if(this.givenPassword === null && this.passwordLevel === null){
-			console.log("PasswordPrompt");
-			var answer = false;//confirm("Is this your first time playing?");
-			if(answer){
-				this.passwordLevel = 1;
-			}
-			else{
-				this.givenPassword = "rabbit";//prompt("Please enter password");
-			}
-
-		}
-		
-
-		if(this.givenPassword != null && (jQuery.gameQuery.keyTracker[13])){// if enter clicked, check if password is valid\
-			console.log("checking password");
-			//send query to server to check password
-
-			//temporary fix until able to query and return valid number
-			this.passwordLevel = 1;
-		}	
-
-		if(this.passwordLevel != null || (jQuery.gameQuery.keyTracker[27])){ //if password is confirmed valid or new game selected or 'X' clicked
-			console.log("PasswordPrompt over");
-			this.groupManager.closePasswordPrompt();
-			this.currentGameState = this.GameStates.ModeSelection;
-			this.lastGameState = this.GameStates.PasswordPrompt;
 		}
 	};
 	
@@ -127,9 +79,10 @@ function GameManager() {
 		//if mouse over level, chenge levelSelected to that
 		//highlight levelselected
 
-		if(jQuery.gameQuery.keyTracker[13]){ //level selected
+		if(jQuery.gameQuery.keyTracker[13]){ //level selected, start game
 			this.tileEngine.downloadMap(this.levelSelected);
 			this.tileEngine.drawMap();
+			
 			this.groupManager.levelsToGame();
 			this.currentGameState = this.GameStates.PlayMode;
 			this.lastGameState = this.GameStates.LevelSelection;
@@ -186,6 +139,6 @@ function GameManager() {
 		//print option for next level or not
 		//if next level selected
 			//groupManager.GameToGame()
-			
+
 	};
 }

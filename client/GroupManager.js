@@ -87,21 +87,7 @@ function GroupManager() {
 		$("#selectionScreen").fadeIn("medium");
 	};
 
-	this.openPasswordPrompt = function(){
-		//draw password prompt screen
-			//prompt
-			//'x' close
-			//text field
-			//first time button
-
-	};
-
-	this.closePasswordPrompt = function(){
-		//close all prompt stuff
-
-	};
-
-	this.selectionToLevels = function(passwordLevel){
+	this.selectionToLevels = function(initialSelection){
 		//close mode selection 
 		$("#selectionScreen").fadeOut("medium");
 		$("#levelSelection").fadeIn("medium");
