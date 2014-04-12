@@ -11,6 +11,7 @@ function GameManager() {
 	
 	this.tileEngine = null;
 	this.groupManager = null;
+	this.gameController = null;
 
 	//for mode selcetion screen
 	this.selectedMode = null;
@@ -27,6 +28,9 @@ function GameManager() {
 		
 		this.groupManager = new GroupManager();
 		this.groupManager.init(gameWidth, gameHeight);
+
+		this.gameController = new GameController();
+		this.gameController.init();
 	};
 	
 	this.update = function() {
@@ -131,6 +135,7 @@ function GameManager() {
 	
 	this.updatePlayMode = function() {
 		console.log("play mode");
+
 		//map and object should be drawn
 		//draw character's initial position
 		//generate random letters/numbers
