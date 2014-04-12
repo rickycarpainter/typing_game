@@ -80,9 +80,11 @@ function GameManager() {
 		//highlight levelselected
 
 		if(jQuery.gameQuery.keyTracker[13]){ //level selected, start game
+			//draw the initial screen
 			this.tileEngine.downloadMap(this.levelSelected);
 			this.tileEngine.drawMap();
-			
+
+			//change modes
 			this.groupManager.levelsToGame();
 			this.currentGameState = this.GameStates.PlayMode;
 			this.lastGameState = this.GameStates.LevelSelection;
@@ -93,6 +95,7 @@ function GameManager() {
 	
 	this.updatePlayMode = function() {
 		console.log("play mode");
+
 
 		switch(this.currentPlayModeState){
 			case this.PlayModeState.Playing: 		this.playing(); 	break;
@@ -139,6 +142,10 @@ function GameManager() {
 		//print option for next level or not
 		//if next level selected
 			//groupManager.GameToGame()
+			//change mode to playing
+		//if quit selected
+			//groupManager.GameToSelection
+			//change mode to selectionScreen
 
 	};
 }
