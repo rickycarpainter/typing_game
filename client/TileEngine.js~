@@ -2,7 +2,7 @@ function TileEngine() {
 	
 	this.map = null;
 	this.player = null;
-	this.mapItems = [];
+	this.mapItems = null;
 	
 	//Clears and draws a new map if the map exists
 	//Only call this function once per map
@@ -13,6 +13,17 @@ function TileEngine() {
 			this.map.draw();
 		}
 	};
+
+	this.downloadMap = function(mapID) {
+		
+		$.ajax({
+			url: '/DownloadMap',
+			data: mapID,
+			success: function (result) {
+				console.log(result);
+			}
+		});
+	}
 	
 	this.drawPlayer = function() {
 		this.clearPlayer();

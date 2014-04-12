@@ -13,6 +13,17 @@ function TileEngine() {
 			this.map.draw();
 		}
 	};
+
+	this.downloadMap = function(mapID) {
+		
+		$.ajax({
+			url: '/DownloadMap',
+			data: mapID,
+			success: function (result) {
+				console.log(result);
+			}
+		});
+	}
 	
 	this.drawPlayer = function() {
 		this.clearPlayer();
