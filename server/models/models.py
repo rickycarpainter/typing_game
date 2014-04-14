@@ -6,11 +6,13 @@ class User(db.Model):
     name = db.Column(db.String(100),)
     token = db.Column(db.String(100))
     secret = db.Column(db.String(100))
+    level = db.Column(db.Integer)
 
-    def __init__(self,username,token,secret):
+    def __init__(self, username, token, secret, level = 1):
         self.username = username
         self.token = token
         self.secret = secret
+        self.level = level
 
     @staticmethod
     def get(username):
@@ -18,6 +20,9 @@ class User(db.Model):
         
     def get_id(self):
         return self.id
+
+    def get_level(self):
+        return self.level
 
     def is_authenticated(self):
         return True

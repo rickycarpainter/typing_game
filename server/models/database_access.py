@@ -17,8 +17,8 @@ class database_access():
     def get_all_items(self):
         return Items.query.order_by(Items.id).all()
 
-    def get_all_passwords(self):
-        return Passwords.query.order_by(Passwords.id).all()
+    def get_user(self, name):
+        return Users.query.filter(Users.username == name).all()
     
     
     #Changed this function to return the map and the items in JSON format    
@@ -56,8 +56,4 @@ class database_access():
 
     def clear_items(self):
         return Items.query.delete()
-
-    def clear_passwords(self):
-        return Passwords.query.delete()
-        
     

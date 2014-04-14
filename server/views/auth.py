@@ -43,7 +43,7 @@ def oauth(resp):
 
     user = User.get(resp['screen_name'])
     if user is None:
-        user = User(resp['screen_name'], resp['oauth_token'], resp['oauth_token_secret'])
+        user = User(resp['screen_name'], resp['oauth_token'], resp['oauth_token_secret'], 1)
         db.session.add(user)
         db.session.commit()
         login_user(user)

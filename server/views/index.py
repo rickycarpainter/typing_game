@@ -37,4 +37,11 @@ def downloadMap():
 	mapID = int(request.form['id'])
 	dac = database_access()
 	return dac.get_map_with_items(mapID)
+
+@index.route('/Game/HighestUserLevel')
+def highestLevel():
+        if current_user.is_authenticated():
+            highest_level = current_user.level
+            return highest_level
+        return 1
 	
