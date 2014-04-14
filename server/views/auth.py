@@ -8,6 +8,14 @@ from models import *
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+"""
+    Flask-Login user_loader callback.
+    The user_loader function asks this function to get a User Object or return 
+    None based on the userid.
+    The userid was stored in the session environment by Flask-Login.  
+    user_loader stores the returned User object in current_user during every 
+    flask request. 
+"""
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
