@@ -1,0 +1,16 @@
+function PromptManager(gameController) {
+
+	this.left = null;
+	this.right = null;
+	this.up = null;
+	this.down = null;
+
+	this.gameController = gameController;
+
+	var A = new $.gQ.Animation({ imageURL: "images/letters.png",
+					numberOfFrame: 1,
+					delta: 20,
+					offsetx: 0,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL  | $.gQ.ANIMATION_ONCE}});	
+}

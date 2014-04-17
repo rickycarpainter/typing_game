@@ -18,6 +18,7 @@ function GameManager() {
 
 	//for level selection
 	this.levelSelected = null;
+	this.totalLevels = null;
 
 	//for game mode
 	this.score = null;
@@ -73,6 +74,15 @@ function GameManager() {
 				type: 'GET',
 				success: function (result) {
 					this.levelSelected = result;
+				}
+			});
+			
+			//Query the server for the total number of levels
+			$.ajax({
+				url: '/AllLevels',
+				type: 'GET',
+				success: function (result) {
+					this.totalLevels = result;
 				}
 			});
 			

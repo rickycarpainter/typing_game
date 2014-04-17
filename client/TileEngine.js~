@@ -6,6 +6,8 @@ function TileEngine(gameController) {
 	this.tunnel = null;
 
 	this.gameController = gameController;
+	
+	this.mapItemIDCounter = 0;
 
 
 //--------------------------------------------------------------------------------------
@@ -27,23 +29,23 @@ function TileEngine(gameController) {
 
 		//draw carrots and other items first
 		for(var i = 0; i < this.mapItems.length; i++) {
-		
-			this.drawMapItem(this.mapItems[i]);
+			
+			this.drawMapItem(this.mapItems[i], "mapitem" + i.toString());
 		
 		}
 		
 		//then draw the tunnel
-		this.drawMapItem(this.tunnel);
+		this.drawMapItem(this.tunnel, "tunnel");
 		
 		//then draw the player so the player is on top of everything
-		this.drawMapItem(this.player);
+		this.drawMapItem(this.player, "player");
 	};
 	
-	this.drawMapItem = function(mapItem) {
+	this.drawMapItem = function(mapItem,id) {
 	
 		var posX = this.map.tileWidth * mapItem.posX;
 		var posY = this.map.tileHeight * mapItem.posY;
-		$(groupID).addSprite( id, {animation: this.makeAnimation(mapItem),
+		$("#mapObjects").addSprite( id, {animation: this.makeAnimation(mapItem),
 								width: mapItem.width,
 								height: mapItem.height,
 								posx: posX,
@@ -64,7 +66,7 @@ function TileEngine(gameController) {
 	};
 	
 	this.clearMapItems = function() {
-	
+		
 	};
 	
 //--------------------------------------------------------------------------------------
@@ -141,13 +143,43 @@ function TileEngine(gameController) {
 	};
 
 //--------------------------------------------------------------------------------------
-// This section contains functions for player movement
+// This section contains functions for player movement and item collision
 //--------------------------------------------------------------------------------------
 
-	this.movePlayer = function() {
-		this.clearPlayer();
+	//Changes the player position and draws the player accordingly
+	this.movePlayer = function(x,y) {
+		
+		this.player.posX = this.player.posX + x;
+		this.player.posY = this.player.posY + y;
+		
+		$("#player").x(this.player.posX);
+		$("#player").y(this.player.posY);
 	};
 	
+	//Returns the name of the mapitem the player collided with. Returns "NONE" if there was no collision.
+	this.checkItemCollision = function() {
+	
+		if(this.player.posX == this.tunnel.posX &&
+			this.player.posY == this.tunnel.posY) {
+				return "Tunnel";			
+		}
+		
+		for(var i = 0; i < this.mapItems.length; i++) {
+			
+			if(this.player.posX == this.mapItems[i].posX &&
+				this.player.posY == this.mapItems[i].posY) {
+				
+				//for now, just return carrot, because that is the only other mapitem we have!
+				return "Carrot";
+			}
+		
+		}
+	
+		return "NONE";
+	};
+	
+	
+//--------------------------------MOVEMENT CHECKS----------------------------------------------------------------
 	this.canMoveUp = function(mapItem) {
 		return (mapItem!= null && //player exists
 					this.map != null && //map exists
@@ -179,5 +211,7 @@ function TileEngine(gameController) {
 					mapItem.posY >= 0 && mapItem.posY < this.map.height && // player posY + 1 in map
 					this.map.mask[player.posX + 1][player.posY] != 2); // 2 is the collidable gID for the mask 
 	};
+//----------------------------------------------------------------------------------------------------------------
 
 }
+
