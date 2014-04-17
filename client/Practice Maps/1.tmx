@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="13" tilewidth="36" tileheight="36">
+ <tileset firstgid="1" name="mask" tilewidth="36" tileheight="36">
+  <image source="images/mask.png" width="72" height="36"/>
+ </tileset>
+ <tileset firstgid="3" name="1" tilewidth="36" tileheight="36">
+  <image source="images/textures.png" width="180" height="404"/>
+ </tileset>
+ <layer name="mask" width="20" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYKIyZqQQMyHRtDKPEn+Rah613Yeub9S8wWMePjXUSi/E2EcuBgA5WQGd
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="20" height="13">
+  <data encoding="base64" compression="zlib">
+   eJwTZ2BgkMCBxUnAEkg0M4UYZgYtzcPlZ3yYXPOo7T50faPmDR7z8KmhVnphRjOPGhiWjwHS8w9r
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="20" height="13"/>
+</map>
