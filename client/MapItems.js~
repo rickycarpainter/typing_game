@@ -15,7 +15,7 @@ function MapItem() {
 //----------------------------------------------------------------------------
 // Player Class
 function Player() {
-
+	
 	this.carrots = 0;
 
 }
@@ -44,7 +44,7 @@ Carrot.prototype = new Collectable(); //Inherit from Collectable
 //----------------------------------------------------------------------------
 // Tunnel Class
 function Tunnel() {
-
+	
 
 }
 

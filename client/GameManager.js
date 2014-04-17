@@ -36,8 +36,8 @@ function GameManager() {
 		switch(this.currentGameState) {
 			
 			case this.GameStates.TitleScreen: 		this.updateTitlescreen();		break;
-			case this.GameStates.ModeSelection: 	this.updateModeSelection();		break;
-			case this.GameStates.LevelSelection:   	this.updateLevelSelection();	break;
+			case this.GameStates.ModeSelection: 	this.updateModeSelection();	break;
+			case this.GameStates.LevelSelection:   this.updateLevelSelection();	break;
 			case this.GameStates.PlayMode: 			this.updatePlayMode();			break;
 		}
 	};
@@ -66,8 +66,16 @@ function GameManager() {
 		//track to level selection screen
 		if((jQuery.gameQuery.keyTracker[13]) && this.selectedMode === "story"){
 			console.log("story mode selected");
-			//levelSelected = query for max level based on userID
-			this.levelSelected = 1; //TEMPORARY
+			
+			//Query the server for the highest level reached for the user
+			$.ajax({
+				url: '/HighestUserLevel',
+				type: 'GET',
+				success: function (result) {
+					this.levelSelected = result;
+				}
+			});
+			
 			this.groupManager.selectionToLevels(this.levelSelected);
 			this.currentGameState = this.GameStates.LevelSelection;
 			this.lastGameState = this.GameStates.ModeSelection;

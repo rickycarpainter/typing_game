@@ -48,6 +48,6 @@ def highestLevel():
 @index.route('/Game/AllLevels')
 def alllevels():
 	dac = database_access()
-	return dac.get_number_of_levels()
+	return dac.get_number_of_maps()
 		
 	

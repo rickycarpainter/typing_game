@@ -1,10 +1,16 @@
 function TileEngine(gameController) {
 	
 	this.map = null;
-	this.player = null;
 	this.mapItems = null;
+	this.player = null;
+	this.tunnel = null;
 
 	this.gameController = gameController;
+
+
+//--------------------------------------------------------------------------------------
+// This section contains functions for drawing maps and mapitems
+//--------------------------------------------------------------------------------------	
 	
 	//Clears and draws a new map if the map exists
 	//Only call this function once per map
@@ -15,7 +21,55 @@ function TileEngine(gameController) {
 			this.map.draw();
 		}
 	};
+	
+	//Draws all of the mapitems. Only call this function once per map
+	this.drawMapItems = function() {
 
+		//draw carrots and other items first
+		for(var i = 0; i < this.mapItems.length; i++) {
+		
+			this.drawMapItem(this.mapItems[i]);
+		
+		}
+		
+		//then draw the tunnel
+		this.drawMapItem(this.tunnel);
+		
+		//then draw the player so the player is on top of everything
+		this.drawMapItem(this.player);
+	};
+	
+	this.drawMapItem = function(mapItem) {
+	
+		var posX = this.map.tileWidth * mapItem.posX;
+		var posY = this.map.tileHeight * mapItem.posY;
+		$(groupID).addSprite( id, {animation: this.makeAnimation(mapItem),
+								width: mapItem.width,
+								height: mapItem.height,
+								posx: posX,
+								posy: posY 
+								});		
+	};
+	
+	//Returns an animation to be used for the mapitem
+	this.makeAnimation = function(mapItem) {
+		
+		return new $.gQ.Animation({ imageURL: "images/textures.png",
+					numberOfFrame: 1,
+					delta: mapItem.width,
+					offsetx: mapItem.spriteX,
+					offsety: mapItem.spriteY,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+	
+	};
+	
+	this.clearMapItems = function() {
+		
+	};
+	
+//--------------------------------------------------------------------------------------
+// This section contains functions for downloading and importing maps
+//--------------------------------------------------------------------------------------
 	this.downloadMap = function(mapID) {
 		
 		$.ajax({
@@ -24,6 +78,7 @@ function TileEngine(gameController) {
 			data: {id:mapID},
 			success: function (result) {
 				this.importMap(result);
+				console.log("Map imported!");
 			}
 		});
 	};
@@ -43,36 +98,55 @@ function TileEngine(gameController) {
 		
 		for(var i = 0; i < mapitems.length; i++) {
 			
+			var mapitem;
+			var playerAt;
+			var tunnelAt;
 			switch(mapitems[i].type) {
 
 				case "Player":	
-					var player = new Player();
-					// posX and posYplayer.
-					player.spriteX = mapitems[i].sprite_x;
-					player.spriteY = mapitems[i]
+					mapitem = new Player();
+					playerAt = i;
+					break;
+					
 				case "Carrot":
+					mapitem = new Carrot();
+					break;
+
 				case "Tunnel":
+					mapitem = new Tunnel();
+					tunnelAt = i;
+					break;
 
 			}
+			
+			mapitem.spriteX = mapitems[i].sprite_x;
+			mapitem.spriteY = mapitems[i].sprite_y;
+			mapitem.posX = mapitems[i].pos_x;
+			mapitem.posY = mapitems[i].pos_y;
+			mapitem.width = mapitems[i].width;
+			mapitem.height = mapitems[i].height;
+			
+			if(playerAt === i) {
+				this.player = mapitem;
+			}
+			else if (tunnelAt === i) {
+				this.tunnel = mapitem;
+			}
+			else {
+				this.mapItems.push(mapitem);
+			}
+			
 
 		}
 	};
 
-	this.drawPlayer = function() {
+//--------------------------------------------------------------------------------------
+// This section contains functions for player movement
+//--------------------------------------------------------------------------------------
+
+	this.movePlayer = function() {
 		this.clearPlayer();
 	};
-	
-	this.clearPlayer = function() {
-	
-	};
-	
-	this.drawMapItems = function() {
-		this.clearMapItems();
-	};
-	
-	this.clearMapItems = function() {
-	
-	}
 	
 	this.canMoveUp = function(mapItem) {
 		return (mapItem!= null && //player exists
