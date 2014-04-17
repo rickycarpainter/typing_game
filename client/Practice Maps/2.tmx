@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="13" tilewidth="36" tileheight="36">
+ <tileset firstgid="1" name="map" tilewidth="36" tileheight="36">
+  <image source="../images/mask.png" width="72" height="36"/>
+ </tileset>
+ <layer name="mask" width="20" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYKIiZqQAo+tnQqKZcPDRxcg1D5ea4WoevvDDFa/EuA+fe3DJU2rPUDYPV7jjUkdIH758SIx5ACpVAZA=
+  </data>
+ </layer>
+</map>
