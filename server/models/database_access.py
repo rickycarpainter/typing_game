@@ -21,7 +21,7 @@ class database_access():
         return Users.query.filter(Users.username == name).all()
     
     def get_number_of_levels():
-		#return db.session.query(Maps).count();
+        return db.session.query(Maps).count();
     
     #Changed this function to return the map and the items in JSON format    
     def get_map_with_items(self, mapID):
@@ -30,12 +30,13 @@ class database_access():
 	
 	count = 0
 	for m,mi,i in q:
-        	if count == 0:
-			result += m.__repr__()
-			result += ', mapitems : ['
-			count = 1
+            if count == 0:
+		result += m.__repr__()
+		result += ', mapitems : ['
+		count = 1
 
-		result += "{" + mi.__repr__() + "\n" + i.__repr__() + "},"	
+	    result += "{" + mi.__repr__() + "\n" + i.__repr__() + "},"	
+
         result = result[0:-1] #cut off that last comma    
         result += ']\n}'
         return result

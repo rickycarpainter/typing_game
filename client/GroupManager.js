@@ -68,7 +68,13 @@ function GroupManager() {
 										posx: 360,
 										posy: 40 
 										}).end()
-			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
+				.addSprite("modebackground", {animation: modebackground,
+										width: gameWidth,
+										height: gameHeight,
+										posx: 0,
+										posy: 0 
+										}).end()
 			.addGroup("mapgroup", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
 			.addGroup("mapBackground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("mapObjects", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
@@ -76,6 +82,7 @@ function GroupManager() {
 			//ADD OTHER GROUPS HERE EX: HUD GROUP, OTHER SCREENS			
 
 			$("#selectionScreen").hide();
+			$("#levelSelection").hide()
 	};
 	
 	this.update = function() {
