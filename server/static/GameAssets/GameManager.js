@@ -69,6 +69,7 @@ function GameManager() {
 		//if mouse over mode, hignlight that mode
 		this.groupManager.checkButton();
 		this.groupManager.highlightButton(this.selectedMode);
+		var $myself = this;
 
 		if(jQuery.gameQuery.keyTracker[37]){//left button
 			this.selectedMode = "story";
@@ -86,7 +87,7 @@ function GameManager() {
 				url: '/Game/HighestUserLevel',
 				type: 'GET',
 				success: function (result) {
-					this.levelSelected = result.result;
+					$myself.levelSelected = result.result;
 					
 				}
 			});
@@ -96,12 +97,10 @@ function GameManager() {
 				url: '/Game/AllLevels',
 				type: 'GET',
 				success: function (result) {
-					this.totalLevels = result.result;
+					$myself.totalLevels = result.result;
 				}
 			});
-			
-			console.log("Level selected: " + this.levelSelected);
-			console.log("All levels: " + this.totalLevels);
+
 			this.groupManager.selectionToLevels(this.levelSelected);
 			this.currentGameState = this.GameStates.LevelSelection;
 			this.lastGameState = this.GameStates.ModeSelection;
