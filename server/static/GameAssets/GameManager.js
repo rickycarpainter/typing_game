@@ -86,8 +86,7 @@ function GameManager() {
 				url: '/Game/HighestUserLevel',
 				type: 'GET',
 				success: function (result) {
-				
-					this.levelSelected = result;
+					this.levelSelected = result.result;
 					
 				}
 			});
@@ -97,11 +96,11 @@ function GameManager() {
 				url: '/Game/AllLevels',
 				type: 'GET',
 				success: function (result) {
-					this.totalLevels = result;
+					this.totalLevels = result.result;
 				}
 			});
 			
-			console.log("level selected: " + this.levelSelected);
+			console.log("Level selected: " + this.levelSelected);
 			console.log("All levels: " + this.totalLevels);
 			this.groupManager.selectionToLevels(this.levelSelected);
 			this.currentGameState = this.GameStates.LevelSelection;
