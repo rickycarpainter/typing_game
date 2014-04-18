@@ -22,6 +22,7 @@ function GameManager() {
 
 	//for game mode
 	this.score = null;
+	this.dialogQueue = [];
 	
 	this.init = function(gameWidth, gameHeight) {
 
@@ -160,27 +161,48 @@ function GameManager() {
 	this.playing = function(){
 		//check for dialog on queue
 		//if dialog available
+		console.log(this.dialogQueue.length);
+		if(this.dialogQueue.length > 0)
+		{
 			//change mode to dialogOpen
+			this.currentPlayModeState = this.PlayModeState.Playing;
+		}
+
 		//check button input on controller buttons
-		//if button matched
-			//animate button down
-			//move character
-			//check collision with object (carrot or hole)
-			//if collision
-				//if carrot
-					//add to score
-					//animate carrot to disappear
-				//if hole
-					//add to score
-					//animate victory dance or exit animation
-					//change mode to highscores
-				//return
-			//randomize keys in controller
-			//draw buttons with random keys (only in directions without walls)
+		
+		var $parent = this;
+		
+		window.onkeyup = function(e) {
+			var code = e.keyCode ? e.keyCode : e.which;
+			if(code >= 65 && code <= 90)//if valid button pushed
+			{
+				if($parent.gameController.queryKey(code))//if button matched
+				{
+					//animate button down
+					//move character
+					//check collision with object (carrot or hole)
+					//if collision
+						//if carrot
+							//add to score
+							//animate carrot to disappear
+						//if hole
+							//add to score
+							//animate victory dance or exit animation
+							//change mode to highscores
+						//return
+					//randomize keys in controller
+					$parent.gameController.randomizeKeys();
+					//draw buttons with random keys (only in directions without walls)
+				}
+			}
+
+		};
 	};
 
 	this.dialogOpen = function(){
 		//pull dialog off queue
+		var dialog = this.dialogQueue.shift();//pulls off dialog
+
 		//print dialog on screen
 		//check for input
 		//if input
