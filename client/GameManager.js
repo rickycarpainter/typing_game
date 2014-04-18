@@ -49,20 +49,19 @@ function GameManager() {
 	};
 	
 	this.updateTitlescreen = function() {
-
-		/*if(this.gameController.enterPushed()){
-			this.groupManager.titleToSelection();
-			this.currentGameState = this.GameStates.ModeSelection;
-			this.lastGameState = this.GameStates.TitleScreen;
-			this.selectedMode = "story";
-		}*/
-
-		if(jQuery.gameQuery.keyTracker[32] || jQuery.gameQuery.keyTracker[13]) {
-			this.groupManager.titleToSelection();
-			this.currentGameState = this.GameStates.ModeSelection;
-			this.lastGameState = this.GameStates.TitleScreen;
-			this.selectedMode = "story";
-		}
+		
+		var $parent = this;
+		
+		window.onkeyup = function(e) {
+			var code = e.keyCode ? e.keyCode : e.which;
+			if (code == 13 || code == 32)
+			{
+				$parent.groupManager.titleToSelection();
+				$parent.currentGameState = $parent.GameStates.ModeSelection;
+				$parent.lastGameState = $parent.GameStates.TitleScreen;
+				$parent.selectedMode = "story";
+			}
+		};
 	};
 	
 	this.updateModeSelection = function() {
