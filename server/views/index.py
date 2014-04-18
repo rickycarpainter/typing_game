@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, jsonify
 from flask.ext.login import login_required
 from flask.ext.login import current_user
 
@@ -44,15 +44,15 @@ def highestLevel():
             print ("Requesting Level")
             highest_level = current_user.level
             print ("Highest Level: [" + str(highest_level) + "]")
-            return highest_level
+            return jsonify(result=highest_level)
         print ("User not authenticated. Returning 1")
-        return 1
+        return jsonify(result=1)
         
 @index.route('/Game/AllLevels', methods=['GET'])
 def alllevels():
 	dac = database_access()
 	response = dac.get_number_of_levels()
 	print ("All  levels: [" + str(response) + "]") 
-	return response
+	return jsonify(result=response)
 		
 	
