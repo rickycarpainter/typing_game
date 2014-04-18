@@ -56,7 +56,7 @@ function GameController(){
 		$myself.enter = false;
 
 		//this is where the keybinding occurs
-		$(document).keydown(function(e){
+		$(document).keyup(function(e){
 			console.log(e.keyCode);
 			switch(e.keyCode){
 				case 13:
