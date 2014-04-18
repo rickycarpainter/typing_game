@@ -21,7 +21,7 @@ class database_access():
         return Users.query.filter(Users.username == name).all()
     
     def get_number_of_levels():
-		#return db.session.query(Maps).count();
+        return db.session.query(Maps).count();
     
     #Changed this function to return the map and the items in JSON format    
     def get_map_with_items(self, mapID):
