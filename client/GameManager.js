@@ -13,6 +13,8 @@ function GameManager() {
 	this.groupManager = null;
 	this.gameController = null;
 
+	this.playground = null;
+
 	//for mode selcetion screen
 	this.selectedMode = null;
 
@@ -23,11 +25,14 @@ function GameManager() {
 	//for game mode
 	this.score = null;
 	
-	this.init = function(gameWidth, gameHeight) {
+	this.init = function(gameWidth, gameHeight, playground) {
+
+		this.playground = playground;
+
 		this.gameController = new GameController();
 		this.gameController.init();
 
-		this.tileEngine = new TileEngine(gameController);
+		this.tileEngine = new TileEngine(this.gameController);
 		
 		this.groupManager = new GroupManager();
 		this.groupManager.init(gameWidth, gameHeight);
@@ -35,16 +40,24 @@ function GameManager() {
 	
 	this.update = function() {
 		switch(this.currentGameState) {
-			
-			case this.GameStates.TitleScreen: 		this.updateTitlescreen();		break;
-			case this.GameStates.ModeSelection: 	this.updateModeSelection();	break;
-			case this.GameStates.LevelSelection:   this.updateLevelSelection();	break;
+
 			case this.GameStates.PlayMode: 			this.updatePlayMode();			break;
+			case this.GameStates.TitleScreen: 		this.updateTitlescreen();		break;
+			case this.GameStates.ModeSelection: 	this.updateModeSelection();		break;
+			case this.GameStates.LevelSelection:   	this.updateLevelSelection();	break;
 		}
 	};
 	
 	this.updateTitlescreen = function() {
-		if(jQuery.gameQuery.keyTracker[32]) { //Was space pressed?
+
+		/*if(this.gameController.enterPushed()){
+			this.groupManager.titleToSelection();
+			this.currentGameState = this.GameStates.ModeSelection;
+			this.lastGameState = this.GameStates.TitleScreen;
+			this.selectedMode = "story";
+		}*/
+
+		if(jQuery.gameQuery.keyTracker[32] || jQuery.gameQuery.keyTracker[13]) {
 			this.groupManager.titleToSelection();
 			this.currentGameState = this.GameStates.ModeSelection;
 			this.lastGameState = this.GameStates.TitleScreen;
@@ -65,7 +78,7 @@ function GameManager() {
 		}
 
 		//track to level selection screen
-		if((jQuery.gameQuery.keyTracker[13]) && this.selectedMode === "story"){
+		if((jQuery.gameQuery.keyTracker[32] || jQuery.gameQuery.keyTracker[13]) && this.selectedMode === "story"){
 			console.log("story mode selected");
 			
 			//Query the server for the highest level reached for the user
@@ -97,7 +110,7 @@ function GameManager() {
 		//if mouse over level, chenge levelSelected to that
 		//highlight levelselected
 
-		if(jQuery.gameQuery.keyTracker[13]){ //level selected, start game
+		if(jQuery.gameQuery.keyTracker[32] || jQuery.gameQuery.keyTracker[13]){ //level selected, start game
 			//draw the initial screen
 			this.tileEngine.downloadMap(this.levelSelected);
 			this.tileEngine.drawMap();

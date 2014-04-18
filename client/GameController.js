@@ -4,6 +4,8 @@ function GameController(){
 	this.keyDown = null;
 	this.keyLeft = null;
 	this.keyRight = null;
+
+	this.enter = false;
 	
 	this.init = function(){
 		this.keyUp = 0;
@@ -45,6 +47,28 @@ function GameController(){
 			default:
 				return false;
 		}
+	};
+
+	this.enterPushed = function(){
+		var push = false;
+
+		//this is where the keybinding occurs
+		$(document).keyup(function(e){
+			console.log(e.keyCode);
+			switch(e.keyCode){
+				case 13:
+					//return true;
+					push = true
+				case 32:
+					//return true;
+					push = true;
+				default:
+					//return false;
+					push = false;
+			}
+		});
+		console.log(push);
+		return pushup;
 	};
 
 }
