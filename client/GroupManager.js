@@ -118,13 +118,6 @@ function GroupManager() {
 	};
 
 	//for mode selection
-	this.checkButton = function(){
-		$("#selectionScreen").click(function(){
-			
-		});
-	};
-
-	//for mode selection
 	this.highlightButton = function(mode){
 		if(mode === "story"){
 			console.log("story selected");
@@ -136,6 +129,11 @@ function GroupManager() {
 			$("#sbutton").scale(1);
 			$("#ucbutton").scale(1.1);
 		}
+
+	};
+
+	//for level selection
+	this.highlightLevel = function(level){
 
 	};
 }

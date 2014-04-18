@@ -13,8 +13,6 @@ function GameManager() {
 	this.groupManager = null;
 	this.gameController = null;
 
-	this.playground = null;
-
 	//for mode selcetion screen
 	this.selectedMode = null;
 
@@ -25,9 +23,7 @@ function GameManager() {
 	//for game mode
 	this.score = null;
 	
-	this.init = function(gameWidth, gameHeight, playground) {
-
-		this.playground = playground;
+	this.init = function(gameWidth, gameHeight) {
 
 		this.gameController = new GameController();
 		this.gameController.init();
@@ -36,6 +32,9 @@ function GameManager() {
 		
 		this.groupManager = new GroupManager();
 		this.groupManager.init(gameWidth, gameHeight);
+
+		this.levelSelected = 1;
+		this.totalLevels = 10;
 	};
 	
 	this.update = function() {
@@ -49,7 +48,6 @@ function GameManager() {
 	};
 	
 	this.updateTitlescreen = function() {
-		
 		var $parent = this;
 		
 		window.onkeyup = function(e) {
@@ -65,8 +63,7 @@ function GameManager() {
 	};
 	
 	this.updateModeSelection = function() {
-		//if mouse over mode, hignlight that mode
-		this.groupManager.checkButton();
+		//hignlight mode
 		this.groupManager.highlightButton(this.selectedMode);
 
 		var $parent = this;
@@ -91,7 +88,6 @@ function GameManager() {
 					type: 'GET',
 					success: function (result) {
 						$parent.levelSelected = result.result;
-						
 					}
 				});
 				
@@ -112,15 +108,31 @@ function GameManager() {
 	};
 	
 	this.updateLevelSelection = function() {
-		console.log("level selection mode");
-		//if mouse over level, chenge levelSelected to that
+		console.log("level selection mode: " + this.levelSelected);
 		//highlight levelselected
+		this.groupManager.highlightLevel(this.levelSelected);
 
 		var $parent = this;
 		
 		window.onkeyup = function(e) {
 			var code = e.keyCode ? e.keyCode : e.which;
-			if (code == 13 || code == 32)
+			if(code == 37)
+			{
+				$parent.levelSelected = $parent.levelSelected - 1;
+				if ($parent.levelSelected < 1)
+				{
+					$parent.levelSelected = 1;
+				}
+			}
+			else if (code == 39)
+			{
+				$parent.levelSelected = $parent.levelSelected + 1;
+				if ($parent.levelSelected > $parent.totalLevels)
+				{
+					$parent.levelSelected = $parent.totalLevels;
+				}
+			}
+			else if (code == 13 || code == 32)
 			{
 				//draw the initial screen
 				$parent.tileEngine.downloadMap($parent.levelSelected);
