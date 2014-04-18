@@ -4,10 +4,8 @@ function GameManager() {
 	this.PlayModeState = {"Playing" : 0, "DialogOpen" : 1, "HighScores" : 2};
 	
 	this.currentGameState = this.GameStates.TitleScreen;
-	this.lastGameState = this.GameStates.TitleScreen;
 	
 	this.currentPlayModeState = null;
-	this.lastPlayModeState = null;
 	
 	this.tileEngine = null;
 	this.groupManager = null;
@@ -57,7 +55,6 @@ function GameManager() {
 			{
 				$parent.groupManager.titleToSelection();
 				$parent.currentGameState = $parent.GameStates.ModeSelection;
-				$parent.lastGameState = $parent.GameStates.TitleScreen;
 				$parent.selectedMode = "story";
 			}
 		};
@@ -103,7 +100,6 @@ function GameManager() {
 				
 				$parent.groupManager.selectionToLevels($parent.levelSelected);
 				$parent.currentGameState = $parent.GameStates.LevelSelection;
-				$parent.lastGameState = $parent.GameStates.ModeSelection;
 			}
 		};
 	};
@@ -141,7 +137,6 @@ function GameManager() {
 				//change modes
 				$parent.groupManager.levelsToGame($parent.gameController);
 				$parent.currentGameState = $parent.GameStates.PlayMode;
-				$parent.lastGameState = $parent.GameStates.LevelSelection;
 				$parent.currentPlayModeState = $parent.PlayModeState.Playing;
 				$parent.score = 0;
 			}
@@ -163,14 +158,16 @@ function GameManager() {
 		console.log(this.dialogQueue.length);
 		if(this.dialogQueue.length > 0)
 		{
+			//pull dialog off queue
+			var dialog = this.dialogQueue.shift();
+			//print dialog on screen
+			console.log(dialog);
 			//change mode to dialogOpen
-			this.currentPlayModeState = this.PlayModeState.Playing;
+			this.currentPlayModeState = this.PlayModeState.dialogOpen;
 		}
 
 		//check button input on controller buttons
-		
-		var $parent = this;
-		
+		var $parent = this;		
 		window.onkeyup = function(e) {
 			var code = e.keyCode ? e.keyCode : e.which;
 			if(code >= 65 && code <= 90)//if valid button pushed
@@ -199,15 +196,23 @@ function GameManager() {
 	};
 
 	this.dialogOpen = function(){
-		//pull dialog off queue
-		var dialog = this.dialogQueue.shift();//pulls off dialog
-
-		//print dialog on screen
+		
 		//check for input
-		//if input
-			//remove current dialog
-		//if queue is empty
-			//change mode to playings
+		var $parent = this;
+		window.onkeyup = function(e) {
+			var code = e.keyCode ? e.keyCode : e.which;
+			if((code == 13 || code == 32) && ($parent.dialogQueue.length < 1))//if enter pushed and no more dialog
+			{
+				$parent.currentPlayModeState = $parent.PlayModeState.Playing;
+			}
+			else if(code == 13 || code == 32)
+			{
+				//pull dialog off queue
+				dialog = this.dialogQueue.shift();
+				//print dialog on screen
+				console.log(dialog);
+			}
+		};
 	};
 
 	this.highscores = function(){
