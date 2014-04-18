@@ -27,7 +27,7 @@ function GameManager() {
 		this.gameController = new GameController();
 		this.gameController.init();
 
-		this.tileEngine = new TileEngine(gameController);
+		this.tileEngine = new TileEngine(this.gameController);
 		
 		this.groupManager = new GroupManager();
 		this.groupManager.init(gameWidth, gameHeight);
@@ -103,7 +103,7 @@ function GameManager() {
 			this.tileEngine.drawMap();
 
 			//change modes
-			this.groupManager.levelsToGame();
+			this.groupManager.levelsToGame(this.gameController);
 			this.currentGameState = this.GameStates.PlayMode;
 			this.lastGameState = this.GameStates.LevelSelection;
 			this.currentPlayModeState = this.PlayModeState.Playing;

@@ -96,12 +96,12 @@ function GroupManager() {
 			//level images up to level of password entered
 	};
 
-	this.levelsToGame = function(gameController){
+	this.levelsToGame = function(){
 		//close level selection
 		$("#levelSelection").fadeOut("medium");
 		$("#mapgroup").fadeIn("medium");
 		
-		var pm = new PromptManager(gameController);
+		var pm = new PromptManager();
 		pm.init();
 		pm.setKeysAndLetters(10,10);
 		pm.showKeysAndLetters();

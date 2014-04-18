@@ -6,7 +6,7 @@ function TileEngine(gameController) {
 	this.tunnel = null;
 
 	this.gameController = gameController;
-	this.promptManager = new PromptManager(gameController);
+	this.promptManager = new PromptManager(this.gameController);
 	
 	this.mapItemIDCounter = 0;
 
@@ -28,6 +28,7 @@ function TileEngine(gameController) {
 	//Draws all of the mapitems. Only call this function once per map
 	this.drawMapItems = function() {
 
+		$("#mapObjects").clearAll(false);
 		//draw carrots and other items first
 		for(var i = 0; i < this.mapItems.length; i++) {
 			
@@ -40,6 +41,8 @@ function TileEngine(gameController) {
 		
 		//then draw the player so the player is on top of everything
 		this.drawMapItem(this.player, "player");
+		
+		this.promptManager.init();
 	};
 	
 	this.drawMapItem = function(mapItem,id) {
