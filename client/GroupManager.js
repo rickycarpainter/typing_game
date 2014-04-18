@@ -110,7 +110,7 @@ function GroupManager() {
 		
 		var pm = new PromptManager(gameController);
 		pm.init();
-		pm.setKeysAndLetters(10,10);
+		pm.setKeysAndLetters(10,5);
 		pm.showKeysAndLetters();
 		//draw game
 			//background/tiles

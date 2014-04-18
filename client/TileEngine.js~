@@ -6,7 +6,7 @@ function TileEngine(gameController) {
 	this.tunnel = null;
 
 	this.gameController = gameController;
-	this.promptManager = new PromptManager(gameController);
+	this.promptManager = new PromptManager(this.gameController);
 	
 	this.mapItemIDCounter = 0;
 

@@ -185,14 +185,14 @@ function TileEngine(gameController) {
 	
 //--------------------------------MOVEMENT CHECKS----------------------------------------------------------------
 	this.canMoveUp = function(mapItem) {
-		return (mapItem!= null && //player exists
+		return (mapItem != null && //player exists
 					this.map != null && //map exists
 					mapItem.posX >= 0 && mapItem.posX < this.map.width && // player posX in map
 					mapItem.posY + 1 >= 0 && mapItem.posY + 1 < this.map.height && // player posY + 1 in map
 					this.map.mask[mapItem.posX][mapItem.posY + 1] != 2); // 2 is the collidable gID for the mask 
 	};
 	
-	this.canMoveDown = function() {
+	this.canMoveDown = function(mapItem) {
 		return (mapItem != null && //player exists
 					this.map != null && //map exists
 					mapItem.posX >= 0 && mapItem.posX < this.map.width && // player posX in map
@@ -200,7 +200,7 @@ function TileEngine(gameController) {
 					this.map.mask[player.posX][player.posY - 1] != 2); // 2 is the collidable gID for the mask 	
 	};
 	
-	this.canMoveLeft = function() {
+	this.canMoveLeft = function(mapItem) {
 		return (mapItem != null && //player exists
 					this.map != null && //map exists
 					mapItem.posX - 1>= 0 && mapItem.posX - 1< this.map.width && // player posX in map
@@ -208,7 +208,7 @@ function TileEngine(gameController) {
 					this.map.mask[player.posX - 1][player.posY] != 2); // 2 is the collidable gID for the mask 
 	};
 	
-	this.canMoveRight = function() {
+	this.canMoveRight = function(mapItem) {
 		return (mapItem != null && //player exists
 					this.map != null && //map exists
 					mapItem.posX + 1 >= 0 && mapItem.posX + 1< this.map.width && // player posX in map
