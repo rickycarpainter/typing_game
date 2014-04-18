@@ -42,7 +42,7 @@ mi = MapItems(2,2,5,6)
 db.session.add(mi)
 mi = MapItems(2,3,7,8)
 
-U = Users("SkyBear", "my_token", "my_secret", 5)
+U = User("SkyBear", "my_token", "my_secret", 5)
 db.session.add(U)
 
 
@@ -54,7 +54,6 @@ DAC = database_access()
 result = DAC.get_user("SkyBear").level
 print ("Highest Level: " + str(result))
 
-print ("Testing user level")
 
 
 #getting the map with id 1

@@ -42,6 +42,7 @@ def downloadMap():
 def highestLevel():
         if current_user.is_authenticated():
             highest_level = current_user.level
+            print ("Highest Level: [" + str(highest_level) + "]")
             return highest_level
         return 1
         

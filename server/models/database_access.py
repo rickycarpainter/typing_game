@@ -18,7 +18,7 @@ class database_access():
         return Items.query.order_by(Items.id).all()
 
     def get_user(self, name):
-        return Users.query.filter(Users.username == name).all()
+        return User.query.filter(User.username == name).first()
     
     def get_number_of_levels():
         return db.session.query(Maps).count();
