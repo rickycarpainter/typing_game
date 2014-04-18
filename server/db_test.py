@@ -41,8 +41,21 @@ db.session.add(mi)
 mi = MapItems(2,2,5,6)
 db.session.add(mi)
 mi = MapItems(2,3,7,8)
+
+U = Users("SkyBear", "my_token", "my_secret", 5)
+db.session.add(U)
+
+
 db.session.add(mi)
 db.session.commit()
+
+DAC = database_access()
+
+result = DAC.get_user("SkyBear").level
+print ("Highest Level: " + str(result))
+
+print ("Testing user level")
+
 
 #getting the map with id 1
 #m = db.session.query(Maps).get(1)
@@ -53,5 +66,4 @@ db.session.commit()
 print ("**********************************\n")
 
 print ("Single map Query through database access: \n")
-DAC = database_access()
 print (DAC.get_map_with_items(1))
