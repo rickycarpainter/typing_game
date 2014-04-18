@@ -41,9 +41,11 @@ def downloadMap():
 @index.route('/Game/HighestUserLevel')
 def highestLevel():
         if current_user.is_authenticated():
+            print ("Requesting Level")
             highest_level = current_user.level
             print ("Highest Level: [" + str(highest_level) + "]")
             return highest_level
+        print ("User not authenticated. Returning 1")
         return 1
         
 @index.route('/Game/AllLevels')
