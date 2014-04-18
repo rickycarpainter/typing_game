@@ -129,8 +129,6 @@ function PromptManager(gameController, tileEngine) {
 				.x(playerX * 36)
 				.y(playerY * 36 + 36).end();
 				
-			console.log($("#upKey").x());
-				
 			$("#leftLetter").setAnimation(this.keyToAnimation[this.gameController.keyLeft])
 				.x(playerX * 36 - 36 + 8)
 				.y(playerY * 36 + 3).end();

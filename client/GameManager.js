@@ -31,7 +31,7 @@ function GameManager() {
 
 		this.tileEngine = new TileEngine(this.gameController);
 		
-		this.groupManager = new GroupManager();
+		this.groupManager = new GroupManager(this.gameController, this.tileEngine);
 		this.groupManager.init(gameWidth, gameHeight);
 
 		this.levelSelected = 1;
@@ -137,7 +137,6 @@ function GameManager() {
 			{
 				//draw the initial screen
 				$parent.tileEngine.downloadMap($parent.levelSelected);
-				$parent.tileEngine.drawMap();
 
 				//change modes
 				$parent.groupManager.levelsToGame($parent.gameController);
