@@ -20,7 +20,7 @@ class database_access():
     def get_user(self, name):
         return User.query.filter(User.username == name).first()
     
-    def get_number_of_levels():
+    def get_number_of_levels(self):
         return db.session.query(Maps).count();
     
     #Changed this function to return the map and the items in JSON format    
