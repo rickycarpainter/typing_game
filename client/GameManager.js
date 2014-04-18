@@ -83,7 +83,7 @@ function GameManager() {
 			
 			//Query the server for the highest level reached for the user
 			$.ajax({
-				url: '/HighestUserLevel',
+				url: '/Game/HighestUserLevel',
 				type: 'GET',
 				success: function (result) {
 					this.levelSelected = result;
@@ -92,7 +92,7 @@ function GameManager() {
 			
 			//Query the server for the total number of levels
 			$.ajax({
-				url: '/AllLevels',
+				url: '/Game/AllLevels',
 				type: 'GET',
 				success: function (result) {
 					this.totalLevels = result;

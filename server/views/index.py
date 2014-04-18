@@ -38,7 +38,7 @@ def downloadMap():
 	dac = database_access()
 	return dac.get_map_with_items(mapID)
 
-@index.route('/Game/HighestUserLevel')
+@index.route('/Game/HighestUserLevel', methods=['GET'])
 def highestLevel():
         if current_user.is_authenticated():
             print ("Requesting Level")
@@ -48,9 +48,11 @@ def highestLevel():
         print ("User not authenticated. Returning 1")
         return 1
         
-@index.route('/Game/AllLevels')
+@index.route('/Game/AllLevels', methods=['GET'])
 def alllevels():
 	dac = database_access()
-	return dac.get_number_of_levels()
+	response = dac.get_number_of_levels()
+	print ("All  levels: [" + str(response) + "]") 
+	return response
 		
 	
