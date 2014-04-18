@@ -19,8 +19,8 @@ function GameManager() {
 	this.selectedMode = null;
 
 	//for level selection
-	this.levelSelected = null;
-	this.totalLevels = null;
+	this.levelSelected = 0;
+	this.totalLevels = 0;
 
 	//for game mode
 	this.score = null;
