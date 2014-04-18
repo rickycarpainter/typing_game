@@ -105,7 +105,6 @@ function GameManager() {
 	};
 	
 	this.updateLevelSelection = function() {
-		console.log("level selection mode: " + this.levelSelected);
 		//highlight levelselected
 		this.groupManager.highlightLevel(this.levelSelected);
 
@@ -154,9 +153,7 @@ function GameManager() {
 
 	this.playing = function(){
 		//check for dialog on queue
-		//if dialog available
-		console.log(this.dialogQueue.length);
-		if(this.dialogQueue.length > 0)
+		if(this.dialogQueue.length > 0)//if dialog available
 		{
 			//pull dialog off queue
 			var dialog = this.dialogQueue.shift();
