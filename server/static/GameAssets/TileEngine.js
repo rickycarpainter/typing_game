@@ -77,13 +77,14 @@ function TileEngine(gameController) {
 // This section contains functions for downloading and importing maps
 //--------------------------------------------------------------------------------------
 	this.downloadMap = function(mapID) {
+		var $parent = this;
 		
 		$.ajax({
 			url: '/Game/DownloadMap',
 			type: 'POST',
 			data: {id:mapID},
 			success: function (result) {
-				this.importMap(result);
+				$parent.importMap(result);
 				console.log("Map imported!");
 			}
 		});
