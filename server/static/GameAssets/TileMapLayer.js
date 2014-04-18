@@ -32,7 +32,7 @@ function TileMapLayer() {
 				var posX = Math.floor(j * tileset.tileWidth);
 				var posY = Math.floor(i * tileset.tileHeight);
 
-				var anim = new $.gQ.Animation({ imageURL: tileset.image,
+				var anim = new $.gQ.Animation({ imageURL: "/static/GameAssets/" + tileset.image,
 					numberOfFrame: 1,
 					delta: 32,
 					offsetx: tilesetX,

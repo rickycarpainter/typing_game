@@ -31,7 +31,6 @@ function TileMap() {
 	this.clear = function() {
 		$("#mapbackground").clearAll(false);
 		$("#maptiles").clearAll(false);
-		$("#mapobjects").clearAll(false);
 	};
 	
 	this.drawLayers = function() {

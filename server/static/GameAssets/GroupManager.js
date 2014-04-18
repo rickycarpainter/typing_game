@@ -1,5 +1,9 @@
-function GroupManager() {
+function GroupManager(gameController, tileEngine) {
 
+	this.tileEngine =  tileEngine;
+	this.gameController = gameController;
+	this.promptManager = new PromptManager(gameController, tileEngine);
+	
 	this.init = function(gameWidth, gameHeight) {
 		
 		var title = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/titlescreen.png",
@@ -103,19 +107,21 @@ function GroupManager() {
 			//level images up to level of password entered
 	};
 
-	this.levelsToGame = function(gameController){
+	this.levelsToGame = function(){
 		//close level selection
 		$("#levelSelection").fadeOut("medium");
+		
+		this.tileEngine.drawMap();
+		this.tileEngine.drawMapItems();
+		
+		this.promptManager.setKeysAndLetters();
+		this.promptManager.showKeysAndLetters();
+		
 		$("#mapgroup").fadeIn("medium");
 		
-		var pm = new PromptManager(gameController);
-		pm.init();
-		pm.setKeysAndLetters(10,5);
-		pm.showKeysAndLetters();
-		//draw game
-			//background/tiles
-			//obects 
 	};
+	
+	
 
 	//for mode selection
 	this.highlightButton = function(mode){
