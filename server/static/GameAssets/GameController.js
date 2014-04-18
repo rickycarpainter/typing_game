@@ -49,8 +49,11 @@ function GameController(){
 		}
 	};
 
+	
+	//this function doesn't work, and is no longer being used
 	this.enterPushed = function(){
-		var push = false;
+		var $myself = this;
+		$myself.enter = false;
 
 		//this is where the keybinding occurs
 		$(document).keyup(function(e){
@@ -58,17 +61,23 @@ function GameController(){
 			switch(e.keyCode){
 				case 13:
 					//return true;
-					push = true
+					$myself.enter = true;
+					break;
+					//push = true;
 				case 32:
 					//return true;
-					push = true;
+					$myself.enter = true
+					break;
+					//push = true;
 				default:
 					//return false;
-					push = false;
+					$myself.enter = false;
+					break;
+					//push = false;
 			}
 		});
-		console.log(push);
-		return pushup;
+		console.log ("Myself: " + $myself.enter);
+		return $myself.enter;
 	};
 
 }

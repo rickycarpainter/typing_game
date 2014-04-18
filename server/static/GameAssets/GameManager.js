@@ -13,21 +13,18 @@ function GameManager() {
 	this.groupManager = null;
 	this.gameController = null;
 
-	this.playground = null;
-
 	//for mode selcetion screen
 	this.selectedMode = null;
 
 	//for level selection
-	this.levelSelected = 0;
-	this.totalLevels = 0;
+	this.levelSelected = null;
+	this.totalLevels = null;
 
 	//for game mode
 	this.score = null;
+	this.dialogQueue = [];
 	
-	this.init = function(gameWidth, gameHeight, playground) {
-
-		this.playground = playground;
+	this.init = function(gameWidth, gameHeight) {
 
 		this.gameController = new GameController();
 		this.gameController.init();
@@ -36,6 +33,9 @@ function GameManager() {
 		
 		this.groupManager = new GroupManager();
 		this.groupManager.init(gameWidth, gameHeight);
+
+		this.levelSelected = 1;
+		this.totalLevels = 10;
 	};
 	
 	this.update = function() {
@@ -49,87 +49,108 @@ function GameManager() {
 	};
 	
 	this.updateTitlescreen = function() {
-
-		/*if(this.gameController.enterPushed()){
-			this.groupManager.titleToSelection();
-			this.currentGameState = this.GameStates.ModeSelection;
-			this.lastGameState = this.GameStates.TitleScreen;
-			this.selectedMode = "story";
-		}*/
-
-		if(jQuery.gameQuery.keyTracker[32] || jQuery.gameQuery.keyTracker[13]) {
-			this.groupManager.titleToSelection();
-			this.currentGameState = this.GameStates.ModeSelection;
-			this.lastGameState = this.GameStates.TitleScreen;
-			this.selectedMode = "story";
-		}
+		var $parent = this;
+		
+		window.onkeyup = function(e) {
+			var code = e.keyCode ? e.keyCode : e.which;
+			if (code == 13 || code == 32)
+			{
+				$parent.groupManager.titleToSelection();
+				$parent.currentGameState = $parent.GameStates.ModeSelection;
+				$parent.lastGameState = $parent.GameStates.TitleScreen;
+				$parent.selectedMode = "story";
+			}
+		};
 	};
 	
 	this.updateModeSelection = function() {
-		//if mouse over mode, hignlight that mode
-		this.groupManager.checkButton();
+		//hignlight mode
 		this.groupManager.highlightButton(this.selectedMode);
-		var $myself = this;
 
-		if(jQuery.gameQuery.keyTracker[37]){//left button
-			this.selectedMode = "story";
-		}
-		else if(jQuery.gameQuery.keyTracker[39]){//right button
-			this.selectedMode = "random";
-		}
-
-		//track to level selection screen
-		if((jQuery.gameQuery.keyTracker[32] || jQuery.gameQuery.keyTracker[13]) && this.selectedMode === "story"){
-			console.log("story mode selected");
-			
-			//Query the server for the highest level reached for the user
-			$.ajax({
-				url: '/Game/HighestUserLevel',
-				type: 'GET',
-				success: function (result) {
-					$myself.levelSelected = result.result;
-					
-				}
-			});
-			
-			//Query the server for the total number of levels
-			$.ajax({
-				url: '/Game/AllLevels',
-				type: 'GET',
-				success: function (result) {
-					$myself.totalLevels = result.result;
-				}
-			});
-
-			this.groupManager.selectionToLevels(this.levelSelected);
-			this.currentGameState = this.GameStates.LevelSelection;
-			this.lastGameState = this.GameStates.ModeSelection;
-		}
+		var $parent = this;
+		
+		window.onkeyup = function(e) {
+			var code = e.keyCode ? e.keyCode : e.which;
+			if(code == 37)
+			{
+				$parent.selectedMode = "story";
+			}
+			else if(code == 39)
+			{
+				$parent.selectedMode = "random";
+			}
+			else if ((code == 13 || code == 32) && ($parent.selectedMode === "story"))
+			{
+				console.log("story mode selected");
+				
+				//Query the server for the highest level reached for the user
+				$.ajax({
+					url: '/Game/HighestUserLevel',
+					type: 'GET',
+					success: function (result) {
+						$parent.levelSelected = result.result;
+					}
+				});
+				
+				//Query the server for the total number of levels
+				$.ajax({
+					url: '/Game/AllLevels',
+					type: 'GET',
+					success: function (result) {
+						$parent.totalLevels = result.result;
+					}
+				});
+				
+				$parent.groupManager.selectionToLevels($parent.levelSelected);
+				$parent.currentGameState = $parent.GameStates.LevelSelection;
+				$parent.lastGameState = $parent.GameStates.ModeSelection;
+			}
+		};
 	};
 	
 	this.updateLevelSelection = function() {
-		console.log("level selection mode");
-		//if mouse over level, chenge levelSelected to that
+		console.log("level selection mode: " + this.levelSelected);
 		//highlight levelselected
+		this.groupManager.highlightLevel(this.levelSelected);
 
-		if(jQuery.gameQuery.keyTracker[32] || jQuery.gameQuery.keyTracker[13]){ //level selected, start game
-			//draw the initial screen
-			this.tileEngine.downloadMap(this.levelSelected);
-			this.tileEngine.drawMap();
+		var $parent = this;
+		
+		window.onkeyup = function(e) {
+			var code = e.keyCode ? e.keyCode : e.which;
+			if(code == 37)
+			{
+				$parent.levelSelected = $parent.levelSelected - 1;
+				if ($parent.levelSelected < 1)
+				{
+					$parent.levelSelected = 1;
+				}
+			}
+			else if (code == 39)
+			{
+				$parent.levelSelected = $parent.levelSelected + 1;
+				if ($parent.levelSelected > $parent.totalLevels)
+				{
+					$parent.levelSelected = $parent.totalLevels;
+				}
+			}
+			else if (code == 13 || code == 32)
+			{
+				//draw the initial screen
+				$parent.tileEngine.downloadMap($parent.levelSelected);
+				$parent.tileEngine.drawMap();
 
-			//change modes
-			this.groupManager.levelsToGame();
-			this.currentGameState = this.GameStates.PlayMode;
-			this.lastGameState = this.GameStates.LevelSelection;
-			this.currentPlayModeState = this.PlayModeState.Playing;
-			this.score = 0;
-		}
+				//change modes
+				$parent.groupManager.levelsToGame($parent.gameController);
+				$parent.currentGameState = $parent.GameStates.PlayMode;
+				$parent.lastGameState = $parent.GameStates.LevelSelection;
+				$parent.currentPlayModeState = $parent.PlayModeState.Playing;
+				$parent.score = 0;
+			}
+		};
 	};
 	
 	this.updatePlayMode = function() {
 		console.log("play mode");
-
-
 		switch(this.currentPlayModeState){
 			case this.PlayModeState.Playing: 		this.playing(); 	break;
 			case this.PlayModeState.DialogOpen: 	this.playing(); 	break;
@@ -140,27 +161,48 @@ function GameManager() {
 	this.playing = function(){
 		//check for dialog on queue
 		//if dialog available
+		console.log(this.dialogQueue.length);
+		if(this.dialogQueue.length > 0)
+		{
 			//change mode to dialogOpen
+			this.currentPlayModeState = this.PlayModeState.Playing;
+		}
+
 		//check button input on controller buttons
-		//if button matched
-			//animate button down
-			//move character
-			//check collision with object (carrot or hole)
-			//if collision
-				//if carrot
-					//add to score
-					//animate carrot to disappear
-				//if hole
-					//add to score
-					//animate victory dance or exit animation
-					//change mode to highscores
-				//return
-			//randomize keys in controller
-			//draw buttons with random keys (only in directions without walls)
+		
+		var $parent = this;
+		
+		window.onkeyup = function(e) {
+			var code = e.keyCode ? e.keyCode : e.which;
+			if(code >= 65 && code <= 90)//if valid button pushed
+			{
+				if($parent.gameController.queryKey(code))//if button matched
+				{
+					//animate button down
+					//move character
+					//check collision with object (carrot or hole)
+					//if collision
+						//if carrot
+							//add to score
+							//animate carrot to disappear
+						//if hole
+							//add to score
+							//animate victory dance or exit animation
+							//change mode to highscores
+						//return
+					//randomize keys in controller
+					$parent.gameController.randomizeKeys();
+					//draw buttons with random keys (only in directions without walls)
+				}
+			}
+
+		};
 	};
 
 	this.dialogOpen = function(){
 		//pull dialog off queue
+		var dialog = this.dialogQueue.shift();//pulls off dialog
+
 		//print dialog on screen
 		//check for input
 		//if input

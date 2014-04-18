@@ -68,7 +68,13 @@ function GroupManager() {
 										posx: 360,
 										posy: 40 
 										}).end()
-			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
+				.addSprite("modebackground", {animation: modebackground,
+										width: gameWidth,
+										height: gameHeight,
+										posx: 0,
+										posy: 0 
+										}).end()
 			.addGroup("mapgroup", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
 			.addGroup("mapBackground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("mapObjects", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
@@ -76,6 +82,7 @@ function GroupManager() {
 			//ADD OTHER GROUPS HERE EX: HUD GROUP, OTHER SCREENS			
 
 			$("#selectionScreen").hide();
+			$("#levelSelection").hide()
 	};
 	
 	this.update = function() {
@@ -87,40 +94,27 @@ function GroupManager() {
 		$("#selectionScreen").fadeIn("medium");
 	};
 
-	this.openPasswordPrompt = function(){
-		//draw password prompt screen
-			//prompt
-			//'x' close
-			//text field
-			//first time button
-
-	};
-
-	this.closePasswordPrompt = function(){
-		//close all prompt stuff
-
-	};
-
-	this.selectionToLevels = function(passwordLevel){
+	this.selectionToLevels = function(initialSelection){
 		//close mode selection 
 		$("#selectionScreen").fadeOut("medium");
+		$("#levelSelection").fadeIn("medium");
 		//draw all level selection assets
 			//backgound
 			//level images up to level of password entered
 	};
 
-	this.levelsToGame = function(){
+	this.levelsToGame = function(gameController){
 		//close level selection
+		$("#levelSelection").fadeOut("medium");
+		$("#mapgroup").fadeIn("medium");
+		
+		var pm = new PromptManager(gameController);
+		pm.init();
+		pm.setKeysAndLetters(10,5);
+		pm.showKeysAndLetters();
 		//draw game
 			//background/tiles
 			//obects 
-	};
-
-	//for mode selection
-	this.checkButton = function(){
-		$("#selectionScreen").click(function(){
-			
-		});
 	};
 
 	//for mode selection
@@ -129,14 +123,17 @@ function GroupManager() {
 			console.log("story selected");
 			$("#sbutton").scale(1.1);
 			$("#ucbutton").scale(1);
-
 		}
 		else if(mode === "random"){
 			console.log("random selected");
 			$("#sbutton").scale(1);
 			$("#ucbutton").scale(1.1);
-
 		}
+
+	};
+
+	//for level selection
+	this.highlightLevel = function(level){
 
 	};
 }
