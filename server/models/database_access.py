@@ -30,12 +30,13 @@ class database_access():
 	
 	count = 0
 	for m,mi,i in q:
-        	if count == 0:
-			result += m.__repr__()
-			result += ', mapitems : ['
-			count = 1
+            if count == 0:
+		result += m.__repr__()
+		result += ', mapitems : ['
+		count = 1
 
-		result += "{" + mi.__repr__() + "\n" + i.__repr__() + "},"	
+	    result += "{" + mi.__repr__() + "\n" + i.__repr__() + "},"	
+
         result = result[0:-1] #cut off that last comma    
         result += ']\n}'
         return result
