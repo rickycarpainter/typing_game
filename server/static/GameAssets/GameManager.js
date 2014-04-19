@@ -44,8 +44,11 @@ function GameManager() {
 			case this.GameStates.ModeSelection: 	this.updateModeSelection();		break;
 			case this.GameStates.LevelSelection:   	this.updateLevelSelection();	break;
 		}
-
-		$("#hud").html("Carrots: " + this.tileEngine.player.carrots.toString());
+		
+		if (this.tileEngine.player != null)
+		{
+			$("#hud").html("Carrots: " + this.tileEngine.player.carrots.toString());
+		}
 	};
 	
 	this.updateTitlescreen = function() {

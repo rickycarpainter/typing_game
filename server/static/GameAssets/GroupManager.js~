@@ -194,10 +194,13 @@ function GroupManager(gameController, tileEngine) {
 			.addGroup("mapBackground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("mapObjects", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("mapForeground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+			.addGroup("hud", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
+				
+			$("#hud").append("<div id='hud' style='color: white; width: 100px; position: absolute; font-family: verdana, sans-serif;'></div>");
 			//ADD OTHER GROUPS HERE EX: HUD GROUP, OTHER SCREENS			
 
 			$("#selectionScreen").hide();
-			$("#levelSelection").hide()
+			$("#levelSelection").hide();
 	};
 	
 	this.update = function() {
