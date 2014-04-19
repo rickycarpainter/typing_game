@@ -46,7 +46,7 @@
         }, 
         {
          "firstgid":3,
-         "image":"/textures.png",
+         "image":"textures.png",
          "imageheight":404,
          "imagewidth":180,
          "margin":0,
