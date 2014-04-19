@@ -101,4 +101,4 @@ class Items(db.Model):
         self.type = type
 
     def __repr__(self):
-        return '"sprite_x": %d,\n"sprite_y": %d,\n"width": %d,\n"height": %d,\n"type": %s' % ( self.sprite_x, self.sprite_y, self.width, self.height, self.type)
+        return '"sprite_x": %d,\n"sprite_y": %d,\n"width": %d,\n"height": %d,\n"type": "%s"' % ( self.sprite_x, self.sprite_y, self.width, self.height, self.type)

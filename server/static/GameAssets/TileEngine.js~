@@ -27,7 +27,7 @@ function TileEngine(gameController) {
 	//Draws all of the mapitems. Only call this function once per map
 	this.drawMapItems = function() {
 
-		//$("#mapObjects").clearAll(false);
+		$("#mapObjects").clearAll(false);
 		//draw carrots and other items first
 		for(var i = 0; i < this.mapItems.length; i++) {
 			
