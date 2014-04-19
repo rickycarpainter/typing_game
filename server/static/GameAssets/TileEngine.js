@@ -25,7 +25,7 @@ function TileEngine(gameController) {
 	};
 	
 	//Draws all of the mapitems. Only call this function once per map
-	this.drawMapItems = function() {
+	this.drawMapItems = function(promptManager) {
 
 		//$("#mapObjects").clearAll(false);
 		//draw carrots and other items first
@@ -38,6 +38,7 @@ function TileEngine(gameController) {
 		//then draw the tunnel
 		this.tunnel.draw();
 		
+		promptManager.init();
 		//then draw the player so the player is on top of everything
 		this.player.draw();
 		
