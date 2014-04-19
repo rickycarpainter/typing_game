@@ -193,8 +193,8 @@ function GameManager() {
 						break;				
 				}
 			
-				if(dir != "none") {
-					$parent.gameController.randomizeKeys();
+				if(dir === "none") {
+				
 				}
 				//if($parent.gameController.queryKey(code))//if button matched
 				//{

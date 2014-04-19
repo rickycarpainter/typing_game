@@ -135,11 +135,11 @@ function TileEngine(gameController) {
 		this.player.posX = this.player.posX + x;
 		this.player.posY = this.player.posY + y;
 		
-		$("#player").x(this.player.posX);
-		$("#player").y(this.player.posY);
+		$("#player").x(this.player.posX * 36);
+		$("#player").y(this.player.posY * 36);
 	};
 	
-	//Returns the name of the mapitem the player collided with. Returns "NONE" if there was no collision.
+	//Returns the name of the mapitem the player collided with. Returns "None" if there was no collision.
 	this.checkItemCollision = function() {
 	
 		if(this.player.posX == this.tunnel.posX &&
@@ -158,7 +158,7 @@ function TileEngine(gameController) {
 		
 		}
 	
-		return "NONE";
+		return "None";
 	};
 	
 	

@@ -37,15 +37,15 @@ function GameController(){
 	this.queryKey = function(keyCode){
 		switch(keyCode){
 			case this.keyUp:
-				return "up";
+				return true;
 			case this.keyDown:
-				return "down";
+				return true;
 			case this.keyLeft:
-				return "left";
+				return true;
 			case this.keyRight:
-				return "right";
+				return true;
 			default:
-				return "none";
+				return false;
 		}
 	};
 
