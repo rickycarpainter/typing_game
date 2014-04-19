@@ -101,7 +101,7 @@ function GameManager() {
 						return true;
 					}
 				});
-				
+
 				$parent.groupManager.selectionToLevels($parent.levelSelected);
 				$parent.currentGameState = $parent.GameStates.LevelSelection;
 			}
@@ -115,6 +115,8 @@ function GameManager() {
 		var $parent = this;
 		
 		window.onkeyup = function(e) {
+
+			console.log("level: " + $parent.levelSelected);
 			var code = e.keyCode ? e.keyCode : e.which;
 			if(code == 37)
 			{
@@ -123,6 +125,8 @@ function GameManager() {
 				{
 					$parent.levelSelected = 1;
 				}
+				else
+				$parent.groupManager.updateLevelNumber($parent.levelSelected);
 			}
 			else if (code == 39)
 			{
@@ -131,6 +135,8 @@ function GameManager() {
 				{
 					$parent.levelSelected = $parent.totalLevels;
 				}
+				else
+				$parent.groupManager.updateLevelNumber($parent.levelSelected);
 			}
 			else if (code == 13 || code == 32)
 			{

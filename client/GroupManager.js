@@ -3,6 +3,7 @@ function GroupManager(gameController, tileEngine) {
 	this.tileEngine = tileEngine;
 	this.gameController = gameController;
 	this.promptManager = new PromptManager(gameController, tileEngine);
+	this.levelNumber = new Array();
 	
 	this.init = function(gameWidth, gameHeight) {
 		
@@ -19,6 +20,7 @@ function GroupManager(gameController, tileEngine) {
 					offsety: 0,
 					rate: 600,
 					type: $.gQ.ANIMATION_VERTICAL});
+
 		var modebackground = new $.gQ.Animation({ imageURL: "images/modescreen.png",
 					numberOfFrame: 1,
 					delta: gameWidth,
@@ -37,6 +39,74 @@ function GroupManager(gameController, tileEngine) {
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+
+		var levelButton = new $.gQ.Animation({ imageURL: "images/levelButton.png",
+					numberOfFrame: 1,
+					delta: 187,
+					offsetx: 0,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.levelNumber[1] = new $.gQ.Animation({ imageURL: "images/numbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 0,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.levelNumber[2] = new $.gQ.Animation({ imageURL: "images/numbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 130,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.levelNumber[3] = new $.gQ.Animation({ imageURL: "images/numbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 260,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.levelNumber[4] = new $.gQ.Animation({ imageURL: "images/numbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 390,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.levelNumber[5] = new $.gQ.Animation({ imageURL: "images/numbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 520,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.levelNumber[6] = new $.gQ.Animation({ imageURL: "images/numbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 650,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.levelNumber[7] = new $.gQ.Animation({ imageURL: "images/numbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 780,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.levelNumber[8] = new $.gQ.Animation({ imageURL: "images/numbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 910,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.levelNumber[9] = new $.gQ.Animation({ imageURL: "images/numbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 1040,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.levelNumber[10] = new $.gQ.Animation({ imageURL: "images/numbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 1170,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+
 
 					
 		$.playground()
@@ -78,6 +148,18 @@ function GroupManager(gameController, tileEngine) {
 										height: gameHeight,
 										posx: 0,
 										posy: 0 
+										})
+				.addSprite("levelButton", {animation: levelButton,
+										width: 220,
+										height: 258,
+										posx: 266,
+										posy: 140 
+										})
+				.addSprite("levelNumber", {animation: this.levelNumber[1],
+										width: 130,
+										height: 120,
+										posx: 295,
+										posy: 220 
 										}).end()
 			.addGroup("mapgroup", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
 			.addGroup("mapBackground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
@@ -102,9 +184,7 @@ function GroupManager(gameController, tileEngine) {
 		//close mode selection 
 		$("#selectionScreen").fadeOut("medium");
 		$("#levelSelection").fadeIn("medium");
-		//draw all level selection assets
-			//backgound
-			//level images up to level of password entered
+		$("#levelNumber").setAnimation(this.levelNumber[initialSelection]);
 	};
 
 	this.levelsToGame = function(){
@@ -119,6 +199,11 @@ function GroupManager(gameController, tileEngine) {
 		
 		$("#mapgroup").fadeIn("medium");
 		
+	};
+
+	this.updateLevelNumber = function(givenNum){
+
+		 $("#levelNumber").setAnimation(this.levelNumber[givenNum]);
 	};
 	
 	
