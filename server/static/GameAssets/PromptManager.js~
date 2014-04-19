@@ -116,20 +116,21 @@ function PromptManager(gameController, tileEngine) {
 			
 			var playerX = this.tileEngine.player.posX;
 			var playerY = this.tileEngine.player.posY;
+			
 			this.gameController.randomizeKeys();
 			
 			$("#leftKey").setAnimation(this.keyUpAnimation)
-				.x(playerX * 36 - 36)
+				.x((playerX - 1) * 36)
 				.y(playerY * 36).end();
 			$("#rightKey").setAnimation(this.keyUpAnimation)
-				.x(playerX * 36 + 36)
+				.x((playerX + 1) * 36)
 				.y(playerY * 36).end();
 			$("#upKey").setAnimation(this.keyUpAnimation)
 				.x(playerX * 36)
-				.y(playerY * 36 - 36).end();
+				.y((playerY - 1) * 36).end();
 			$("#downKey").setAnimation(this.keyUpAnimation)
 				.x(playerX * 36)
-				.y(playerY * 36 + 36).end();
+				.y((playerY + 1) * 36).end();
 				
 			$("#leftLetter").setAnimation(this.keyToAnimation[this.gameController.keyLeft])
 				.x(playerX * 36 - 36 + 8)

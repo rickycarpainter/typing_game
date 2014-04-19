@@ -76,7 +76,7 @@ function Carrot() {
 	this.draw = function() {
 		
 		var posX = 36 * this.posX + 4;
-		var posY = 36 * this.posY + 13;
+		var posY = 36 * this.posY - 15;
 		$("#mapObjects").addSprite( "player", {animation: this.animation,
 								width: this.width,
 								height: this.height,
@@ -84,6 +84,7 @@ function Carrot() {
 								posy: posY 
 								});	
 								
+		$("#player").scale(0.75);
 	
 	}
 }
@@ -97,7 +98,7 @@ function Tunnel() {
 	this.setAnimation = function() {
 		this.animation = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/textures.png",
 						numberOfFrame: 1,
-						delta: this.width,
+						delta: mapItem.width,
 						offsetx: this.spriteX,
 						offsety: this.spriteY,
 						type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
@@ -106,8 +107,8 @@ function Tunnel() {
 	
 	this.draw = function() {
 		
-		var posX = 36 * this.posX - 4;
-		var posY = 36 * this.posY + 1;
+		var posX = 36 * this.posX + 4;
+		var posY = 36 * this.posY - 15;
 		$("#mapObjects").addSprite( "player", {animation: this.animation,
 								width: this.width,
 								height: this.height,
@@ -115,6 +116,7 @@ function Tunnel() {
 								posy: posY 
 								});	
 								
+		$("#player").scale(0.75);
 	
 	}
 

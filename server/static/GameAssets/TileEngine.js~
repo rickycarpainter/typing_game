@@ -83,9 +83,9 @@ function TileEngine(gameController) {
 			async: false,
 			data: {id:mapID},
 			success: function (result) {
-				console.log(result);
+				//console.log(result);
 				$parent.importMap(result);
-				console.log("Map imported!");
+				//console.log("Map imported!");
 				return true;
 			}
 		});
@@ -133,6 +133,7 @@ function TileEngine(gameController) {
 			mapitem.posY = mapitems[i].pos_y;
 			mapitem.width = mapitems[i].width;
 			mapitem.height = mapitems[i].height;
+			mapitem.setAnimation();			
 			
 			if(playerAt === i) {
 				this.player = mapitem;

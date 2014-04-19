@@ -31,40 +31,16 @@ function TileEngine(gameController) {
 		//draw carrots and other items first
 		for(var i = 0; i < this.mapItems.length; i++) {
 			
-			this.drawMapItem(this.mapItems[i], "mapitem" + i.toString());
+			this.mapItems[i].draw();
 		
 		}
 		
 		//then draw the tunnel
-		this.drawMapItem(this.tunnel, "tunnel");
+		this.tunnel.draw();
 		
 		//then draw the player so the player is on top of everything
-		this.drawMapItem(this.player, "player");
+		this.player.draw();
 		
-	};
-	
-	this.drawMapItem = function(mapItem,id) {
-	
-		var posX = this.map.tileWidth * mapItem.posX;
-		var posY = this.map.tileHeight * mapItem.posY;
-		$("#mapObjects").addSprite( id, {animation: this.makeAnimation(mapItem),
-								width: mapItem.width,
-								height: mapItem.height,
-								posx: posX,
-								posy: posY 
-								});		
-	};
-	
-	//Returns an animation to be used for the mapitem
-	this.makeAnimation = function(mapItem) {
-		
-		return new $.gQ.Animation({ imageURL: "/static/GameAssets/images/textures.png",
-					numberOfFrame: 1,
-					delta: mapItem.width,
-					offsetx: mapItem.spriteX,
-					offsety: mapItem.spriteY,
-					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
-	
 	};
 	
 	this.clearMapItems = function() {
@@ -133,6 +109,7 @@ function TileEngine(gameController) {
 			mapitem.posY = mapitems[i].pos_y;
 			mapitem.width = mapitems[i].width;
 			mapitem.height = mapitems[i].height;
+			mapitem.setAnimation();			
 			
 			if(playerAt === i) {
 				this.player = mapitem;

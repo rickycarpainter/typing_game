@@ -120,30 +120,30 @@ function PromptManager(gameController, tileEngine) {
 			this.gameController.randomizeKeys();
 			
 			$("#leftKey").setAnimation(this.keyUpAnimation)
-				.x(playerX * 36 - 36)
+				.x((playerX - 1) * 36)
 				.y(playerY * 36).end();
 			$("#rightKey").setAnimation(this.keyUpAnimation)
-				.x(playerX * 36 + 36)
+				.x((playerX + 1) * 36)
 				.y(playerY * 36).end();
 			$("#upKey").setAnimation(this.keyUpAnimation)
 				.x(playerX * 36)
-				.y(playerY * 36 - 36).end();
+				.y((playerY - 1) * 36).end();
 			$("#downKey").setAnimation(this.keyUpAnimation)
 				.x(playerX * 36)
-				.y(playerY * 36 + 36).end();
+				.y((playerY + 1) * 36).end();
 				
 			$("#leftLetter").setAnimation(this.keyToAnimation[this.gameController.keyLeft])
-				.x(playerX * 36 - 36 + 8)
+				.x((playerX - 1)* 36 + 8)
 				.y(playerY * 36 + 3).end();
 			$("#rightLetter").setAnimation(this.keyToAnimation[this.gameController.keyRight])
-				.x(playerX * 36 + 36 + 8)
+				.x((playerX + 1)* 36 + 8)
 				.y(playerY * 36 + 3).end();
 			$("#upLetter").setAnimation(this.keyToAnimation[this.gameController.keyUp])
 				.x(playerX * 36 + 8)
-				.y(playerY * 36 - 36 + 3).end();
+				.y((playerY - 1) * 36 + 3).end();
 			$("#downLetter").setAnimation(this.keyToAnimation[this.gameController.keyDown])
 				.x(playerX * 36 + 8)
-				.y(playerY * 36 + 36 + 3).end();
+				.y((playerY + 1)* 36 + 3).end();
 	};
 
 	this.keyUpAnimation = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/textures.png",
