@@ -221,8 +221,7 @@ function GroupManager(gameController, tileEngine) {
 		$("#levelSelection").fadeOut("medium");
 		
 		this.tileEngine.drawMap();
-		this.tileEngine.drawMapItems();
-		this.promptManager.init();
+		this.tileEngine.drawMapItems(this.promptManager);
 		this.resetKeys();
 		
 		$("#mapgroup").fadeIn("medium");
