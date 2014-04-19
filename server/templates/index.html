@@ -16,6 +16,8 @@
 
 		<script src="{{ url_for('static', filename='gallery.js') }}"></script>
 		
+		<section id="main" class = "switchable">
+		
 		<header>
 			
 			<img id="title" src="{{ url_for('static', filename='title.png') }}" title=""  height="150" width="300"/>
@@ -52,7 +54,8 @@
 
 		</header>
 		
-		<section id="main" class = "switchable">
+		<div id = "about">THIS IS A TEST</div>
+		
 			<div id = "connection"></div>
 		
 			<div id="image_container">
@@ -62,16 +65,12 @@
 			</div>
 
 			<p>Welcome to Key Hopper! Improve your typing abilities and have a little fun in the process!</p>
-		</section>
-		
-		
-		<section id="game">
-			<div id="test">GAME GOES HERE</div>
-		</section>
 		
 		<footer>
 				<a href = "http://github.com/ritchiejc/typing_game" target="_blank"> <img id="git" src="{{ url_for('static', filename='githubsymbol.png') }}" height="200" width="200"/> </a></h3>
 		</footer>
+		
+		</section>
 
 	</body>
 </html>

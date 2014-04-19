@@ -14,11 +14,12 @@ header, footer {
 	text-align: center;
 	font-size: 3em;
 	width: auto;
+	position: relative;
 }
 
 header{
 	text-align: left;
-	background-image:url('banner.png');
+	background-image:url('images/banner.png');
 	padding: .75em;
 	padding-right: 2em;
 	padding-top: .3em;
@@ -31,7 +32,7 @@ header{
 
 #main {
 	color: rgb(242,242,242);
-	width: 100%;
+	width: auto;
 }
 
 #game {

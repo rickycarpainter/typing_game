@@ -7,10 +7,25 @@ html { background-color: #000000; }
 	border: 3px solid rgb(0,0,0);
 	margin: 25px auto;
 	padding: 5px;
+	width: auto;
+	border-radius: .5em;
+}
+
+#connection
+{
+	position: relative;
+	left: 1050px;
+	width: 30%;
+}
+
+#about
+{
+	top: 75px;
+	margin-right: auto;
+	margin-left: 300px;
 	position: relative;
 	width: 35%;
-	border-radius: .5em;
-	float: right;
+	text-align: center;
 }
 
 .clear { clear: both; }

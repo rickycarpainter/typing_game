@@ -83,21 +83,26 @@ function GameManager() {
 				//Query the server for the highest level reached for the user
 				$.ajax({
 					url: '/Game/HighestUserLevel',
+					async: false,
 					type: 'GET',
 					success: function (result) {
 						$parent.levelSelected = result.result;
+						return true;
 					}
 				});
 				
 				//Query the server for the total number of levels
 				$.ajax({
 					url: '/Game/AllLevels',
+					async: false,
 					type: 'GET',
 					success: function (result) {
 						$parent.totalLevels = result.result;
+						return true;
 					}
 				});
-				
+
+				$parent.groupManager.totalLevels = $parent.totalLevels;
 				$parent.groupManager.selectionToLevels($parent.levelSelected);
 				$parent.currentGameState = $parent.GameStates.LevelSelection;
 			}
@@ -105,10 +110,6 @@ function GameManager() {
 	};
 	
 	this.updateLevelSelection = function() {
-		console.log("level selection mode: " + this.levelSelected);
-		//highlight levelselected
-		this.groupManager.highlightLevel(this.levelSelected);
-
 		var $parent = this;
 		
 		window.onkeyup = function(e) {
@@ -120,6 +121,8 @@ function GameManager() {
 				{
 					$parent.levelSelected = 1;
 				}
+				else
+				$parent.groupManager.updateLevelNumber($parent.levelSelected);
 			}
 			else if (code == 39)
 			{
@@ -128,6 +131,8 @@ function GameManager() {
 				{
 					$parent.levelSelected = $parent.totalLevels;
 				}
+				else
+				$parent.groupManager.updateLevelNumber($parent.levelSelected);
 			}
 			else if (code == 13 || code == 32)
 			{
@@ -135,7 +140,7 @@ function GameManager() {
 				$parent.tileEngine.downloadMap($parent.levelSelected);
 
 				//change modes
-				$parent.groupManager.levelsToGame($parent.gameController);
+				$parent.groupManager.levelsToGame();
 				$parent.currentGameState = $parent.GameStates.PlayMode;
 				$parent.currentPlayModeState = $parent.PlayModeState.Playing;
 				$parent.score = 0;
@@ -154,9 +159,7 @@ function GameManager() {
 
 	this.playing = function(){
 		//check for dialog on queue
-		//if dialog available
-		console.log(this.dialogQueue.length);
-		if(this.dialogQueue.length > 0)
+		if(this.dialogQueue.length > 0)//if dialog available
 		{
 			//pull dialog off queue
 			var dialog = this.dialogQueue.shift();

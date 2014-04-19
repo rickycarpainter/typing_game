@@ -6,7 +6,6 @@ function TileEngine(gameController) {
 	this.tunnel = null;
 
 	this.gameController = gameController;
-	this.promptManager = new PromptManager(this.gameController);
 	
 	this.mapItemIDCounter = 0;
 
@@ -20,7 +19,7 @@ function TileEngine(gameController) {
 	this.drawMap = function() {
 		
 		if(this.map != null) {
-			this.map.clear();
+			//this.map.clear(); this was breaking it earlier
 			this.map.draw();
 		}
 	};
@@ -42,7 +41,6 @@ function TileEngine(gameController) {
 		//then draw the player so the player is on top of everything
 		this.drawMapItem(this.player, "player");
 		
-		this.promptManager.init();
 	};
 	
 	this.drawMapItem = function(mapItem,id) {
@@ -77,15 +75,18 @@ function TileEngine(gameController) {
 // This section contains functions for downloading and importing maps
 //--------------------------------------------------------------------------------------
 	this.downloadMap = function(mapID) {
-		var $parent = this;
 		
+		var $parent = this;
 		$.ajax({
 			url: '/Game/DownloadMap',
 			type: 'POST',
+			async: false,
 			data: {id:mapID},
 			success: function (result) {
+				console.log(result);
 				$parent.importMap(result);
 				console.log("Map imported!");
+				return true;
 			}
 		});
 	};
@@ -198,7 +199,7 @@ function TileEngine(gameController) {
 					this.map != null && //map exists
 					mapItem.posX >= 0 && mapItem.posX < this.map.width && // player posX in map
 					mapItem.posY - 1 >= 0 && mapItem.posY - 1 < this.map.height && // player posY + 1 in map
-					this.map.mask[player.posX][player.posY - 1] != 2); // 2 is the collidable gID for the mask 	
+					this.map.mask[mapItem.posX][mapItem.posY - 1] != 2); // 2 is the collidable gID for the mask 	
 	};
 	
 	this.canMoveLeft = function(mapItem) {
@@ -206,7 +207,7 @@ function TileEngine(gameController) {
 					this.map != null && //map exists
 					mapItem.posX - 1>= 0 && mapItem.posX - 1< this.map.width && // player posX in map
 					mapItem.posY >= 0 && mapItem.posY < this.map.height && // player posY + 1 in map
-					this.map.mask[player.posX - 1][player.posY] != 2); // 2 is the collidable gID for the mask 
+					this.map.mask[mapItem.posX - 1][mapItem.posY] != 2); // 2 is the collidable gID for the mask 
 	};
 	
 	this.canMoveRight = function(mapItem) {
@@ -214,7 +215,7 @@ function TileEngine(gameController) {
 					this.map != null && //map exists
 					mapItem.posX + 1 >= 0 && mapItem.posX + 1< this.map.width && // player posX in map
 					mapItem.posY >= 0 && mapItem.posY < this.map.height && // player posY + 1 in map
-					this.map.mask[player.posX + 1][player.posY] != 2); // 2 is the collidable gID for the mask 
+					this.map.mask[mapItem.posX + 1][mapItem.posY] != 2); // 2 is the collidable gID for the mask 
 	};
 //----------------------------------------------------------------------------------------------------------------
 
