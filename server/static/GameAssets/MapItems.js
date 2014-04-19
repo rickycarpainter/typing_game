@@ -19,6 +19,8 @@ function MapItem() {
 function Player() {
 	
 	this.carrots = 0;
+	this.drawOffsetX = 4;
+	this.drawOffsetY = -15;	
 	
 	this.setAnimation = function() {
 		this.animation = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/textures.png",
@@ -31,9 +33,10 @@ function Player() {
 	}
 	
 	this.draw = function() {
+			
 		
-		var posX = 36 * this.posX + 4;
-		var posY = 36 * this.posY - 15;
+		var posX = 36 * this.posX + this.drawOffsetX;
+		var posY = 36 * this.posY + this.drawOffsetY;
 		$("#mapObjects").addSprite( "player", {animation: this.animation,
 								width: this.width,
 								height: this.height,
