@@ -32,7 +32,7 @@ class database_access():
 	for m,mi,i in q:
             if count == 0:
 		result += m.__repr__()
-		result += ', "mapitems" : ['
+		result += ', mapitems : ['
 		count = 1
 
 	    result += "{" + mi.__repr__() + "\n" + i.__repr__() + "},"	

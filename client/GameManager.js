@@ -83,18 +83,22 @@ function GameManager() {
 				//Query the server for the highest level reached for the user
 				$.ajax({
 					url: '/Game/HighestUserLevel',
+					async: false,
 					type: 'GET',
 					success: function (result) {
 						$parent.levelSelected = result.result;
+						return true;
 					}
 				});
 				
 				//Query the server for the total number of levels
 				$.ajax({
 					url: '/Game/AllLevels',
+					async: false,
 					type: 'GET',
 					success: function (result) {
 						$parent.totalLevels = result.result;
+						return true;
 					}
 				});
 				
@@ -134,7 +138,7 @@ function GameManager() {
 				$parent.tileEngine.downloadMap($parent.levelSelected);
 
 				//change modes
-				$parent.groupManager.levelsToGame($parent.gameController);
+				$parent.groupManager.levelsToGame();
 				$parent.currentGameState = $parent.GameStates.PlayMode;
 				$parent.currentPlayModeState = $parent.PlayModeState.Playing;
 				$parent.score = 0;

@@ -19,7 +19,7 @@ function TileSet(firstgID,image,tileheight,tilewidth,imageheight,imagewidth) {
 	};
 	
 	this.getgIDYOffset = function(gID) {
-		return (Math.floor(((gID - 1) / this.widthInTiles)) * this.tileHeight);
+		return (Math.floor(((gID - 1) / this.heightInTiles)) * this.tileHeight);
 	};
 	
 	//converts the gID to the gID schema of this tileset

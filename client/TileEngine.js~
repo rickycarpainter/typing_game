@@ -6,7 +6,6 @@ function TileEngine(gameController) {
 	this.tunnel = null;
 
 	this.gameController = gameController;
-	this.promptManager = new PromptManager(this.gameController);
 	
 	this.mapItemIDCounter = 0;
 
@@ -20,7 +19,7 @@ function TileEngine(gameController) {
 	this.drawMap = function() {
 		
 		if(this.map != null) {
-			this.map.clear();
+			//this.map.clear(); this was breaking it earlier
 			this.map.draw();
 		}
 	};
@@ -42,7 +41,6 @@ function TileEngine(gameController) {
 		//then draw the player so the player is on top of everything
 		this.drawMapItem(this.player, "player");
 		
-		this.promptManager.init();
 	};
 	
 	this.drawMapItem = function(mapItem,id) {
@@ -78,13 +76,17 @@ function TileEngine(gameController) {
 //--------------------------------------------------------------------------------------
 	this.downloadMap = function(mapID) {
 		
+		var $parent = this;
 		$.ajax({
-			url: '/DownloadMap',
+			url: '../server/test.txt',
 			type: 'POST',
+			async: false,
 			data: {id:mapID},
 			success: function (result) {
-				this.importMap(result);
+				console.log(result);
+				$parent.importMap(result);
 				console.log("Map imported!");
+				return true;
 			}
 		});
 	};

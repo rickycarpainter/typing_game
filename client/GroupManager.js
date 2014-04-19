@@ -1,6 +1,6 @@
 function GroupManager(gameController, tileEngine) {
 
-	this.tileEngine =  tileEngine;
+	this.tileEngine = tileEngine;
 	this.gameController = gameController;
 	this.promptManager = new PromptManager(gameController, tileEngine);
 	
@@ -113,7 +113,7 @@ function GroupManager(gameController, tileEngine) {
 		
 		this.tileEngine.drawMap();
 		this.tileEngine.drawMapItems();
-		
+		this.promptManager.init();
 		this.promptManager.setKeysAndLetters();
 		this.promptManager.showKeysAndLetters();
 		
