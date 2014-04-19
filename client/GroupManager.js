@@ -3,7 +3,12 @@ function GroupManager(gameController, tileEngine) {
 	this.tileEngine = tileEngine;
 	this.gameController = gameController;
 	this.promptManager = new PromptManager(gameController, tileEngine);
+
+	this.totalLevels = null;
+
 	this.levelNumber = new Array();
+	this.leftArrow = null;
+	this.rightArrow = null;
 	
 	this.init = function(gameWidth, gameHeight) {
 		
@@ -43,6 +48,18 @@ function GroupManager(gameController, tileEngine) {
 		var levelButton = new $.gQ.Animation({ imageURL: "images/levelButton.png",
 					numberOfFrame: 1,
 					delta: 187,
+					offsetx: 0,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.leftArrow = new $.gQ.Animation({ imageURL: "images/leftArrow.png",
+					numberOfFrame: 1,
+					delta: 0,
+					offsetx: 0,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.rightArrow = new $.gQ.Animation({ imageURL: "images/rightArrow.png",
+					numberOfFrame: 1,
+					delta: 0,
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
@@ -155,6 +172,18 @@ function GroupManager(gameController, tileEngine) {
 										posx: 266,
 										posy: 140 
 										})
+				.addSprite("leftArrow", {animation: this.leftArrow,
+										width: 64,
+										height: 68,
+										posx: 185,
+										posy: 240 
+										})
+				.addSprite("rightArrow", {animation: this.rightArrow,
+										width: 64,
+										height: 68,
+										posx: 470,
+										posy: 240 
+										})
 				.addSprite("levelNumber", {animation: this.levelNumber[1],
 										width: 130,
 										height: 120,
@@ -184,7 +213,7 @@ function GroupManager(gameController, tileEngine) {
 		//close mode selection 
 		$("#selectionScreen").fadeOut("medium");
 		$("#levelSelection").fadeIn("medium");
-		$("#levelNumber").setAnimation(this.levelNumber[initialSelection]);
+		this.updateLevelNumber(initialSelection);
 	};
 
 	this.levelsToGame = function(){
@@ -204,9 +233,23 @@ function GroupManager(gameController, tileEngine) {
 	this.updateLevelNumber = function(givenNum){
 
 		 $("#levelNumber").setAnimation(this.levelNumber[givenNum]);
+		 if(givenNum == 1)
+		 {
+		 	$("#leftArrow").setAnimation();
+		 }
+		 else if(givenNum == this.totalLevels)
+		 {
+		 	$("#rightArrow").setAnimation();
+		 }
+		 else if(givenNum == 2)
+		 {
+		 	$("#leftArrow").setAnimation(this.leftArrow);
+		 }
+		 else if(givenNum == (this.totalLevels-1))
+		 {
+		 	$("#rightArrow").setAnimation(this.rightArrow);
+		 }
 	};
-	
-	
 
 	//for mode selection
 	this.highlightButton = function(mode){
@@ -220,11 +263,6 @@ function GroupManager(gameController, tileEngine) {
 			$("#sbutton").scale(1);
 			$("#ucbutton").scale(1.1);
 		}
-
-	};
-
-	//for level selection
-	this.highlightLevel = function(level){
 
 	};
 }

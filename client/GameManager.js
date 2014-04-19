@@ -102,6 +102,7 @@ function GameManager() {
 					}
 				});
 
+				$parent.groupManager.totalLevels = $parent.totalLevels;
 				$parent.groupManager.selectionToLevels($parent.levelSelected);
 				$parent.currentGameState = $parent.GameStates.LevelSelection;
 			}
@@ -109,14 +110,9 @@ function GameManager() {
 	};
 	
 	this.updateLevelSelection = function() {
-		//highlight levelselected
-		this.groupManager.highlightLevel(this.levelSelected);
-
 		var $parent = this;
 		
 		window.onkeyup = function(e) {
-
-			console.log("level: " + $parent.levelSelected);
 			var code = e.keyCode ? e.keyCode : e.which;
 			if(code == 37)
 			{
