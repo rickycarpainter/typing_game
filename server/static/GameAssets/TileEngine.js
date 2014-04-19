@@ -31,14 +31,15 @@ function TileEngine(gameController) {
 		//draw carrots and other items first
 		for(var i = 0; i < this.mapItems.length; i++) {
 			
-			this.mapItems[i].draw();
+			this.mapItems[i].draw(i);
 		
 		}
 		
 		//then draw the tunnel
 		this.tunnel.draw();
 		
-		promptManager.init();
+		promptManager.init(); //draws the prompts
+		
 		//then draw the player so the player is on top of everything
 		this.player.draw();
 		
@@ -109,8 +110,8 @@ function TileEngine(gameController) {
 			mapitem.posX = mapitems[i].pos_x;
 			mapitem.posY = mapitems[i].pos_y;
 			mapitem.width = mapitems[i].width;
-			mapitem.height = mapitems[i].height;
-			mapitem.setAnimation();			
+			mapitem.height = mapitems[i].height;		
+			mapitem.setAnimation();	
 			
 			if(playerAt === i) {
 				this.player = mapitem;
@@ -138,6 +139,9 @@ function TileEngine(gameController) {
 		
 		$("#player").x(this.player.posX * 36 + this.player.drawOffsetX);
 		$("#player").y(this.player.posY * 36 + this.player.drawOffsetY);
+		
+		var collision = this.checkItemCollision();
+		
 	};
 	
 	//Returns the name of the mapitem the player collided with. Returns "None" if there was no collision.
@@ -145,21 +149,24 @@ function TileEngine(gameController) {
 	
 		if(this.player.posX == this.tunnel.posX &&
 			this.player.posY == this.tunnel.posY) {
-				return "Tunnel";			
+				return "tunnel";			
 		}
 		
 		for(var i = 0; i < this.mapItems.length; i++) {
 			
 			if(this.player.posX == this.mapItems[i].posX &&
-				this.player.posY == this.mapItems[i].posY) {
+				this.player.posY == this.mapItems[i].posY &&
+				!this.mapItems[i].collected) {
 				
 				//for now, just return carrot, because that is the only other mapitem we have!
-				return "Carrot";
+				this.mapItems[i].collected = true;
+				this.player.carrots++;
+				return this.mapItem[i].id; // returns the carrot's id
 			}
 		
 		}
-	
-		return "None";
+		
+		return "none";
 	};
 	
 	

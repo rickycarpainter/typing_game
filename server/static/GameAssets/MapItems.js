@@ -65,7 +65,8 @@ Collectable.prototype = new MapItem(); //Inherit from MapItem
 //----------------------------------------------------------------------------
 // Carrot Class
 function Carrot() {
-
+	this.id = null;
+	
 	this.setAnimation = function() {
 		this.animation = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/textures.png",
 						numberOfFrame: 1,
@@ -76,11 +77,12 @@ function Carrot() {
 					
 	}
 	
-	this.draw = function() {
+	this.draw = function(id) {
 		
+		this.id = "#carrot" + id.toString();
 		var posX = 36 * this.posX + 4;
 		var posY = 36 * this.posY + 13;
-		$("#mapObjects").addSprite( "carrot", {animation: this.animation,
+		$("#mapObjects").addSprite( "carrot" + id.toString(), {animation: this.animation,
 								width: this.width,
 								height: this.height,
 								posx: posX,
