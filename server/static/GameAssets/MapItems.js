@@ -41,7 +41,7 @@ function Player() {
 								posy: posY 
 								});	
 								
-		$("#player").scale(0.5);
+		$("#player").scale(0.75);
 	
 	}
 
