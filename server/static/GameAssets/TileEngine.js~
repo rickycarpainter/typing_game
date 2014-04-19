@@ -160,6 +160,8 @@ function TileEngine(gameController) {
 				
 				//for now, just return carrot, because that is the only other mapitem we have!
 				this.mapItems[i].collected = true;
+				this.player.carrots++;
+				$(this.mapItem[i].id).hide();
 				return this.mapItem[i].id; // returns the carrot's id
 			}
 		

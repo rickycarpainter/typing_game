@@ -213,6 +213,7 @@ function GameManager() {
 				}
 			
 				if(reset) {
+					console.log("resetting keys");
 					$parent.groupManager.resetKeys();
 				}
 			

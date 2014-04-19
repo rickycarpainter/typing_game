@@ -77,12 +77,12 @@ function Carrot() {
 					
 	}
 	
-	this.draw = function(id) {
+	this.draw = function(ID) {
 		
-		this.id = "#carrot" + id.toString();
+		this.id = "#carrot" + ID.toString();
 		var posX = 36 * this.posX + 4;
 		var posY = 36 * this.posY + 13;
-		$("#mapObjects").addSprite( "carrot" + id.toString(), {animation: this.animation,
+		$("#mapObjects").addSprite( "carrot" + ID.toString(), {animation: this.animation,
 								width: this.width,
 								height: this.height,
 								posx: posX,
