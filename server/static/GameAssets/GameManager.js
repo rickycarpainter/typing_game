@@ -183,7 +183,7 @@ function GameManager() {
 						$parent.tileEngine.movePlayer(-1,0);
 						break;
 					case "right":
-						$parent.tileEngine.movePlayer(0,1);
+						$parent.tileEngine.movePlayer(1,0);
 						break;				
 					case "up":
 						$parent.tileEngine.movePlayer(0,-1);

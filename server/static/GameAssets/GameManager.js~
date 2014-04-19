@@ -194,7 +194,7 @@ function GameManager() {
 				}
 			
 				if(dir != "none") {
-					$parent.gameController.randomizeKeys();
+					$parent.groupManager.resetKeys();
 				}
 				//if($parent.gameController.queryKey(code))//if button matched
 				//{
