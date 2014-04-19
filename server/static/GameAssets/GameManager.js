@@ -176,34 +176,41 @@ function GameManager() {
 			if(code >= 65 && code <= 90)//if valid button pushed
 			{
 				var dir = $parent.gameController.queryKey(code);
+				var reset = false;
 				
 				switch(dir) {
 				
+					
 					case "left":
 						if($parent.tileEngine.canMoveLeft($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(-1,0);
+							reset = true;
 						}
 						break;
 					case "right":
 						if($parent.tileEngine.canMoveRight($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(1,0);
+							reset = true;
 						}
 						break;				
 					case "up":
 						if($parent.tileEngine.canMoveUp($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(0,-1);
+							reset = true;
 						}
 						break;
 					case "down":
 						if($parent.tileEngine.canMoveDown($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(0,1);
+							reset = true;
 						}
 						break;				
 				}
 			
-				if(dir != "none") {
+				if(reset) {
 					$parent.groupManager.resetKeys();
 				}
+			
 				//if($parent.gameController.queryKey(code))//if button matched
 				//{
 					//animate button down

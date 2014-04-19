@@ -185,17 +185,17 @@ function GameManager() {
 						}
 						break;
 					case "right":
-						if($parent.tileEngine.canMoveLeft($parent.tileEngine.player)) {
+						if($parent.tileEngine.canMoveRight($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(1,0);
 						}
 						break;				
 					case "up":
-						if($parent.tileEngine.canMoveLeft($parent.tileEngine.player)) {
+						if($parent.tileEngine.canMoveUp($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(0,-1);
 						}
 						break;
 					case "down":
-						if($parent.tileEngine.canMoveLeft($parent.tileEngine.player)) {
+						if($parent.tileEngine.canMoveDown($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(0,1);
 						}
 						break;				
