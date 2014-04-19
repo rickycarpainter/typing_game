@@ -116,7 +116,6 @@ function PromptManager(gameController, tileEngine) {
 			
 			var playerX = this.tileEngine.player.posX;
 			var playerY = this.tileEngine.player.posY;
-			
 			this.gameController.randomizeKeys();
 			
 			$("#leftKey").setAnimation(this.keyUpAnimation)

@@ -83,9 +83,9 @@ function TileEngine(gameController) {
 			async: false,
 			data: {id:mapID},
 			success: function (result) {
-				console.log(result);
+				//console.log(result);
 				$parent.importMap(result);
-				console.log("Map imported!");
+				//console.log("Map imported!");
 				return true;
 			}
 		});
