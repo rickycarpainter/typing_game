@@ -167,16 +167,16 @@ function TileEngine(gameController) {
 		return (mapItem != null && //player exists
 					this.map != null && //map exists
 					mapItem.posX >= 0 && mapItem.posX < this.map.width && // player posX in map
-					mapItem.posY + 1 >= 0 && mapItem.posY + 1 < this.map.height && // player posY + 1 in map
-					this.map.mask[mapItem.posX][mapItem.posY + 1] != 2); // 2 is the collidable gID for the mask 
+					mapItem.posY - 1 >= 0 && mapItem.posY - 1 < this.map.height && // player posY + 1 in map
+					this.map.mask[mapItem.posX][mapItem.posY - 1] != 2); // 2 is the collidable gID for the mask 
 	};
 	
 	this.canMoveDown = function(mapItem) {
 		return (mapItem != null && //player exists
 					this.map != null && //map exists
 					mapItem.posX >= 0 && mapItem.posX < this.map.width && // player posX in map
-					mapItem.posY - 1 >= 0 && mapItem.posY - 1 < this.map.height && // player posY + 1 in map
-					this.map.mask[mapItem.posX][mapItem.posY - 1] != 2); // 2 is the collidable gID for the mask 	
+					mapItem.posY + 1 >= 0 && mapItem.posY + 1 < this.map.height && // player posY + 1 in map
+					this.map.mask[mapItem.posX][mapItem.posY + 1] != 2); // 2 is the collidable gID for the mask 	
 	};
 	
 	this.canMoveLeft = function(mapItem) {

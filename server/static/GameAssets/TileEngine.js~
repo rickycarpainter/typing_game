@@ -135,8 +135,8 @@ function TileEngine(gameController) {
 		this.player.posX = this.player.posX + x;
 		this.player.posY = this.player.posY + y;
 		
-		$("#player").x(this.player.posX * 36);
-		$("#player").y(this.player.posY * 36);
+		$("#player").x(this.player.posX * 36 + this.player.drawOffsetX);
+		$("#player").y(this.player.posY * 36 + this.player.drawOffsetY);
 	};
 	
 	//Returns the name of the mapitem the player collided with. Returns "None" if there was no collision.
