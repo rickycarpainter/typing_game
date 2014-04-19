@@ -180,16 +180,24 @@ function GameManager() {
 				switch(dir) {
 				
 					case "left":
-						$parent.tileEngine.movePlayer(-1,0);
+						if($parent.tileEngine.canMoveLeft($parent.tileEngine.player)) {
+							$parent.tileEngine.movePlayer(-1,0);
+						}
 						break;
 					case "right":
-						$parent.tileEngine.movePlayer(1,0);
+						if($parent.tileEngine.canMoveRight($parent.tileEngine.player)) {
+							$parent.tileEngine.movePlayer(1,0);
+						}
 						break;				
 					case "up":
-						$parent.tileEngine.movePlayer(0,-1);
+						if($parent.tileEngine.canMoveUp($parent.tileEngine.player)) {
+							$parent.tileEngine.movePlayer(0,-1);
+						}
 						break;
 					case "down":
-						$parent.tileEngine.movePlayer(0,1);
+						if($parent.tileEngine.canMoveDown($parent.tileEngine.player)) {
+							$parent.tileEngine.movePlayer(0,1);
+						}
 						break;				
 				}
 			
