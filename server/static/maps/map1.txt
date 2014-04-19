@@ -31,7 +31,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/..\/client\/images\/mask.png",
+         "image":"images\/mask.png",
          "imageheight":36,
          "imagewidth":72,
          "margin":0,
@@ -46,7 +46,7 @@
         }, 
         {
          "firstgid":3,
-         "image":"..\/..\/..\/client\/images\/textures.png",
+         "image":"/textures.png",
          "imageheight":404,
          "imagewidth":180,
          "margin":0,
