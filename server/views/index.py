@@ -36,7 +36,11 @@ def game():
 def downloadMap():
 	mapID = int(request.form['id'])
 	dac = database_access()
-	return dac.get_map_with_items(mapID)
+	result = dac.get_map_with_items(mapID)
+	if (result):
+            return result
+        else:
+            return jsonify(result="Map Not Found")
 
 @index.route('/Game/HighestUserLevel', methods=['GET'])
 def highestLevel():
