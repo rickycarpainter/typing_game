@@ -41,7 +41,7 @@ function Player() {
 								posy: posY 
 								});	
 								
-		$("#player").scale(0.75);
+		$("#player").scale(0.5);
 	
 	}
 
@@ -77,7 +77,7 @@ function Carrot() {
 		
 		var posX = 36 * this.posX + 4;
 		var posY = 36 * this.posY + 13;
-		$("#mapObjects").addSprite( "player", {animation: this.animation,
+		$("#mapObjects").addSprite( "carrot", {animation: this.animation,
 								width: this.width,
 								height: this.height,
 								posx: posX,
@@ -108,7 +108,7 @@ function Tunnel() {
 		
 		var posX = 36 * this.posX - 4;
 		var posY = 36 * this.posY + 1;
-		$("#mapObjects").addSprite( "player", {animation: this.animation,
+		$("#mapObjects").addSprite( "tunnel", {animation: this.animation,
 								width: this.width,
 								height: this.height,
 								posx: posX,
