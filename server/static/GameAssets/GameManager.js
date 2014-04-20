@@ -160,7 +160,7 @@ function GameManager() {
 			async: false,
 			type: 'GET',
 			success: function (result) {
-				$parent.totalLevels = $parent.getPlayerLevels;
+				$parent.getPlayerLevels;
 				return true;
 			}
 		});
