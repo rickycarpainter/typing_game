@@ -2,8 +2,6 @@ body {
 	background-color: #341717;
 	margin: 0;
 	position: center;
-	margin-right: auto;
-	margin-left: auto;
 	font-family: 'Nunito', sans-serif;
 }
 
@@ -28,8 +26,7 @@ header{
 
 .login
 {
-	position: relative;
-	left: 800px;
+	float: right;
 }
 
 #hud
@@ -61,6 +58,7 @@ header{
 {
 	float: right;
 	cursor: pointer;
+	margin-left: 20px;
 }
 
 .clear-all

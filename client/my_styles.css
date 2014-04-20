@@ -14,7 +14,16 @@ html { background-color: #000000; }
 #connection
 {
 	position: relative;
-	left: 1050px;
+	width: auto;
+	min-width: 300px;
+	margin: auto;
+}
+
+#anchor
+{
+	position: relative;
+	margin-left: auto;
+	margin-right: 10%;
 	width: 30%;
 }
 
