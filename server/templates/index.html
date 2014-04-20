@@ -23,7 +23,7 @@
 			<img id="title" src="{{ url_for('static', filename='title.png') }}" title=""  height="150" width="300"/>
 			
 			{% if login %}
-			<a href="/auth/logout" class = "login">Logout</a>
+			<a href="/auth/logout" class = "login"><img src="/static/images/sign-out-with-twitter-gray.png"></a>
 			{% else %}
 			<a href="/auth/login" class = "login"><img src="/static/images/sign-in-with-twitter-gray.png"></a>
 			{% endif %}
