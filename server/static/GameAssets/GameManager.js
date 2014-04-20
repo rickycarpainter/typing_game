@@ -21,8 +21,7 @@ function GameManager() {
 	//for game mode
 	this.score = null;
 	this.dialogQueue = [];
-	this.currentLevelMaxCarrots = 0;
-	this.canExit = false;
+	this.currentLevelMaxCarrots = null;
 	
 	this.init = function(gameWidth, gameHeight) {
 
@@ -36,6 +35,8 @@ function GameManager() {
 
 		this.levelSelected = 1;
 		this.totalLevels = 10;
+
+		this.currentLevelMaxCarrots = 0;
 	};
 	
 	this.update = function() {
@@ -78,7 +79,7 @@ function GameManager() {
 			{
 				$parent.selectedMode = "random";
 			}
-			else if ((code == 13 || code == 32) && ($parent.selectedMode === "story"))
+			else if ((code == 13 || code == 32) && ($parent.selectedMode === "story"))//load levels
 			{
 				console.log("story mode selected");
 				
@@ -180,37 +181,50 @@ function GameManager() {
 			{
 				var dir = $parent.gameController.queryKey(code);
 				var reset = false;
+				var collision = "none";
 				
 				switch(dir) {
 					
 					case "left":
 						if($parent.tileEngine.canMoveLeft($parent.tileEngine.player)) {
-							$parent.tileEngine.movePlayer(-1,0);
+							collision = $parent.tileEngine.movePlayer(-1,0);
 							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;
 					case "right":
 						if($parent.tileEngine.canMoveRight($parent.tileEngine.player)) {
-							$parent.tileEngine.movePlayer(1,0);
+							collision = $parent.tileEngine.movePlayer(1,0);
 							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;				
 					case "up":
 						if($parent.tileEngine.canMoveUp($parent.tileEngine.player)) {
-							$parent.tileEngine.movePlayer(0,-1);
+							collision = $parent.tileEngine.movePlayer(0,-1);
 							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;
 					case "down":
 						if($parent.tileEngine.canMoveDown($parent.tileEngine.player)) {
-							$parent.tileEngine.movePlayer(0,1);
+							collision = $parent.tileEngine.movePlayer(0,1);
 							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;				
+				}
+
+				if($parent.tileEngine.player.carrots == $parent.currentLevelMaxCarrots)//if all carrots gathered
+				{
+					//visul signal that player can now exit through tunnel
+					$parent.tileEngine.highlightTunnel();
+
+					if(collision == "tunnel")//if level beaten
+					{
+						//LOAD NEW MAP HERE OR CHANGE STATE TO GAMEBEATEN?
+						
+					}
 				}
 			
 				if(reset) {

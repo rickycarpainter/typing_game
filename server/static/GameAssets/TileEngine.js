@@ -176,6 +176,12 @@ function TileEngine(gameController) {
 		
 		return "none";
 	};
+
+	//highlights the tunnel once the player can exit through it
+	this.highlightTunnel = function(){
+		//print arrow just above tunnel location
+		
+	};
 	
 	
 //--------------------------------MOVEMENT CHECKS----------------------------------------------------------------
