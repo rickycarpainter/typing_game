@@ -63,7 +63,6 @@ def alllevels():
 def incrementLevel():
     if current_user.is_authenticated():
         current_user.level = current_user.level + 1
-        return true;
     
 		
 	
