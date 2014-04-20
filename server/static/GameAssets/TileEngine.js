@@ -9,6 +9,9 @@ function TileEngine(gameController) {
 	
 	this.mapItemIDCounter = 0;
 
+	//max carrots for current map
+	this.carrotMax = 0;
+
 
 //--------------------------------------------------------------------------------------
 // This section contains functions for drawing maps and mapitems
@@ -81,6 +84,8 @@ function TileEngine(gameController) {
 
 	this.loadMapItems = function(mapitems) {
 		this.mapItems = new Array();
+		//variable to count number of carrots
+		this.carrotMax = 0;
 		
 		for(var i = 0; i < mapitems.length; i++) {
 			
@@ -96,6 +101,7 @@ function TileEngine(gameController) {
 					
 				case "Carrot":
 					mapitem = new Carrot();
+					this.carrotMax++;
 					break;
 
 				case "Tunnel":
@@ -141,6 +147,7 @@ function TileEngine(gameController) {
 		$("#player").y(this.player.posY * 36 + this.player.drawOffsetY);
 		
 		var collision = this.checkItemCollision();
+		return collision;
 		
 	};
 	

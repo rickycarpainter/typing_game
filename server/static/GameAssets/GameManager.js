@@ -21,6 +21,8 @@ function GameManager() {
 	//for game mode
 	this.score = null;
 	this.dialogQueue = [];
+	this.currentLevelMaxCarrots = 0;
+	this.canExit = false;
 	
 	this.init = function(gameWidth, gameHeight) {
 
@@ -144,6 +146,7 @@ function GameManager() {
 				$parent.currentGameState = $parent.GameStates.PlayMode;
 				$parent.currentPlayModeState = $parent.PlayModeState.Playing;
 				$parent.score = 0;
+				$parent.currentLevelMaxCarrots = $parent.tileEngine.carrotMax;
 			}
 		};
 	};
