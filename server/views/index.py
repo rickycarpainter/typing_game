@@ -61,10 +61,12 @@ def alllevels():
 
 @index.route('/Game/NewLevelUnlocked', methods=['GET'])
 def incrementLevel():
-	if current_user.is_authenticated():
-		old = current_user.level
-		current_user.level = old + 1
-	return jsonify(result="true")
+    if current_user.is_authenticated():
+        old = current_user.level
+	new = old + 1
+	dac = database_access()
+	dac.update_user_level(current_user.username, new)
+    return jsonify(result="true")
     
 		
 	
