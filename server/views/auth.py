@@ -3,7 +3,7 @@ from flask_oauth import OAuth
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
 
 from config import *
-from models import *
+from models.models import *
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -18,7 +18,9 @@ login_manager.init_app(app)
 """
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    result = User.query.get(int(user_id))
+    print ("Loading User: " + str(result))
+    return result
 
 oauth = OAuth()
 twitter = oauth.remote_app('twitter',
