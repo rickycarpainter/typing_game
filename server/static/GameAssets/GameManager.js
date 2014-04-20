@@ -44,11 +44,6 @@ function GameManager() {
 			case this.GameStates.ModeSelection: 	this.updateModeSelection();		break;
 			case this.GameStates.LevelSelection:   	this.updateLevelSelection();	break;
 		}
-		
-		if (this.tileEngine.player != null)
-		{
-			$("#hud").html("Carrots: " + this.tileEngine.player.carrots.toString());
-		}
 	};
 	
 	this.updateTitlescreen = function() {
@@ -184,29 +179,32 @@ function GameManager() {
 				var reset = false;
 				
 				switch(dir) {
-				
 					
 					case "left":
 						if($parent.tileEngine.canMoveLeft($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(-1,0);
+							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;
 					case "right":
 						if($parent.tileEngine.canMoveRight($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(1,0);
+							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;				
 					case "up":
 						if($parent.tileEngine.canMoveUp($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(0,-1);
+							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;
 					case "down":
 						if($parent.tileEngine.canMoveDown($parent.tileEngine.player)) {
 							$parent.tileEngine.movePlayer(0,1);
+							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;				

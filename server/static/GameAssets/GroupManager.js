@@ -6,9 +6,14 @@ function GroupManager(gameController, tileEngine) {
 
 	this.totalLevels = null;
 
+	//level selection
 	this.levelNumber = new Array();
 	this.leftArrow = null;
 	this.rightArrow = null;
+
+	//play mode
+	this.carrotCounterIcon = null;
+	this.carrotNumber = new Array();
 	
 	this.init = function(gameWidth, gameHeight) {
 		
@@ -124,6 +129,80 @@ function GroupManager(gameController, tileEngine) {
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
 
+		this.carrotCounterIcon = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotCounter.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 0,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[0] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 390,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[1] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 0,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[2] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 39,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[3] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 78,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[4] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 117,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[5] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 156,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[6] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 195,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[7] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 234,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[8] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 273,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[9] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 312,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		this.carrotNumber[10] = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/carrotNumbers.png",
+					numberOfFrame: 1,
+					delta: 130,
+					offsetx: 351,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+
+
 
 					
 		$.playground()
@@ -194,10 +273,19 @@ function GroupManager(gameController, tileEngine) {
 			.addGroup("mapBackground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("mapObjects", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
 			.addGroup("mapForeground", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
-			.addGroup("hud", {width: gameWidth, height: gameHeight, posx: 0, posy: 0}).end()
-				
-			$("#hud").append("<div id='hud' style='color: white; width: 100px; position: absolute; font-family: verdana, sans-serif;'></div>");
-			//ADD OTHER GROUPS HERE EX: HUD GROUP, OTHER SCREENS			
+			.addGroup("hud", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
+				.addSprite("carrotCounter", {animation: this.carrotCounterIcon,
+										width: 157,
+										height: 36,
+										posx: 0,
+										posy: 0 
+										})
+				.addSprite("carrotNumber", {animation: this.carrotNumber[0],
+										width: 39,
+										height: 36,
+										posx: 0,
+										posy: 125 
+										}).end()			
 
 			$("#selectionScreen").hide();
 			$("#levelSelection").hide();
@@ -255,6 +343,11 @@ function GroupManager(gameController, tileEngine) {
 		 {
 		 	$("#rightArrow").setAnimation(this.rightArrow);
 		 }
+	};
+
+	this.updateCarrotNumber = function(givenNum){
+		
+		$("#carrotNumber").setAnimation(this.carrotNumber[givenNum]);
 	};
 
 	//for mode selection
