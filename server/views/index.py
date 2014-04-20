@@ -49,7 +49,6 @@ def highestLevel():
         highest_level = current_user.level
         print ("Highest Level: [" + str(highest_level) + "]")
         return jsonify(result=highest_level)
-    print ("User not authenticated. Returning 1")
     return jsonify(result=1)
         
 @index.route('/Game/AllLevels', methods=['GET'])
@@ -62,6 +61,7 @@ def alllevels():
 @index.route('/Game/NewLevelUnlocked', methods=['GET'])
 def incrementLevel():
     if current_user.is_authenticated():
+        print ("Valid user: Updating")
         old = current_user.level
 	new = old + 1
 	dac = database_access()
