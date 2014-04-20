@@ -59,7 +59,7 @@ def alllevels():
     print ("All  levels: [" + str(response) + "]") 
     return jsonify(result=response)
 
-@index.route('/Game/NewLevelUnlocked')
+@index.route('/Game/NewLevelUnlocked', methods=['GET'])
 def incrementLevel():
     if current_user.is_authenticated():
         #current_user.level = current_user.level + 1
