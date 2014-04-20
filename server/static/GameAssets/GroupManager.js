@@ -289,6 +289,7 @@ function GroupManager(gameController, tileEngine) {
 
 			$("#selectionScreen").hide();
 			$("#levelSelection").hide();
+			$("#hud").hide();
 	};
 	
 	this.update = function() {
@@ -316,6 +317,7 @@ function GroupManager(gameController, tileEngine) {
 		this.resetKeys();
 		
 		$("#mapgroup").fadeIn("medium");
+		$("#hud").fadeIn("medium");
 		
 	};
 	
