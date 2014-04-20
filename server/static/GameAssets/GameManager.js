@@ -160,7 +160,8 @@ function GameManager() {
 			async: false,
 			type: 'GET',
 			success: function (result) {
-				$parent.getPlayerLevels;
+				console.log("Update succeded");
+				$parent.getPlayerLevels();
 				return true;
 			}
 		});
