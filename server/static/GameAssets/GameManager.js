@@ -161,6 +161,7 @@ function GameManager() {
 			type: 'GET',
 			success: function (result) {
 				console.log("Update succeded");
+				console.log(result);
 				$parent.getPlayerLevels();
 				return true;
 			}
