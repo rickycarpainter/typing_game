@@ -30,6 +30,8 @@ def game():
             name = current_user.name
         else:
             name = current_user.username
+    print ("Login status: " + str(login))
+    print ("Username: " + str(name))
     return render_template('Game.html', login=login, name=name)
 
 @index.route('/Game/DownloadMap', methods=['POST'])
