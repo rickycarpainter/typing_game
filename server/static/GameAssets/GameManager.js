@@ -84,15 +84,7 @@ function GameManager() {
 				console.log("story mode selected");
 				
 				//Query the server for the highest level reached for the user
-				$.ajax({
-					url: '/Game/HighestUserLevel',
-					async: false,
-					type: 'GET',
-					success: function (result) {
-						$parent.levelSelected = result.result;
-						return true;
-					}
-				});
+				$parent.getPlayerLevels();
 				
 				//Query the server for the total number of levels
 				$.ajax({
@@ -160,6 +152,32 @@ function GameManager() {
 			case this.PlayModeState.HighScores: 	this.playing(); 	break;
 		}
 	};
+	
+	this.updatePlayerLevels = function() {
+		var $parent = this;
+		$.ajax({
+			url: '/Game/NewLevelUnlocked',
+			async: false,
+			type: 'GET',
+			success: function (result) {
+				$parent.totalLevels = $parent.getPlayerLevels;
+				return true;
+			}
+		});
+	};
+	
+	this.getPlayerLevels = function() {
+		var $parent = this;
+		$.ajax({
+			url: '/Game/HighestUserLevel',
+			async: false,
+			type: 'GET',
+			success: function (result) {
+				$parent.levelSelected = result.result;
+				return true;
+			}
+		});
+	};
 
 	this.playing = function(){
 		//check for dialog on queue
@@ -223,7 +241,7 @@ function GameManager() {
 					if(collision == "tunnel")//if level beaten
 					{
 						//LOAD NEW MAP HERE OR CHANGE STATE TO GAMEBEATEN?
-						
+						$parent.updatePlayerLevels();
 					}
 				}
 			
