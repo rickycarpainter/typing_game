@@ -40,8 +40,9 @@ def login():
         next_url = request.args.get('next') or url_for('index')
         return redirect(next_url)
     next_url=request.args.get('next') or request.referrer or None
-    return twitter.authorize(callback=url_for('.oauth',
-                                              next=next_url))
+    result = twitter.authorize(callback=url_for('.oauth',next=next_url))
+    print ("Attempted login: " + str(result))
+    return result
 
 @auth.route('/oauth')
 @twitter.authorized_handler
@@ -82,4 +83,5 @@ def get_twitter_token():
     if current_user.is_authenticated():
         return (current_user.token, current_user.secret)
     else:
+        print ("User is not authenticated")
         return None
