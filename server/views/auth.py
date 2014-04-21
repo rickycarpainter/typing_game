@@ -58,7 +58,7 @@ def oauth(resp):
         user = User(resp['screen_name'], resp['oauth_token'], resp['oauth_token_secret'], 1)
         db.session.add(user)
         db.session.commit()
-        login_user(user)
+        login_user(user,remember=True)
         print ("Login successful")
         resp = twitter.get('/1.1/users/show.json?screen_name=' + user.username)
         if resp.status == 200:
@@ -67,7 +67,7 @@ def oauth(resp):
             db.session.add(user)
             db.session.commit()
     else:
-        login_user(user)
+        login_user(user,remember=True)
         auth = None
         if current_user.is_authenticated():
             auth = True
