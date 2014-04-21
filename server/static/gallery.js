@@ -40,6 +40,12 @@ document.body.onload = function()
 		
 		thumbnail.data = img_alt;
 		
+		if (i == 0)
+		{
+			image_container.style.backgroundImage = this.style.backgroundImage;
+			description.innerHTML = this.data;
+		}
+		
 		
 		thumbnail.onclick = function()
 		{
