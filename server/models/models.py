@@ -3,7 +3,7 @@ from config import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True)
-    name = db.Column(db.String(100),)
+    name = db.Column(db.String(100))
     token = db.Column(db.String(100))
     secret = db.Column(db.String(100))
     level = db.Column(db.Integer)
