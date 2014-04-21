@@ -244,6 +244,16 @@ function GameManager() {
 					{
 						//LOAD NEW MAP HERE OR CHANGE STATE TO GAMEBEATEN?
 						$parent.updatePlayerLevels();
+						$parent.tileEngine.resetMap();
+						//this is probably gonna break stuff
+						//increment level 
+						if($parent.levelSelected < $parent.totalLevels)
+						{
+							$parent.levelSelected = $parent.levelSelected+1;
+						}
+						//bring up level screen and reset stuff
+						$parent.groupManager.gameToLevels($parent.levelSelected);
+						$parent.currentGameState = $parent.GameStates.LevelSelection;
 					}
 				}
 			

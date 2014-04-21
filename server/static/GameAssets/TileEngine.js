@@ -60,6 +60,10 @@ function TileEngine(gameController) {
 	this.clearMapItems = function() {
 		
 	};
+
+	this.resetMap = function(){
+
+	};
 	
 //--------------------------------------------------------------------------------------
 // This section contains functions for downloading and importing maps

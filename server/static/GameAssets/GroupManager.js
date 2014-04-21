@@ -257,7 +257,7 @@ function GroupManager(gameController, tileEngine) {
 				.addSprite("levelBanner", {animation: levelBanner,
 										width: 430,
 										height: 76,
-										posx: 190,
+										posx: 175,
 										posy: 20 
 										})
 				.addSprite("leftArrow", {animation: this.leftArrow,
@@ -373,5 +373,13 @@ function GroupManager(gameController, tileEngine) {
 	this.updateCarrotNumber = function(givenNum){
 		
 		$("#carrotNumber").setAnimation(this.carrotNumber[givenNum]);
+	};
+
+	this.gameToLevels = function(levelSelected){
+		$("#mapgroup").fadeOut("medium");
+		$("#hud").fadeOut("medium");
+
+		$("#levelSelection").fadeIn("medium");
+		this.updateLevelNumber(levelSelected);
 	};
 }
