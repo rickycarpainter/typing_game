@@ -70,6 +70,7 @@ def oauth(resp):
         login_user(user,remember=True)
         auth = None
         if current_user.is_authenticated():
+            print ("User IS authenticated")
             auth = True
         print ("Else login successful")
         print ("User authentication: " + str(auth))

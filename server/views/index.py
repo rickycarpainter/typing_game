@@ -13,6 +13,7 @@ def show():
     login = False
     name = None
     if current_user.is_authenticated():
+        print ("User IS authenticated!!")
         login = True 
         if current_user.name:
             name = current_user.name
