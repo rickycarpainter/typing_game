@@ -50,6 +50,7 @@ html { background-color: #000000; }
 		position: relative;
 		width: 75%;
 		background-size: contain;
+		background-repeat: no-repeat;
 	}
 
 
@@ -73,6 +74,7 @@ html { background-color: #000000; }
 		}
 
 	#thumbnail_container div {
+		background-size: contain;
 		background-position: 50% 50%;
 		background-repeat: no-repeat;
 	}
