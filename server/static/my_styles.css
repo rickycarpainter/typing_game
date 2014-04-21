@@ -51,7 +51,7 @@ html { background-color: #000000; }
 		width: 75%;
 	}
 	
-	#image_container img
+	#image_container backgroundImage
 	{
 		width: 100%;
 		max-height: 100%;
