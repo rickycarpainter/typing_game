@@ -17,32 +17,31 @@ db.session.add(i)
 #-----------------ADD MAP1 to DB------------------------------------------
 m = Maps(13,20,'static/maps/map1.txt')
 db.session.add(m)
-
-mi = MapItems(1,1,2,2)
+mi = MapItems(1,1,10,11)
 db.session.add(mi)
-mi = MapItems(1,2,5,6)
-db.session.add(mi)
-mi = MapItems(1,3,17,10)
+mi = MapItems(1,3,10,3)
 db.session.add(mi)
 
 #-----------------ADD MAP2 to DB------------------------------------------
 m = Maps(13,20,'static/maps/map2.txt')
 db.session.add(m)
-mi = MapItems(2,1,2,2)
+mi = MapItems(2,1,2,7)
 db.session.add(mi)
-mi = MapItems(2,2,5,6)
+mi = MapItems(2,2,8,7)
 db.session.add(mi)
-mi = MapItems(2,3,17,10)
+mi = MapItems(2,3,17,7)
 db.session.add(mi)
 
 #-----------------ADD MAP3 to DB------------------------------------------
 m = Maps(13,20,'static/maps/map3.txt')
 db.session.add(m)
-mi = MapItems(3,1,2,2)
+mi = MapItems(3,1,2,6)
 db.session.add(mi)
-mi = MapItems(3,2,5,6)
+mi = MapItems(3,2,5,11)
 db.session.add(mi)
-mi = MapItems(3,3,17,10)
+mi = MapItems(3,2,13,4)
+db.session.add(mi)
+mi = MapItems(3,3,17,6)
 db.session.add(mi)
 
 #-----------------ADD MAP4 to DB------------------------------------------
