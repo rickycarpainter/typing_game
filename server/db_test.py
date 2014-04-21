@@ -17,9 +17,9 @@ db.session.add(i)
 #-----------------ADD MAP1 to DB------------------------------------------
 m = Maps(13,20,'static/maps/map1.txt')
 db.session.add(m)
-mi = MapItems(1,1,10,11)
+mi = MapItems(1,1,9,11)
 db.session.add(mi)
-mi = MapItems(1,3,10,3)
+mi = MapItems(1,3,9,3)
 db.session.add(mi)
 
 #-----------------ADD MAP2 to DB------------------------------------------
