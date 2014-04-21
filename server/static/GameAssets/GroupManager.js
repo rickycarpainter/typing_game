@@ -301,8 +301,9 @@ function GroupManager(gameController, tileEngine) {
 			$("#hud").hide();
 	};
 	
-	this.update = function() {
-	
+	this.updateTileEngine = function(newTileEngine) {
+		this.tileEngine = newTileEngine;
+		this.promptManager = new PromptManager(this.gameController, this.tileEngine);
 	};
 
 	this.titleToSelection = function(){

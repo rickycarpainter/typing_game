@@ -62,8 +62,6 @@ function TileEngine(gameController) {
 	};
 
 	this.resetMap = function(){
-		$(this.tunnel.id).hide();
-		$(this.player.id).hide();
 
 	};
 	
