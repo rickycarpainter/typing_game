@@ -12,6 +12,7 @@ function TileEngine(gameController) {
 	//max carrots for current map
 	this.carrotMax = 0;
 	//arrow animation for tunnel
+	this.arrow=false;
 	this.tunnelArrow = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/arrow.png",
 			numberOfFrame: 2,
 			delta: 41,
@@ -187,13 +188,17 @@ function TileEngine(gameController) {
 
 	//highlights the tunnel once the player can exit through it
 	this.highlightTunnel = function(){
-		//print arrow just above tunnel location
-		$("#hud").addSprite("tunnelArrow", {animation: this.tunnelArrow,
-										width: 41,
-										height: 42,
-										posx: this.tunnel.posx * 36,
-										posy: (this.tunnel.posy - 1)*36
-										}).end()
+		if(!this.arrow){
+			this.arrow = true;
+			//print arrow just above tunnel location
+			$("#hud").addSprite("tunnelArrow", {animation: this.tunnelArrow,
+											width: 41,
+											height: 42,
+											posx: (this.tunnel.posx*36),
+											posy: ((this.tunnel.posy-1)*36)
+											}).end()
+
+		}
 	};
 	
 	
