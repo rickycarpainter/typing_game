@@ -39,13 +39,19 @@ function GroupManager(gameController, tileEngine) {
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
 		var storybutton = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/storybutton.png",
 					numberOfFrame: 1,
-					delta: 230,
+					delta: 0,
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
 		var ucbutton = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/underconstructionbutton.png",
 					numberOfFrame: 1,
-					delta: 230,
+					delta: 0,
+					offsetx: 0,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		var modeBanner = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/modeSelectionBanner.png",
+					numberOfFrame: 1,
+					delta: 0,
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
@@ -53,6 +59,12 @@ function GroupManager(gameController, tileEngine) {
 		var levelButton = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/levelButton.png",
 					numberOfFrame: 1,
 					delta: 187,
+					offsetx: 0,
+					offsety: 0,
+					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
+		var levelBanner = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/levelSelectionBanner.png",
+					numberOfFrame: 1,
+					delta: 0,
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
@@ -234,6 +246,12 @@ function GroupManager(gameController, tileEngine) {
 										height: 400,
 										posx: 360,
 										posy: 40 
+										})
+				.addSprite("modeBanner", {animation: modeBanner,
+										width: 399,
+										height: 76,
+										posx: 120,
+										posy: 20 
 										}).end()
 			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
 				.addSprite("modebackground", {animation: modebackground,
@@ -247,6 +265,12 @@ function GroupManager(gameController, tileEngine) {
 										height: 258,
 										posx: 266,
 										posy: 140 
+										})
+				.addSprite("modeBanner", {animation: modeBanner,
+										width: 430,
+										height: 76,
+										posx: 120,
+										posy: 20 
 										})
 				.addSprite("leftArrow", {animation: this.leftArrow,
 										width: 64,
