@@ -201,9 +201,6 @@ function GroupManager(gameController, tileEngine) {
 					offsetx: 351,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
-
-
-
 					
 		$.playground()
 			.addGroup("titlescreen", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
@@ -308,50 +305,6 @@ function GroupManager(gameController, tileEngine) {
 		this.updateLevelNumber(initialSelection);
 	};
 
-	this.levelsToGame = function(){
-		//close level selection
-		$("#levelSelection").fadeOut("medium");
-		
-		this.tileEngine.drawMap();
-		this.tileEngine.drawMapItems(this.promptManager);
-		this.resetKeys();
-		
-		$("#mapgroup").fadeIn("medium");
-		$("#hud").fadeIn("medium");
-		
-	};
-	
-	this.resetKeys = function() {
-		this.promptManager.setKeysAndLetters();
-		this.promptManager.showKeysAndLetters();
-	};
-
-	this.updateLevelNumber = function(givenNum){
-
-		 $("#levelNumber").setAnimation(this.levelNumber[givenNum]);
-		 if(givenNum == 1)
-		 {
-		 	$("#leftArrow").setAnimation();
-		 }
-		 else if(givenNum == this.totalLevels)
-		 {
-		 	$("#rightArrow").setAnimation();
-		 }
-		 else if(givenNum == 2)
-		 {
-		 	$("#leftArrow").setAnimation(this.leftArrow);
-		 }
-		 else if(givenNum == (this.totalLevels-1))
-		 {
-		 	$("#rightArrow").setAnimation(this.rightArrow);
-		 }
-	};
-
-	this.updateCarrotNumber = function(givenNum){
-		
-		$("#carrotNumber").setAnimation(this.carrotNumber[givenNum]);
-	};
-
 	//for mode selection
 	this.highlightButton = function(mode){
 		if(mode === "story"){
@@ -364,6 +317,49 @@ function GroupManager(gameController, tileEngine) {
 			$("#sbutton").scale(1);
 			$("#ucbutton").scale(1.1);
 		}
+	};
 
+	this.levelsToGame = function(){
+		//close level selection
+		$("#levelSelection").fadeOut("medium");
+		
+		this.tileEngine.drawMap();
+		this.tileEngine.drawMapItems(this.promptManager);
+		this.resetKeys();
+		
+		$("#mapgroup").fadeIn("medium");
+		$("#hud").fadeIn("medium");
+		
+	};
+
+	this.updateLevelNumber = function(givenNum){
+
+		 $("#levelNumber").setAnimation(this.levelNumber[givenNum]);
+		 if(givenNum == 1)
+		 {
+		 	$("#leftArrow").setAnimation();
+		 }
+		 if(givenNum == this.totalLevels)
+		 {
+		 	$("#rightArrow").setAnimation();
+		 }
+		 else if(givenNum == 2)
+		 {
+		 	$("#leftArrow").setAnimation(this.leftArrow);
+		 }
+		 else if(givenNum == (this.totalLevels-1))
+		 {
+		 	$("#rightArrow").setAnimation(this.rightArrow);
+		 }
+	};
+	
+	this.resetKeys = function() {
+		this.promptManager.setKeysAndLetters();
+		this.promptManager.showKeysAndLetters();
+	};
+
+	this.updateCarrotNumber = function(givenNum){
+		
+		$("#carrotNumber").setAnimation(this.carrotNumber[givenNum]);
 	};
 }
