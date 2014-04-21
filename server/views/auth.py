@@ -75,7 +75,7 @@ def oauth(resp):
         print ("Else login successful")
         print ("User authentication: " + str(auth))
 
-    return redirect(next_url)
+    return redirect("http://key-hopper.com/Game")
 
 @auth.route("/logout")
 @login_required
