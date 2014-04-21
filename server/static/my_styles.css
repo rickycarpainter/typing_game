@@ -46,7 +46,7 @@ html { background-color: #000000; }
 	{
 		float: left;
 		border: 1px solid rgb(0,0,0);
-		height: 333px;
+		height: 300px;
 		position: relative;
 		width: 75%;
 		background-size: contain;
@@ -58,7 +58,6 @@ html { background-color: #000000; }
 	{
 		overflow: hidden;
 		float: right;
-		padding: 0;
 		position: relative;
 		width: 24%;
 	}
@@ -66,10 +65,9 @@ html { background-color: #000000; }
 		{
 			float: right;
 			cursor: pointer;
-			height: 105px;
-			margin: 0 10px 10px 0;
-			width: 100px;
-			padding: 0;
+			height: 100px;
+			margin-right: 10px;
+			width: 115px;
 			border-radius: .5em;
 		}
 
