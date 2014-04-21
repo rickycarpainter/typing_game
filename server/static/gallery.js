@@ -30,7 +30,6 @@ document.body.onload = function()
 	
 	for (var i = 0; i < gallery.length; i++)
 	{
-		console.log("images");
 		gallery[i].style.display = "none";
 		var img_src = gallery[i].src;
 		var img_alt = gallery[i].alt;
@@ -40,13 +39,6 @@ document.body.onload = function()
 		
 		thumbnail.data = img_alt;
 		
-		if (i == 0)
-		{
-			image_container.style.backgroundImage = this.style.backgroundImage;
-			description.innerHTML = this.data;
-		}
-		
-		
 		thumbnail.onclick = function()
 		{
 			image_container.style.backgroundImage = this.style.backgroundImage;
@@ -55,5 +47,11 @@ document.body.onload = function()
 		
 		thumbnail_container.appendChild(thumbnail);
 	}
+	
+	var src = gallery[0].src;
+	image_container.style.backgroundImage = "url(" + src + ")";
+	description.innerHTML = gallery[0].alt;
+	
+	
 
 };
