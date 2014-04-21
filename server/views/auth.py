@@ -68,7 +68,11 @@ def oauth(resp):
             db.session.commit()
     else:
         login_user(user)
+        auth = None
+        if current_user.is_authenticated():
+            auth = True
         print ("Else login successful")
+        print ("User authentication: " + str(auth))
 
     return redirect(next_url)
 
