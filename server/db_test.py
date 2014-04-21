@@ -17,11 +17,100 @@ db.session.add(i)
 #-----------------ADD MAP1 to DB------------------------------------------
 m = Maps(13,20,'static/maps/map1.txt')
 db.session.add(m)
+
 mi = MapItems(1,1,2,2)
 db.session.add(mi)
 mi = MapItems(1,2,5,6)
 db.session.add(mi)
 mi = MapItems(1,3,17,10)
+db.session.add(mi)
+
+#-----------------ADD MAP2 to DB------------------------------------------
+m = Maps(13,20,'static/maps/map2.txt')
+db.session.add(m)
+mi = MapItems(1,1,2,2)
+db.session.add(mi)
+mi = MapItems(1,2,5,6)
+db.session.add(mi)
+mi = MapItems(1,3,17,10)
+db.session.add(mi)
+
+#-----------------ADD MAP3 to DB------------------------------------------
+m = Maps(13,20,'static/maps/map3.txt')
+db.session.add(m)
+mi = MapItems(1,1,2,2)
+db.session.add(mi)
+mi = MapItems(1,2,5,6)
+db.session.add(mi)
+mi = MapItems(1,3,17,10)
+db.session.add(mi)
+
+#-----------------ADD MAP4 to DB------------------------------------------
+m = Maps(13,20,'static/maps/map4.txt')
+db.session.add(m)
+
+#player
+mi = MapItems(4,1,18,9)
+db.session.add(mi)
+
+#carrots
+mi = MapItems(4,2,14,9)
+db.session.add(mi)
+mi = MapItems(4,2,10,11)
+db.session.add(mi)
+mi = MapItems(4,2,6,11)
+db.session.add(mi)
+mi = MapItems(4,2,4,11)
+db.session.add(mi)
+mi = MapItems(4,2,3,8)
+db.session.add(mi)
+mi = MapItems(4,3,3,6)
+db.session.add(mi)
+mi = MapItems(4,2,1,2)
+db.session.add(mi)
+mi = MapItems(4,2,2,1)
+db.session.add(mi)
+mi = MapItems(4,2,9,3)
+db.session.add(mi)
+mi = MapItems(4,2,15,1)
+db.session.add(mi)
+
+#tunnel
+mi = MapItems(4,3,18,2)
+db.session.add(mi)
+
+#-----------------ADD MAP5 to DB------------------------------------------
+m = Maps(13,20,'static/maps/map5.txt')
+db.session.add(m)
+
+#player
+mi = MapItems(5,1,1,11)
+db.session.add(mi)
+
+#carrots
+mi = MapItems(5,2,1,1)
+db.session.add(mi)
+mi = MapItems(5,2,4,1)
+db.session.add(mi)
+mi = MapItems(5,2,4,11)
+db.session.add(mi)
+mi = MapItems(5,2,7,11)
+db.session.add(mi)
+mi = MapItems(5,2,7,1)
+db.session.add(mi)
+mi = MapItems(5,3,10,1)
+db.session.add(mi)
+mi = MapItems(5,2,10,11)
+db.session.add(mi)
+mi = MapItems(5,2,13,11)
+db.session.add(mi)
+mi = MapItems(5,2,13,1)
+db.session.add(mi)
+mi = MapItems(5,2,16,1)
+db.session.add(mi)
+
+#tunnel
+mi = MapItems(5,3,18,11)
 db.session.add(mi)
 
 U = User("SkyBear", "my_token", "my_secret", 5)
