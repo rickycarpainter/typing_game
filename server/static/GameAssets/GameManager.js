@@ -251,27 +251,7 @@ function GameManager() {
 					console.log("resetting keys");
 					$parent.groupManager.resetKeys();
 				}
-			
-				//if($parent.gameController.queryKey(code))//if button matched
-				//{
-					//animate button down
-					//move character
-					//check collision with object (carrot or hole)
-					//if collision
-						//if carrot
-							//add to score
-							//animate carrot to disappear
-						//if hole
-							//add to score
-							//animate victory dance or exit animation
-							//change mode to highscores
-						//return
-					//randomize keys in controller
-				//	$parent.gameController.randomizeKeys();
-					//draw buttons with random keys (only in directions without walls)
-				//}
 			}
-
 		};
 	};
 
