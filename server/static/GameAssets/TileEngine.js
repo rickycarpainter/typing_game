@@ -194,8 +194,8 @@ function TileEngine(gameController) {
 			$("#hud").addSprite("tunnelArrow", {animation: this.tunnelArrow,
 											width: 41,
 											height: 42,
-											posx: (this.tunnel.posx*36),
-											posy: ((this.tunnel.posy-1)*36)
+											posx: (this.tunnel.posX*36),
+											posy: ((this.tunnel.posY-1)*36)
 											}).end()
 
 		}
