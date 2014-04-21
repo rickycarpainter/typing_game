@@ -59,9 +59,8 @@ def oauth(resp):
         db.session.add(user)
         db.session.commit()
         login_user(user)
+        print ("Login successful")
         resp = twitter.get('/1.1/users/show.json?screen_name=' + user.username)
-        print resp.status
-        print resp.data
         if resp.status == 200:
             print resp.data['name']
             user.name = resp.data['name']
@@ -69,6 +68,7 @@ def oauth(resp):
             db.session.commit()
     else:
         login_user(user)
+        print ("Else login successful")
 
     return redirect(next_url)
 
