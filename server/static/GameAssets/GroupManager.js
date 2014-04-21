@@ -49,12 +49,6 @@ function GroupManager(gameController, tileEngine) {
 					offsetx: 0,
 					offsety: 0,
 					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
-		var modeBanner = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/modeSelectionBanner.png",
-					numberOfFrame: 1,
-					delta: 0,
-					offsetx: 0,
-					offsety: 0,
-					type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE});
 
 		var levelButton = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/levelButton.png",
 					numberOfFrame: 1,
@@ -246,12 +240,6 @@ function GroupManager(gameController, tileEngine) {
 										height: 400,
 										posx: 360,
 										posy: 40 
-										})
-				.addSprite("modeBanner", {animation: modeBanner,
-										width: 399,
-										height: 76,
-										posx: 120,
-										posy: 20 
 										}).end()
 			.addGroup("levelSelection", {width: gameWidth, height: gameHeight, posx: 0, posy: 0})
 				.addSprite("modebackground", {animation: modebackground,
@@ -266,10 +254,10 @@ function GroupManager(gameController, tileEngine) {
 										posx: 266,
 										posy: 140 
 										})
-				.addSprite("modeBanner", {animation: modeBanner,
+				.addSprite("levelBanner", {animation: levelBanner,
 										width: 430,
 										height: 76,
-										posx: 120,
+										posx: 190,
 										posy: 20 
 										})
 				.addSprite("leftArrow", {animation: this.leftArrow,
