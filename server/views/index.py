@@ -8,6 +8,15 @@ from models.database_access import *
 
 index = Blueprint('index', __name__)
 
+'''
+user authentication makes it all the way back to the home page after
+logging in, but as soon as the play button is hit, authentication disappears.
+I suspect it has something to do with using redirect from the auth.py.
+Redirect must also transfer authentication information, but when a fresh URL
+is requested, authentication is forgotten.
+'''
+
+
 @index.route('/')
 def show():
     login = False
