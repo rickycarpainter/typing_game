@@ -49,12 +49,7 @@ html { background-color: #000000; }
 		height: 333px;
 		position: relative;
 		width: 75%;
-	}
-	
-	#image_container backgroundImage
-	{
-		width: 100%;
-		max-height: 100%;
+		background-size: 100%;
 	}
 
 
