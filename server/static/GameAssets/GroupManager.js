@@ -280,7 +280,7 @@ function GroupManager(gameController, tileEngine) {
 				.addSprite("carrotNumber", {animation: this.carrotNumber[0],
 										width: 39,
 										height: 36,
-										posx: 125,
+										posx: 120,
 										posy: 0 
 										}).end()			
 
