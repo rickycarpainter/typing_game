@@ -22,6 +22,7 @@ function GameManager() {
 	this.score = null;
 	this.dialogQueue = [];
 	this.currentLevelMaxCarrots = null;
+	this.timer = null;
 	
 	this.init = function(gameWidth, gameHeight) {
 
@@ -37,6 +38,9 @@ function GameManager() {
 		this.totalLevels = 10;
 
 		this.currentLevelMaxCarrots = 0;
+		
+		this.timer = new StopWatch();
+		this.timer_started = false;
 	};
 	
 	this.update = function() {
@@ -46,6 +50,11 @@ function GameManager() {
 			case this.GameStates.TitleScreen: 		this.updateTitlescreen();		break;
 			case this.GameStates.ModeSelection: 	this.updateModeSelection();		break;
 			case this.GameStates.LevelSelection:   	this.updateLevelSelection();	break;
+		}
+		
+		if (this.timer_started == true)
+		{
+			$("#timer").innerHTML = "Time: " + this.timer.display();
 		}
 	};
 	
@@ -200,6 +209,11 @@ function GameManager() {
 			var code = e.keyCode ? e.keyCode : e.which;
 			if(code >= 65 && code <= 90)//if valid button pushed
 			{
+				if ($parent.timer_started == false)
+				{
+					$parent.timer_started = true;
+					$parent.timer.begin();
+				}
 				var dir = $parent.gameController.queryKey(code);
 				var reset = false;
 				var collision = "none";
@@ -251,6 +265,7 @@ function GameManager() {
 						//bring up level screen and reset stuff
 						$parent.groupManager.gameToLevels($parent.levelSelected);
 						$parent.currentGameState = $parent.GameStates.LevelSelection;
+						$parent.timer_started = false;
 					}
 				}
 			
