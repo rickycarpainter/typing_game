@@ -258,19 +258,19 @@ function TileEngine(gameController) {
 //----------------------------------------Scan for Objects around Player----------------------------------------
 	this.objectToLeft = function() {
 		return this.player != null && this.objectAt(this.player.posX - 1, this.player.posY);
-	}
+	};
 	
 	this.objectToRight = function() {
 		return this.player != null && this.objectAt(this.player.posX + 1, this.player.posY);
-	}
+	};
 
 	this.objectToUp = function() {
 		return this.player != null && this.objectAt(this.player.posX, this.player.posY - 1);	
-	}
+	};
 
 	this.objectToDown = function() {
 		return this.player != null && this.objectAt(this.player.posX, this.player.posY + 1);	
-	}
+	};
 	
 	this.objectAt = function(x,y) {
 		
@@ -294,7 +294,7 @@ function TileEngine(gameController) {
 		}
 		
 		return false;
-	}
+	};
 	
 
 }
