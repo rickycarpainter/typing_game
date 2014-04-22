@@ -41,6 +41,7 @@ function GameManager() {
 		
 		this.stopwatch = new StopWatch();
 		this.timer_started = false;
+		this.watch_container = document.getElementById("timer");
 	};
 	
 	this.update = function() {
@@ -55,9 +56,7 @@ function GameManager() {
 		if (this.timer_started == true)
 		{
 			var current_time = this.stopwatch.display();
-			console.log($("#timer").innerHTML);
-			var watch = document.getElementById("timer");
-			watch.innerHTML = "TIME: " + this.stopwatch.display();
+			this.watch_container.innerHTML = "TIME: " + this.stopwatch.display();
 		}
 	};
 	
@@ -269,6 +268,7 @@ function GameManager() {
 						$parent.groupManager.gameToLevels($parent.levelSelected);
 						$parent.currentGameState = $parent.GameStates.LevelSelection;
 						$parent.timer_started = false;
+						$parent.watch_container.innerHTML = "TIME: 00: 00: 00";
 					}
 				}
 			

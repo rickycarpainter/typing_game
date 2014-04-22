@@ -1,11 +1,9 @@
 var StopWatch = function() {
 	var start_time;
-	var clock = 0;
 	
 	
 	this.begin = function()
 	{
-		this.clock = 0;
 		this.start_time = Date.now();
 	}
 	
@@ -13,7 +11,7 @@ var StopWatch = function() {
 	{
 		var current = Date.now();
 		var change = current - this.start_time;
-		clock += change;
-		return clock;
+		
+		return change.GetMinutes() + ": " + change.getSeconds() + ": " change.getMilliseconds();
 	}
 };
