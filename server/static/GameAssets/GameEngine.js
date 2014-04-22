@@ -13,12 +13,15 @@ function GameEngine() {
         	keyTracker: true});
         	
       
-      soundManager.url = '/static/GameAssets/soundmanager2.swf';
+      soundManager.setup({
+  			url: '/path/to/swf-files/',
+  		onready: function() {
+			this.gameManager = new GameManager();
+			this.gameManager.init(gameWidth, gameHeight);
+		}
+		});
 
-		
-		this.gameManager = new GameManager();
-		this.gameManager.init(gameWidth, gameHeight);
-		
+		return true;
 	};
 	
 	this.run = function() {
