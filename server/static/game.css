@@ -1,0 +1,12 @@
+#sandbox
+{
+	position: relative;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#sandbox div
+{
+	position: relative;
+}
