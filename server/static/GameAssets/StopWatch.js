@@ -9,8 +9,13 @@ var StopWatch = function() {
 	
 	this.display = function()
 	{
-		var current = Date.now(this.start_time);
-		
-		return current.getMinutes() + ": " + current.getSeconds() + ": " current.getMilliseconds();
+		var current = Date(this.start_time);
+		var result = "";
+		result += current.getMinutes();
+		result += ": ";
+		result += current.getSeconds();
+		result += ": ";
+		result += current.getMilliseconds();
+		return result;
 	}
 };
