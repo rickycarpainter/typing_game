@@ -16,8 +16,8 @@ function GameEngine() {
       soundManager.setup({
   			url: '/path/to/swf-files/',
   		onready: function() {
-			this.gameManager = new GameManager();
-			this.gameManager.init(gameWidth, gameHeight);
+			parent.gameManager = new GameManager();
+			parent.gameManager.init(gameWidth, gameHeight);
 		}
 		});
 
