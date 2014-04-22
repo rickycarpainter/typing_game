@@ -163,7 +163,7 @@ function GameManager() {
 			success: function (result) {
 				console.log("Update succeded");
 				console.log(result);
-				$parent.getPlayerLevels();
+				$parent.levelSelected = result.level;
 				return true;
 			}
 		});
