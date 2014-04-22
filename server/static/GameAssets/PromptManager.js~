@@ -3,6 +3,7 @@ function PromptManager(gameController, tileEngine) {
 	this.gameController = gameController;
 	this.tileEngine = tileEngine;
 	
+	this.keyOpacity = 0.5;
 	this.init = function() {
 					
 			$("#mapObjects").addSprite("leftKey", {animation: this.keyUpAnimation,
@@ -75,6 +76,15 @@ function PromptManager(gameController, tileEngine) {
 			if(tileEngine.canMoveLeft(this.tileEngine.player)) {
 				$("#leftKey").show();
 				$("#leftLetter").show();
+				
+				if(this.tileEngine.objectToLeft()) {
+					$("#leftKey").css("opacity",this.keyOpacity);
+					$("#leftLetter").css("opacity",this.keyOpacity);
+				}
+				else {
+					$("#leftKey").css("opacity",1);
+					$("#leftLetter").css("opacity",1);				
+				}
 			}
 			else {
 				$("#leftKey").hide();
@@ -85,6 +95,15 @@ function PromptManager(gameController, tileEngine) {
 			if(tileEngine.canMoveRight(this.tileEngine.player)) {
 				$("#rightKey").show();
 				$("#rightLetter").show();
+				
+				if(this.tileEngine.objectToRight()) {
+					$("#rightKey").css("opacity",this.keyOpacity);
+					$("#rightLetter").css("opacity",this.keyOpacity);
+				}
+				else {
+					$("#rightKey").css("opacity",1);
+					$("#rightLetter").css("opacity",1);				
+				}
 			}
 			else {
 				$("#rightKey").hide();
@@ -95,6 +114,15 @@ function PromptManager(gameController, tileEngine) {
 			if(tileEngine.canMoveUp(this.tileEngine.player)) {
 				$("#upKey").show();
 				$("#upLetter").show();
+				
+				if(this.tileEngine.objectToUp()) {
+					$("#upKey").css("opacity",this.keyOpacity);
+					$("#upLetter").css("opacity",this.keyOpacity);
+				}
+				else {
+					$("#upKey").css("opacity",1);
+					$("#upLetter").css("opacity",1);				
+				}
 			}
 			else {
 				$("#upKey").hide();
@@ -105,6 +133,15 @@ function PromptManager(gameController, tileEngine) {
 			if(tileEngine.canMoveDown(this.tileEngine.player)) {
 				$("#downKey").show();
 				$("#downLetter").show();
+				
+				if(this.tileEngine.objectToLeft()) {
+					$("#leftKey").css("opacity",this.keyOpacity);
+					$("#leftLetter").css("opacity",this.keyOpacity);
+				}
+				else {
+					$("#leftKey").css("opacity",1);
+					$("#leftLetter").css("opacity",1);				
+				}
 			}
 			else {
 				$("#downKey").hide();

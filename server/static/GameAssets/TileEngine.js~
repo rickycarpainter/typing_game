@@ -216,6 +216,8 @@ function TileEngine(gameController) {
 											posx: (this.tunnel.posX*36),
 											posy: ((this.tunnel.posY-1)*36)
 											}).end()
+											
+			$("#tunnelArrow").css("opacity", 0.5);
 
 		}
 	};
@@ -253,7 +255,50 @@ function TileEngine(gameController) {
 					mapItem.posY >= 0 && mapItem.posY < this.map.height && // player posY + 1 in map
 					this.map.mask[mapItem.posX + 1][mapItem.posY] != 2); // 2 is the collidable gID for the mask 
 	};
-//----------------------------------------------------------------------------------------------------------------
+//----------------------------------------Scan for Objects around Player----------------------------------------
+	this.objectToLeft = function() {
+	
+	
+	}
+	
+	this.objectToRight = function() {
+	
+	
+	}
+
+	this.objectToUp = function() {
+	
+	
+	}
+
+	this.objectToDown = function() {
+	
+	
+	}
+	
+	this.objectAt = function(x,y) {
+		
+		if(this.tunnel != null &&
+			this.tunnel.posX == x &&
+			this.tunnel.posY == y)
+				return true
+		
+		if(this.mapItems != null) {
+			
+			for(var i = 0; i < this.mapItems.length) {
+				
+				if(this.mapItems[i] != null &&
+					this.mapItems[i].posX == x &&
+					this.mapItems[i].posY == y) {
+						return true;
+					}
+			}
+			
+		}
+		
+		return false;
+	}
+	
 
 }
 
