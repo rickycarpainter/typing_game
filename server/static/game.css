@@ -10,3 +10,10 @@
 {
 	position: relative;
 }
+
+#timer
+{
+	position: relative;
+	left: 700px;
+	color: #FFFFFF;
+}
