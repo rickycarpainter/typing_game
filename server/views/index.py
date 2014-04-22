@@ -76,11 +76,11 @@ def incrementLevel():
     new = current
     dac = database_access()
     maximum = dac.get_number_of_levels()
-    if (current <= maximum):
+    if (current < maximum):
         new = current + 1
-        if current_user.is_authenticated():
-            print ("Level unlocked for user")
-            dac.update_user_level(current_user.username, new)
+    if current_user.is_authenticated():
+        print ("Level unlocked for user")
+        dac.update_user_level(current_user.username, new)
     return jsonify(level=new)
     
 		
