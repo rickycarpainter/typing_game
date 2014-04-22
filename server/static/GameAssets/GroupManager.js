@@ -301,10 +301,10 @@ function GroupManager(gameController, tileEngine) {
 			$("#hud").hide();
 	};
 
-	//this.titleToSelection = function(){
-		//$("#titlescreen").fadeOut("medium");
-		//$("#selectionScreen").fadeIn("medium");
-	//};
+	this.titleToSelection = function(){
+		$("#titlescreen").fadeOut("medium");
+		$("#selectionScreen").fadeIn("medium");
+	};
 
 	this.selectionToLevels = function(initialSelection){
 		//close mode selection 

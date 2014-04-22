@@ -76,6 +76,7 @@ function TileEngine(gameController) {
 		$("#mapBackground").empty();
 		$("#mapForeground").empty();
 		$("#mapObjects").empty();
+		$("#tunnelArrow").remove();
 		
 	};
 	

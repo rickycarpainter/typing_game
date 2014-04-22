@@ -73,9 +73,9 @@ function TileEngine(gameController) {
 		this.carrotMax = 0;
 		this.arrow=false;
 		
-		$("#mapBackground").remove();
-		$("#mapForeground").remove();
-		$("#mapObjects").remove();
+		$("#mapBackground").empty();
+		$("#mapForeground").empty();
+		$("#mapObjects").empty();
 		
 	};
 	
