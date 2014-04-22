@@ -282,7 +282,7 @@ function TileEngine(gameController) {
 		
 		if(this.mapItems != null) {
 			
-			for(var i = 0; i < this.mapItems.length) {
+			for(var i = 0; i < this.mapItems.length; i++) {
 				
 				if(this.mapItems[i] != null &&
 					this.mapItems[i].posX == x &&

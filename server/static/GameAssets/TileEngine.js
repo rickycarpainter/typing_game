@@ -286,7 +286,8 @@ function TileEngine(gameController) {
 				
 				if(this.mapItems[i] != null &&
 					this.mapItems[i].posX == x &&
-					this.mapItems[i].posY == y) {
+					this.mapItems[i].posY == y &&
+					$(this.mapItems[i].id).is(":visible")) {
 						return true;
 					}
 			}

@@ -3,7 +3,7 @@ function PromptManager(gameController, tileEngine) {
 	this.gameController = gameController;
 	this.tileEngine = tileEngine;
 	
-	this.keyOpacity = 0.5;
+	this.keyOpacity = 0.75;
 	this.init = function() {
 					
 			$("#mapObjects").addSprite("leftKey", {animation: this.keyUpAnimation,

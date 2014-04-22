@@ -134,13 +134,13 @@ function PromptManager(gameController, tileEngine) {
 				$("#downKey").show();
 				$("#downLetter").show();
 				
-				if(this.tileEngine.objectToLeft()) {
-					$("#leftKey").css("opacity",this.keyOpacity);
-					$("#leftLetter").css("opacity",this.keyOpacity);
+				if(this.tileEngine.objectToDown()) {
+					$("#downKey").css("opacity",this.keyOpacity);
+					$("#downLetter").css("opacity",this.keyOpacity);
 				}
 				else {
-					$("#leftKey").css("opacity",1);
-					$("#leftLetter").css("opacity",1);				
+					$("#downKey").css("opacity",1);
+					$("#downLetter").css("opacity",1);				
 				}
 			}
 			else {
