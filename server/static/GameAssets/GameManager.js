@@ -54,7 +54,8 @@ function GameManager() {
 		
 		if (this.timer_started == true)
 		{
-			$("#timer").innerHTML = "TIME: + this.timer.display()";
+			var current_time = this.timer.display();
+			$("#timer").innerHTML = current_time;
 		}
 	};
 	
@@ -252,7 +253,7 @@ function GameManager() {
 
 				if($parent.tileEngine.player.carrots == $parent.currentLevelMaxCarrots)//if all carrots gathered
 				{
-					//visul signal that player can now exit through tunnel
+					//visual signal that player can now exit through tunnel
 					$parent.tileEngine.highlightTunnel();
 
 					if(collision == "tunnel")//if level beaten
