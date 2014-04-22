@@ -11,6 +11,11 @@ html { background-color: #000000; }
 	border-radius: .5em;
 }
 
+#tunnelArrow
+{
+	opacity: 0.5;
+}
+
 #connection
 {
 	position: relative;
