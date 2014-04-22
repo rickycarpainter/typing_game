@@ -257,8 +257,8 @@ function GroupManager(gameController, tileEngine) {
 				.addSprite("levelBanner", {animation: levelBanner,
 										width: 430,
 										height: 76,
-										posx: 175,
-										posy: 25 
+										posx: 165,
+										posy: 28 
 										})
 				.addSprite("leftArrow", {animation: this.leftArrow,
 										width: 64,
