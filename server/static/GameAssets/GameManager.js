@@ -55,6 +55,7 @@ function GameManager() {
 		if (this.timer_started == true)
 		{
 			var current_time = this.stopwatch.display();
+			console.log($("#timer").innerHTML);
 			$("#timer").innerHTML = "<p>current_time</p>";
 		}
 	};
