@@ -15,8 +15,6 @@ function GroupManager(gameController, tileEngine) {
 	this.carrotCounterIcon = null;
 	this.carrotNumber = new Array();
 	
-	this.titleScreenMusic = new $.gQ.SoundWrapper("/static/GameAssets/ClowningAround.mp3", true);
-	
 	this.init = function(gameWidth, gameHeight) {
 		
 		var title = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/titlescreen.png",
@@ -298,8 +296,6 @@ function GroupManager(gameController, tileEngine) {
 										posy: 0 
 										}).end()			
 			
-			$("#titlescreen").addSound(this.titleScreenMusic);
-			$("#titlescreen").playSound();
 			$("#hud").append('<div id = "timer">TIME: 0</div>');
 			$("#selectionScreen").hide();
 			$("#levelSelection").hide();
