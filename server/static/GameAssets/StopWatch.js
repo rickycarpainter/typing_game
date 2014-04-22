@@ -14,7 +14,6 @@ var StopWatch = function() {
 		var current = Date.now();
 		var change = current - this.start_time;
 		clock += change;
-		console.log("Current time: " + clock);
 		return clock;
 	}
 };
