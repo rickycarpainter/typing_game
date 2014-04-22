@@ -159,7 +159,7 @@ function GameManager() {
 			url: '/Game/NewLevelUnlocked',
 			async: false,
 			type: 'POST',
-			data:{mapid:$parent.levelSelected}
+			data:{mapid:$parent.levelSelected},
 			success: function (result) {
 				console.log("Update succeded");
 				console.log(result);
