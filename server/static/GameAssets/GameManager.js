@@ -246,6 +246,7 @@ function GameManager() {
 						//LOAD NEW MAP HERE OR CHANGE STATE TO GAMEBEATEN?
 						$parent.updatePlayerLevels();
 						$parent.tileEngine.reset();
+						$parent.groupManager.updateCarrotNumber(0);
 					
 						//bring up level screen and reset stuff
 						$parent.groupManager.gameToLevels($parent.levelSelected);

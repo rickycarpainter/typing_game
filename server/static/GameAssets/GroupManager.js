@@ -367,7 +367,6 @@ function GroupManager(gameController, tileEngine) {
 	};
 
 	this.updateCarrotNumber = function(givenNum){
-		
 		$("#carrotNumber").setAnimation(this.carrotNumber[givenNum]);
 	};
 
