@@ -298,6 +298,7 @@ function GroupManager(gameController, tileEngine) {
 										posy: 0 
 										}).end()			
 			
+			soundManager.url = './static/GameAssets/soundmanager2.swf';
 			$("#titlescreen").addSound(this.titleScreenMusic);
 			$("#titlescreen").playSound();
 			$("#hud").append('<div id = "timer">TIME: 0</div>');

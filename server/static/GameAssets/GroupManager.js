@@ -300,7 +300,7 @@ function GroupManager(gameController, tileEngine) {
 			
 			soundManager.url = './static/GameAssets/soundmanager2.swf';
 			$("#titlescreen").addSound(this.titleScreenMusic);
-			$("#titlescreen").playSound();
+			//$("#titlescreen").playSound();
 			$("#hud").append('<div id = "timer">TIME: 0</div>');
 			$("#selectionScreen").hide();
 			$("#levelSelection").hide();
