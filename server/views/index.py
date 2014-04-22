@@ -72,12 +72,11 @@ def alllevels():
 
 @index.route('/Game/NewLevelUnlocked', methods=['POST'])
 def incrementLevel():
-	current = int(request.form['mapid'])	
+    current = int(request.form['mapid'])	
     if current_user.is_authenticated():
-        print ("Valid user: Updating")
-			new = current + 1
-			dac = database_access()
-			dac.update_user_level(current_user.username, new)
+        new = current + 1
+	dac = database_access()
+	dac.update_user_level(current_user.username, new)
     return jsonify(level=current)
     
 		
