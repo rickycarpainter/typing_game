@@ -24,6 +24,9 @@ class database_access():
         return int(db.session.query(Maps).count());
 
     def update_user_level(self, name, new_level):
+        maximum = get_number_of_levels()
+        if (new_level > maximum):
+            new_level = maximum
         current_user = db.session.query(User).filter_by(username=name).first()
         current_level = current_user.level
         if (new_level > current_level):
