@@ -17,7 +17,7 @@ header, footer {
 
 header{
 	text-align: left;
-	background-image:url('images/banner.png');
+	background-image:url('GameAssets/images/banner.png');
 	padding: .75em;
 	padding-right: 2em;
 	padding-top: .3em;

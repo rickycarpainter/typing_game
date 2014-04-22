@@ -19,7 +19,6 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     result = User.query.get(int(user_id))
-    print ("Loading User: " + str(result))
     return result
 
 oauth = OAuth()
@@ -41,7 +40,6 @@ def login():
         return redirect(next_url)
     next_url=request.args.get('next') or request.referrer or None
     result = twitter.authorize(callback=url_for('.oauth',next=next_url))
-    print ("Attempted login: " + str(result))
     return result
 
 @auth.route('/oauth')
@@ -54,12 +52,10 @@ def oauth(resp):
 
     user = User.get(resp['screen_name'])
     if user is None:
-        print ("New user added to the database")
         user = User(resp['screen_name'], resp['oauth_token'], resp['oauth_token_secret'], 1)
         db.session.add(user)
         db.session.commit()
         login_user(user,remember=True)
-        print ("Login successful")
         resp = twitter.get('/1.1/users/show.json?screen_name=' + user.username)
         if resp.status == 200:
             print resp.data['name']
@@ -68,12 +64,6 @@ def oauth(resp):
             db.session.commit()
     else:
         login_user(user,remember=True)
-        auth = None
-        if current_user.is_authenticated():
-            print ("User IS authenticated")
-            auth = True
-        print ("Else login successful")
-        print ("User authentication: " + str(auth))
 
     return redirect("http://key-hopper.com/Game")
 
@@ -88,5 +78,4 @@ def get_twitter_token():
     if current_user.is_authenticated():
         return (current_user.token, current_user.secret)
     else:
-        print ("User is not authenticated")
         return None

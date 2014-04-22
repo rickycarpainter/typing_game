@@ -42,9 +42,7 @@ function TileEngine(gameController) {
 		//$("#mapObjects").clearAll(false);
 		//draw carrots and other items first
 		for(var i = 0; i < this.mapItems.length; i++) {
-			
 			this.mapItems[i].draw(i);
-		
 		}
 		
 		//then draw the tunnel
@@ -92,9 +90,7 @@ function TileEngine(gameController) {
 			async: false,
 			data: {id:mapID},
 			success: function (result) {
-				//console.log(result);
 				$parent.importMap(result);
-				//console.log("Map imported!");
 				return true;
 			}
 		});
@@ -156,8 +152,6 @@ function TileEngine(gameController) {
 			else {
 				this.mapItems.push(mapitem);
 			}
-			
-
 		}
 	};
 
@@ -293,10 +287,7 @@ function TileEngine(gameController) {
 			}
 			
 		}
-		
 		return false;
 	};
-	
-
 }
 

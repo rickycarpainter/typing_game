@@ -91,9 +91,7 @@ function GameManager() {
 				$parent.selectedMode = "random";
 			}
 			else if ((code == 13 || code == 32) && ($parent.selectedMode === "story"))//load levels
-			{
-				console.log("story mode selected");
-				
+			{	
 				//Query the server for the highest level reached for the user
 				$parent.getPlayerLevels();
 				
@@ -128,7 +126,7 @@ function GameManager() {
 					$parent.levelSelected = 1;
 				}
 				else
-				$parent.groupManager.updateLevelNumber($parent.levelSelected);
+					$parent.groupManager.updateLevelNumber($parent.levelSelected);
 			}
 			else if (code == 39)
 			{
@@ -138,7 +136,7 @@ function GameManager() {
 					$parent.levelSelected = $parent.totalLevels;
 				}
 				else
-				$parent.groupManager.updateLevelNumber($parent.levelSelected);
+					$parent.groupManager.updateLevelNumber($parent.levelSelected);
 			}
 			else if (code == 13 || code == 32)
 			{
@@ -156,7 +154,6 @@ function GameManager() {
 	};
 	
 	this.updatePlayMode = function() {
-		console.log("play mode");
 		switch(this.currentPlayModeState){
 			case this.PlayModeState.Playing: 		this.playing(); 	break;
 			case this.PlayModeState.DialogOpen: 	this.playing(); 	break;
@@ -172,8 +169,6 @@ function GameManager() {
 			type: 'POST',
 			data:{mapid:$parent.levelSelected},
 			success: function (result) {
-				console.log("Update succeded");
-				console.log(result);
 				$parent.levelSelected = result.level;
 				return true;
 			}
@@ -200,7 +195,6 @@ function GameManager() {
 			//pull dialog off queue
 			var dialog = this.dialogQueue.shift();
 			//print dialog on screen
-			console.log(dialog);
 			//change mode to dialogOpen
 			this.currentPlayModeState = this.PlayModeState.dialogOpen;
 		}
@@ -275,7 +269,6 @@ function GameManager() {
 				}
 			
 				if(reset) {
-					console.log("resetting keys");
 					$parent.groupManager.resetKeys();
 				}
 			}
@@ -297,7 +290,6 @@ function GameManager() {
 				//pull dialog off queue
 				dialog = this.dialogQueue.shift();
 				//print dialog on screen
-				console.log(dialog);
 			}
 		};
 	};

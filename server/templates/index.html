@@ -23,7 +23,7 @@
 			
 			<img id="title" src="{{ url_for('static', filename='title.png') }}" title=""  height="150" width="300"/>
 			
-			<img src="{{ url_for('static', filename='playbutton.png') }}" id="playbutton" onmousedown=downbutton(this) onmouseup=upbutton(this) height="100" width="150" title=""/>
+			<img src="{{ url_for('static', filename='GameAssets/images/playbutton.png') }}" id="playbutton" onmousedown=downbutton(this) onmouseup=upbutton(this) height="100" width="150" title=""/>
 			
 			{% if login %}
 			<a href="/auth/logout" class = "login"><img src="/static/images/sign-out-with-twitter-gray.png"></a>
@@ -33,11 +33,11 @@
 
 			<script>
 			function downbutton(img){
-				img.src="{{ url_for('static', filename='playbuttondown.png') }}";
+				img.src="{{ url_for('static', filename='GameAssets/images/playbuttondown.png') }}";
 			}
 
 			function upbutton(img){
-				img.src="{{ url_for('static', filename='playbutton.png') }}";
+				img.src="{{ url_for('static', filename='GameAssets/images/playbutton.png') }}";
 			}
 			</script>
 		
@@ -65,16 +65,16 @@
 			<div id = "connection"></div>
 		
 			<div id="image_container">
-				<img class="landscape" src="{{ url_for('static', filename='GameAssets/images/titlescreen.png') }}" alt="Title Screen." title=""/>
-				<img class="aspire" src="{{ url_for('static', filename='images/Level1.jpg') }}" alt="First Level" title=""/>
-				<img class="nes" src="{{ url_for('static', filename='images/Complete.jpg') }}" alt="Grab all the carrots and head for the exit" title=""/>
+				<img src="{{ url_for('static', filename='GameAssets/images/titlescreen.png') }}" alt="Title Screen." title=""/>
+				<img src="{{ url_for('static', filename='GameAssets/images/Level1.jpg') }}" alt="First Level" title=""/>
+				<img src="{{ url_for('static', filename='GameAssets/images/Complete.jpg') }}" alt="Grab all the carrots and head for the exit" title=""/>
 			</div>
 		</div>
 
 			<p>Welcome to Key Hopper! Improve your typing abilities and have a little fun in the process!</p>
 		
 		<footer>
-				<a href = "http://github.com/ritchiejc/typing_game" target="_blank"> <img id="git" src="{{ url_for('static', filename='githubsymbol.png') }}" height="200" width="200"/> </a></h3>
+				<a href = "http://github.com/ritchiejc/typing_game" target="_blank"> <img id="git" src="{{ url_for('static', filename='GameAssets/images/githubsymbol.png') }}" height="200" width="200"/> </a></h3>
 		</footer>
 		
 		</section>
