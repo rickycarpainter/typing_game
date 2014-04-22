@@ -54,7 +54,6 @@ function GameManager() {
 		
 		if (this.timer_started == true)
 		{
-			console.log("updating time");
 			$("#timer").innerHTML = "TIME: + this.timer.display()";
 		}
 	};
