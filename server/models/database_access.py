@@ -24,8 +24,10 @@ class database_access():
         return int(db.session.query(Maps).count());
 
     def update_user_level(self, name, new_level):
-        db.session.query(User).filter_by(username=name).update({"level" : new_level})
-        db.session.commit()
+        highest = get_number_of_levels()
+        if (new_level <= highest):
+            db.session.query(User).filter_by(username=name).update({"level" : new_level})
+            db.session.commit()
     
     #Changed this function to return the map and the items in JSON format    
     def get_map_with_items(self, mapID):
