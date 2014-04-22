@@ -9,6 +9,18 @@ function TileEngine(gameController) {
 	
 	this.mapItemIDCounter = 0;
 
+	//max carrots for current map
+	this.carrotMax = 0;
+	//arrow animation for tunnel
+	this.arrow=false;
+	this.tunnelArrow = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/arrow.png",
+			numberOfFrame: 2,
+			delta: 41,
+			offsetx: 0,
+			offsety: 0,
+			rate: 600,
+			type: $.gQ.ANIMATION_HORIZONTAL});
+
 
 //--------------------------------------------------------------------------------------
 // This section contains functions for drawing maps and mapitems
@@ -48,6 +60,24 @@ function TileEngine(gameController) {
 	this.clearMapItems = function() {
 		
 	};
+
+	this.reset = function(){
+		this.map = null;
+		this.mapItems = null;
+		this.player = null;
+		this.tunnel = null;
+		this.gameController = gameController;
+	
+		this.mapItemIDCounter = 0;
+
+		this.carrotMax = 0;
+		this.arrow=false;
+		
+		$("#mapBackground").remove();
+		$("#mapForeground").remove();
+		$("#mapObjects").remove();
+		
+	};
 	
 //--------------------------------------------------------------------------------------
 // This section contains functions for downloading and importing maps
@@ -81,6 +111,8 @@ function TileEngine(gameController) {
 
 	this.loadMapItems = function(mapitems) {
 		this.mapItems = new Array();
+		//variable to count number of carrots
+		this.carrotMax = 0;
 		
 		for(var i = 0; i < mapitems.length; i++) {
 			
@@ -96,6 +128,7 @@ function TileEngine(gameController) {
 					
 				case "Carrot":
 					mapitem = new Carrot();
+					this.carrotMax++;
 					break;
 
 				case "Tunnel":
@@ -141,6 +174,7 @@ function TileEngine(gameController) {
 		$("#player").y(this.player.posY * 36 + this.player.drawOffsetY);
 		
 		var collision = this.checkItemCollision();
+		return collision;
 		
 	};
 	
@@ -161,13 +195,28 @@ function TileEngine(gameController) {
 				//for now, just return carrot, because that is the only other mapitem we have!
 				this.mapItems[i].collected = true;
 				this.player.carrots++;
-				$(this.mapItem[i].id).hide();
-				return this.mapItem[i].id; // returns the carrot's id
+				$(this.mapItems[i].id).hide();
+				return this.mapItems[i].id; // returns the carrot's id
 			}
 		
 		}
 		
 		return "none";
+	};
+
+	//highlights the tunnel once the player can exit through it
+	this.highlightTunnel = function(){
+		if(!this.arrow){
+			this.arrow = true;
+			//print arrow just above tunnel location
+			$("#hud").addSprite("tunnelArrow", {animation: this.tunnelArrow,
+											width: 41,
+											height: 42,
+											posx: (this.tunnel.posX*36),
+											posy: ((this.tunnel.posY-1)*36)
+											}).end()
+
+		}
 	};
 	
 	
