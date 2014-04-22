@@ -18,6 +18,9 @@ function GameEngine() {
   		onready: function() {
 			parent.gameManager = new GameManager();
 			parent.gameManager.init(gameWidth, gameHeight);
+			$.playground().startGame(function(){
+				parent..run();
+			});	
 		}
 		});
 
