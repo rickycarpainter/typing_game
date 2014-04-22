@@ -296,7 +296,7 @@ function GroupManager(gameController, tileEngine) {
 										posy: 0 
 										}).end()			
 			
-			$("#hud").append('<div id = "timer">TIME: 00: 00: 00</div>');
+			$("#hud").append('<div id = "timer">TIME: 0</div>');
 			$("#selectionScreen").hide();
 			$("#levelSelection").hide();
 			$("#hud").hide();

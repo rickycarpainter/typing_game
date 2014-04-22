@@ -11,7 +11,8 @@ var StopWatch = function() {
 	this.display = function()
 	{	
 		this.clock += this.change();
-		return this.clock/1000;
+		console.log(this.clock);
+		return clock/1000;
 	}
 
 	this.change = function()

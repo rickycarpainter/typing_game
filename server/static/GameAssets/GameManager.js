@@ -267,8 +267,10 @@ function GameManager() {
 						//bring up level screen and reset stuff
 						$parent.groupManager.gameToLevels($parent.levelSelected);
 						$parent.currentGameState = $parent.GameStates.LevelSelection;
+						//Time = $parent.stopwatch.display();
+						//add route to store fastest time for user
 						$parent.timer_started = false;
-						$parent.watch_container.innerHTML = "TIME: 00: 00: 00";
+						$parent.watch_container.innerHTML = "TIME: 0";
 					}
 				}
 			

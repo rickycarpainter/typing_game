@@ -22,6 +22,7 @@ function GameManager() {
 	this.score = null;
 	this.dialogQueue = [];
 	this.currentLevelMaxCarrots = null;
+	this.stopwatch = null;
 	
 	this.init = function(gameWidth, gameHeight) {
 
@@ -37,6 +38,10 @@ function GameManager() {
 		this.totalLevels = 10;
 
 		this.currentLevelMaxCarrots = 0;
+		
+		this.stopwatch = new StopWatch();
+		this.timer_started = false;
+		this.watch_container = document.getElementById("timer");
 	};
 	
 	this.update = function() {
@@ -46,6 +51,12 @@ function GameManager() {
 			case this.GameStates.TitleScreen: 		this.updateTitlescreen();		break;
 			case this.GameStates.ModeSelection: 	this.updateModeSelection();		break;
 			case this.GameStates.LevelSelection:   	this.updateLevelSelection();	break;
+		}
+		
+		if (this.timer_started == true)
+		{
+			var current_time = this.stopwatch.display();
+			this.watch_container.innerHTML = "TIME: " + this.stopwatch.display();
 		}
 	};
 	
@@ -200,6 +211,11 @@ function GameManager() {
 			var code = e.keyCode ? e.keyCode : e.which;
 			if(code >= 65 && code <= 90)//if valid button pushed
 			{
+				if ($parent.timer_started == false)
+				{
+					$parent.timer_started = true;
+					$parent.stopwatch.begin();
+				}
 				var dir = $parent.gameController.queryKey(code);
 				var reset = false;
 				var collision = "none";
@@ -238,7 +254,7 @@ function GameManager() {
 
 				if($parent.tileEngine.player.carrots == $parent.currentLevelMaxCarrots)//if all carrots gathered
 				{
-					//visul signal that player can now exit through tunnel
+					//visual signal that player can now exit through tunnel
 					$parent.tileEngine.highlightTunnel();
 
 					if(collision == "tunnel")//if level beaten
@@ -246,16 +262,13 @@ function GameManager() {
 						//LOAD NEW MAP HERE OR CHANGE STATE TO GAMEBEATEN?
 						$parent.updatePlayerLevels();
 						$parent.tileEngine.reset();
-						//$parent.groupManager.updateTileEngine();
-						//this is probably gonna break stuff
-						//increment level 
-						if($parent.levelSelected < $parent.totalLevels)
-						{
-							$parent.levelSelected = $parent.levelSelected+1;
-						}
+						$parent.groupManager.updateCarrotNumber(0);
+					
 						//bring up level screen and reset stuff
 						$parent.groupManager.gameToLevels($parent.levelSelected);
 						$parent.currentGameState = $parent.GameStates.LevelSelection;
+						$parent.timer_started = false;
+						$parent.watch_container.innerHTML = "TIME: 0";
 					}
 				}
 			

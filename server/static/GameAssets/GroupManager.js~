@@ -257,8 +257,8 @@ function GroupManager(gameController, tileEngine) {
 				.addSprite("levelBanner", {animation: levelBanner,
 										width: 430,
 										height: 76,
-										posx: 175,
-										posy: 20 
+										posx: 165,
+										posy: 28 
 										})
 				.addSprite("leftArrow", {animation: this.leftArrow,
 										width: 64,
@@ -295,16 +295,17 @@ function GroupManager(gameController, tileEngine) {
 										posx: 120,
 										posy: 0 
 										}).end()			
-
+			
+			$("#hud").append('<div id = "timer">TIME: 00: 00: 00</div>');
 			$("#selectionScreen").hide();
 			$("#levelSelection").hide();
 			$("#hud").hide();
 	};
 
-	//this.titleToSelection = function(){
-		//$("#titlescreen").fadeOut("medium");
-		//$("#selectionScreen").fadeIn("medium");
-	//};
+	this.titleToSelection = function(){
+		$("#titlescreen").fadeOut("medium");
+		$("#selectionScreen").fadeIn("medium");
+	};
 
 	this.selectionToLevels = function(initialSelection){
 		//close mode selection 
@@ -367,7 +368,6 @@ function GroupManager(gameController, tileEngine) {
 	};
 
 	this.updateCarrotNumber = function(givenNum){
-		
 		$("#carrotNumber").setAnimation(this.carrotNumber[givenNum]);
 	};
 
