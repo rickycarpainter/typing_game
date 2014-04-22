@@ -11,6 +11,6 @@ var StopWatch = function() {
 	{
 		var current = Date.now(this.start_time);
 		
-		return current.GetMinutes() + ": " + current.getSeconds() + ": " current.getMilliseconds();
+		return current.getMinutes() + ": " + current.getSeconds() + ": " current.getMilliseconds();
 	}
 };
