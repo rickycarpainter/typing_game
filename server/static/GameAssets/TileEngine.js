@@ -216,6 +216,8 @@ function TileEngine(gameController) {
 											posx: (this.tunnel.posX*36),
 											posy: ((this.tunnel.posY-1)*36)
 											}).end()
+											
+			$("#tunnelArrow").css("opacity", 0.5);
 
 		}
 	};
