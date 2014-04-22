@@ -158,11 +158,12 @@ function GameManager() {
 		$.ajax({
 			url: '/Game/NewLevelUnlocked',
 			async: false,
-			type: 'GET',
+			type: 'POST',
+			data:{mapid:$parent.levelSelected},
 			success: function (result) {
 				console.log("Update succeded");
 				console.log(result);
-				$parent.getPlayerLevels();
+				$parent.levelSelected = result.level;
 				return true;
 			}
 		});

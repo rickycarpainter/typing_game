@@ -158,7 +158,8 @@ function GameManager() {
 		$.ajax({
 			url: '/Game/NewLevelUnlocked',
 			async: false,
-			type: 'GET',
+			type: 'POST',
+			data:{mapid:$parent.levelSelected},
 			success: function (result) {
 				console.log("Update succeded");
 				console.log(result);
@@ -244,7 +245,7 @@ function GameManager() {
 					{
 						//LOAD NEW MAP HERE OR CHANGE STATE TO GAMEBEATEN?
 						$parent.updatePlayerLevels();
-						$parent.tileEngine = new tileEngine($parent.gameController);
+						$parent.tileEngine.reset();
 						//$parent.groupManager.updateTileEngine();
 						//this is probably gonna break stuff
 						//increment level 
