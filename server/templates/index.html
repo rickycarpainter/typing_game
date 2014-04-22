@@ -26,9 +26,9 @@
 			<img src="{{ url_for('static', filename='GameAssets/images/playbutton.png') }}" id="playbutton" onmousedown=downbutton(this) onmouseup=upbutton(this) height="100" width="150" title=""/>
 			
 			{% if login %}
-			<a href="/auth/logout" class = "login"><img src="/static/images/sign-out-with-twitter-gray.png"></a>
+			<a href="/auth/logout" class = "login"><img src="{{ url_for('static', filename='GameAssets/images/sign-out-with-twitter-gray.png') }}"></a>
 			{% else %}
-			<a href="/auth/login" class = "login"><img src="/static/images/sign-in-with-twitter-gray.png"></a>
+			<a href="/auth/login" class = "login"><img src="{{ url_for('static', filename='GameAssets/images/sign-in-with-twitter-gray.png') }}"></a>
 			{% endif %}
 
 			<script>
