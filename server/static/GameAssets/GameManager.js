@@ -22,7 +22,7 @@ function GameManager() {
 	this.score = null;
 	this.dialogQueue = [];
 	this.currentLevelMaxCarrots = null;
-	this.timer = null;
+	this.stopwatch = null;
 	
 	this.init = function(gameWidth, gameHeight) {
 
@@ -39,7 +39,7 @@ function GameManager() {
 
 		this.currentLevelMaxCarrots = 0;
 		
-		this.timer = new StopWatch();
+		this.stopwatch = new StopWatch();
 		this.timer_started = false;
 	};
 	
@@ -54,7 +54,7 @@ function GameManager() {
 		
 		if (this.timer_started == true)
 		{
-			var current_time = this.timer.display();
+			var current_time = this.stopwatch.display();
 			$("#timer").innerHTML = current_time;
 		}
 	};
@@ -213,7 +213,7 @@ function GameManager() {
 				if ($parent.timer_started == false)
 				{
 					$parent.timer_started = true;
-					$parent.timer.begin();
+					$parent.stopwatch.begin();
 				}
 				var dir = $parent.gameController.queryKey(code);
 				var reset = false;
