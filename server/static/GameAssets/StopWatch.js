@@ -10,6 +10,7 @@ var StopWatch = function() {
 	this.display = function()
 	{
 		var current = Date(this.start_time);
+		console.log(current.getSeconds());
 		return "00: 00: 00";
 	}
 };
