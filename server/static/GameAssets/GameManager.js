@@ -57,7 +57,7 @@ function GameManager() {
 			var current_time = this.stopwatch.display();
 			console.log($("#timer").innerHTML);
 			var watch = document.getElementById("timer");
-			watch.innerHTML = "TIME: " + stopwatch.display();
+			watch.innerHTML = "TIME: " + this.stopwatch.display();
 		}
 	};
 	
