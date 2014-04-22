@@ -300,10 +300,6 @@ function GroupManager(gameController, tileEngine) {
 			$("#levelSelection").hide();
 			$("#hud").hide();
 	};
-	
-	this.replaceMapGroups = function() {
-				
-	};
 
 	//this.titleToSelection = function(){
 		//$("#titlescreen").fadeOut("medium");

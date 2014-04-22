@@ -244,7 +244,7 @@ function GameManager() {
 					{
 						//LOAD NEW MAP HERE OR CHANGE STATE TO GAMEBEATEN?
 						$parent.updatePlayerLevels();
-						$parent.tileEngine = new tileEngine($parent.gameController);
+						$parent.tileEngine.reset();
 						//$parent.groupManager.updateTileEngine();
 						//this is probably gonna break stuff
 						//increment level 
