@@ -13,9 +13,8 @@ function GameEngine() {
         	keyTracker: true});
         	
       
-      soundManager.setup({
-  			url: '/static/GameAsseets/soundmanager2.swf'
-  		});
+      soundManager.url = '/static/GameAssets/soundmanager2.swf';
+
 		
 		this.gameManager = new GameManager();
 		this.gameManager.init(gameWidth, gameHeight);

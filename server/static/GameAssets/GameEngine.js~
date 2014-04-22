@@ -11,6 +11,11 @@ function GameEngine() {
         	height: gameHeight, 
         	width: gameWidth,
         	keyTracker: true});
+        	
+      
+      soundManager.setup({
+  			url: '/static/GameAsseets/soundmanager2.swf'
+  		});
 		
 		this.gameManager = new GameManager();
 		this.gameManager.init(gameWidth, gameHeight);
