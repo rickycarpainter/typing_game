@@ -258,7 +258,7 @@ function GroupManager(gameController, tileEngine) {
 										width: 430,
 										height: 76,
 										posx: 175,
-										posy: 20 
+										posy: 25 
 										})
 				.addSprite("leftArrow", {animation: this.leftArrow,
 										width: 64,
