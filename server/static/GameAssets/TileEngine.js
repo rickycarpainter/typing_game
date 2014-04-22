@@ -61,8 +61,22 @@ function TileEngine(gameController) {
 		
 	};
 
-	this.resetMap = function(){
+	this.reset = function(){
+		this.map = null;
+		this.mapItems = null;
+		this.player = null;
+		this.tunnel = null;
+		this.gameController = gameController;
+	
+		this.mapItemIDCounter = 0;
 
+		this.carrotMax = 0;
+		this.arrow=false;
+		
+		$("#mapBackground").empty();
+		$("#mapForeground").empty();
+		$("#mapObjects").empty();
+		
 	};
 	
 //--------------------------------------------------------------------------------------

@@ -21,6 +21,7 @@ function GameManager() {
 	//for game mode
 	this.score = null;
 	this.dialogQueue = [];
+	this.currentLevelMaxCarrots = null;
 	
 	this.init = function(gameWidth, gameHeight) {
 
@@ -34,6 +35,8 @@ function GameManager() {
 
 		this.levelSelected = 1;
 		this.totalLevels = 10;
+
+		this.currentLevelMaxCarrots = 0;
 	};
 	
 	this.update = function() {
@@ -43,11 +46,6 @@ function GameManager() {
 			case this.GameStates.TitleScreen: 		this.updateTitlescreen();		break;
 			case this.GameStates.ModeSelection: 	this.updateModeSelection();		break;
 			case this.GameStates.LevelSelection:   	this.updateLevelSelection();	break;
-		}
-		
-		if (this.tileEngine.player != null)
-		{
-			$("#hud").html("Carrots: " + this.tileEngine.player.carrots.toString());
 		}
 	};
 	
@@ -81,20 +79,12 @@ function GameManager() {
 			{
 				$parent.selectedMode = "random";
 			}
-			else if ((code == 13 || code == 32) && ($parent.selectedMode === "story"))
+			else if ((code == 13 || code == 32) && ($parent.selectedMode === "story"))//load levels
 			{
 				console.log("story mode selected");
 				
 				//Query the server for the highest level reached for the user
-				$.ajax({
-					url: '/Game/HighestUserLevel',
-					async: false,
-					type: 'GET',
-					success: function (result) {
-						$parent.levelSelected = result.result;
-						return true;
-					}
-				});
+				$parent.getPlayerLevels();
 				
 				//Query the server for the total number of levels
 				$.ajax({
@@ -149,6 +139,7 @@ function GameManager() {
 				$parent.currentGameState = $parent.GameStates.PlayMode;
 				$parent.currentPlayModeState = $parent.PlayModeState.Playing;
 				$parent.score = 0;
+				$parent.currentLevelMaxCarrots = $parent.tileEngine.carrotMax;
 			}
 		};
 	};
@@ -160,6 +151,34 @@ function GameManager() {
 			case this.PlayModeState.DialogOpen: 	this.playing(); 	break;
 			case this.PlayModeState.HighScores: 	this.playing(); 	break;
 		}
+	};
+	
+	this.updatePlayerLevels = function() {
+		var $parent = this;
+		$.ajax({
+			url: '/Game/NewLevelUnlocked',
+			async: false,
+			type: 'GET',
+			success: function (result) {
+				console.log("Update succeded");
+				console.log(result);
+				$parent.getPlayerLevels();
+				return true;
+			}
+		});
+	};
+	
+	this.getPlayerLevels = function() {
+		var $parent = this;
+		$.ajax({
+			url: '/Game/HighestUserLevel',
+			async: false,
+			type: 'GET',
+			success: function (result) {
+				$parent.levelSelected = result.result;
+				return true;
+			}
+		});
 	};
 
 	this.playing = function(){
@@ -182,60 +201,68 @@ function GameManager() {
 			{
 				var dir = $parent.gameController.queryKey(code);
 				var reset = false;
+				var collision = "none";
 				
 				switch(dir) {
-				
 					
 					case "left":
 						if($parent.tileEngine.canMoveLeft($parent.tileEngine.player)) {
-							$parent.tileEngine.movePlayer(-1,0);
+							collision = $parent.tileEngine.movePlayer(-1,0);
+							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;
 					case "right":
 						if($parent.tileEngine.canMoveRight($parent.tileEngine.player)) {
-							$parent.tileEngine.movePlayer(1,0);
+							collision = $parent.tileEngine.movePlayer(1,0);
+							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;				
 					case "up":
 						if($parent.tileEngine.canMoveUp($parent.tileEngine.player)) {
-							$parent.tileEngine.movePlayer(0,-1);
+							collision = $parent.tileEngine.movePlayer(0,-1);
+							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;
 					case "down":
 						if($parent.tileEngine.canMoveDown($parent.tileEngine.player)) {
-							$parent.tileEngine.movePlayer(0,1);
+							collision = $parent.tileEngine.movePlayer(0,1);
+							$parent.groupManager.updateCarrotNumber($parent.tileEngine.player.carrots);
 							reset = true;
 						}
 						break;				
 				}
-			
-				if(reset) {
-					$parent.groupManager.resetKeys();
+
+				if($parent.tileEngine.player.carrots == $parent.currentLevelMaxCarrots)//if all carrots gathered
+				{
+					//visul signal that player can now exit through tunnel
+					$parent.tileEngine.highlightTunnel();
+
+					if(collision == "tunnel")//if level beaten
+					{
+						//LOAD NEW MAP HERE OR CHANGE STATE TO GAMEBEATEN?
+						$parent.updatePlayerLevels();
+						$parent.tileEngine = new tileEngine($parent.gameController);
+						$parent.groupManager.updateTileEngine();
+						//this is probably gonna break stuff
+						//increment level 
+						if($parent.levelSelected < $parent.totalLevels)
+						{
+							$parent.levelSelected = $parent.levelSelected+1;
+						}
+						//bring up level screen and reset stuff
+						$parent.groupManager.gameToLevels($parent.levelSelected);
+						$parent.currentGameState = $parent.GameStates.LevelSelection;
+					}
 				}
 			
-				//if($parent.gameController.queryKey(code))//if button matched
-				//{
-					//animate button down
-					//move character
-					//check collision with object (carrot or hole)
-					//if collision
-						//if carrot
-							//add to score
-							//animate carrot to disappear
-						//if hole
-							//add to score
-							//animate victory dance or exit animation
-							//change mode to highscores
-						//return
-					//randomize keys in controller
-				//	$parent.gameController.randomizeKeys();
-					//draw buttons with random keys (only in directions without walls)
-				//}
+				if(reset) {
+					console.log("resetting keys");
+					$parent.groupManager.resetKeys();
+				}
 			}
-
 		};
 	};
 

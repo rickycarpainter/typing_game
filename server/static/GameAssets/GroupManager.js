@@ -300,16 +300,11 @@ function GroupManager(gameController, tileEngine) {
 			$("#levelSelection").hide();
 			$("#hud").hide();
 	};
-	
-	this.updateTileEngine = function(newTileEngine) {
-		this.tileEngine = newTileEngine;
-		this.promptManager = new PromptManager(this.gameController, this.tileEngine);
-	};
 
-	this.titleToSelection = function(){
-		$("#titlescreen").fadeOut("medium");
-		$("#selectionScreen").fadeIn("medium");
-	};
+	//this.titleToSelection = function(){
+		//$("#titlescreen").fadeOut("medium");
+		//$("#selectionScreen").fadeIn("medium");
+	//};
 
 	this.selectionToLevels = function(initialSelection){
 		//close mode selection 
