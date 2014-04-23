@@ -191,7 +191,7 @@ function TileEngine(gameController) {
 				this.mapItems[i].collected = true;
 				this.player.carrots++;
 				$(this.mapItems[i].id).hide();
-				$("#playground").playSound();
+				$("#mapgroup").playSound();
 				return this.mapItems[i].id; // returns the carrot's id
 			}
 		

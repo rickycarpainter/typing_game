@@ -335,8 +335,9 @@ function GroupManager(gameController, tileEngine) {
 
 	this.levelsToGame = function(){
 		//close level selection
-		$("#levelSelection").fadeOut("medium");
 		
+		$("#levelSelection").fadeOut("medium");
+		$("#titlescreen").stopSound();
 		this.tileEngine.drawMap();
 		this.tileEngine.drawMapItems(this.promptManager);
 		this.resetKeys();
