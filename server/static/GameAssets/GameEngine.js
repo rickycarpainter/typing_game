@@ -19,7 +19,7 @@ function GameEngine() {
 			parent.gameManager = new GameManager();
 			parent.gameManager.init(gameWidth, gameHeight);
 			$.playground().startGame(function(){
-				parent..run();
+				parent.run();
 			});	
 		}
 		});
