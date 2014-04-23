@@ -16,6 +16,7 @@ function GroupManager(gameController, tileEngine) {
 	this.carrotNumber = new Array();
 	
 	this.titleScreenMusic = new $.gQ.SoundWrapper("/static/GameAssets/ClowningAround.mp3", true);
+	this.funnyBiteSound = new $.gQ.SoundWrapper("/static/GameAssets/funny_bite.mp3", false); // From http://www.freesfx.co.uk/
 	
 	this.init = function(gameWidth, gameHeight) {
 		
@@ -299,7 +300,8 @@ function GroupManager(gameController, tileEngine) {
 										}).end()			
 			
 			soundManager.url = './static/GameAssets/soundmanager2.swf';
-			$("#titlescreen").addSound(this.titleScreenMusic);
+			$("#titlescreen").addSound(this.titleScreenMusic); // for loop
+			$("#playground").addSound(this.funnyBiteSound); //
 			$("#titlescreen").playSound();
 			$("#hud").append('<div id = "timer">TIME: 0</div>');
 			$("#selectionScreen").hide();
@@ -333,8 +335,9 @@ function GroupManager(gameController, tileEngine) {
 
 	this.levelsToGame = function(){
 		//close level selection
-		$("#levelSelection").fadeOut("medium");
 		
+		$("#levelSelection").fadeOut("medium");
+		$("#titlescreen").stopSound();
 		this.tileEngine.drawMap();
 		this.tileEngine.drawMapItems(this.promptManager);
 		this.resetKeys();
