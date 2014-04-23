@@ -34,11 +34,12 @@
 			<script>
 
 				var gameEngine = new GameEngine();
+				
 				gameEngine.init(720,468);
 
-				$.playground().startGame(function(){
-					gameEngine.run();
-				});				
+				//$.playground().startGame(function(){
+				//	gameEngine.run();
+				//});				
 				
 			</script>
 		</div>
