@@ -141,8 +141,6 @@ function GameManager() {
 			else if (code == 13 || code == 32)
 			{
 				//draw the initial screen
-				console.log("LEVEL SELECTED IS");
-				console.log($parent.levelSelected);
 				$parent.tileEngine.downloadMap($parent.levelSelected);
 
 				//change modes
