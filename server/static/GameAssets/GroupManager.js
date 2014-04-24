@@ -17,6 +17,7 @@ function GroupManager(gameController, tileEngine) {
 	
 	this.titleScreenMusic = new $.gQ.SoundWrapper("/static/GameAssets/ClowningAround.mp3", true);
 	this.funnyBiteSound = new $.gQ.SoundWrapper("/static/GameAssets/funny_bite.mp3", false); // From http://www.freesfx.co.uk/
+	this.gamePlayMusic = new $.gQ.SoundWrapper("/static/GameAssets/POL-miracle-park-short.wav", true);
 	
 	this.init = function(gameWidth, gameHeight) {
 		
@@ -302,6 +303,7 @@ function GroupManager(gameController, tileEngine) {
 			soundManager.url = './static/GameAssets/soundmanager2.swf';
 			$("#titlescreen").addSound(this.titleScreenMusic); // for loop
 			$("#mapgroup").addSound(this.funnyBiteSound); //
+			$("#mapBackground").addSound(this.gamePlayMusic);
 			$("#titlescreen").playSound();
 			$("#hud").append('<div id = "timer">TIME: 0</div>');
 			$("#selectionScreen").hide();
@@ -338,6 +340,7 @@ function GroupManager(gameController, tileEngine) {
 		
 		$("#levelSelection").fadeOut("medium");
 		$("#titlescreen").stopSound();
+		$("#mapBackground").playSound();
 		this.tileEngine.drawMap();
 		this.tileEngine.drawMapItems(this.promptManager);
 		this.resetKeys();
