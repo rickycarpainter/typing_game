@@ -58,6 +58,7 @@ def alllevels():
 @index.route('/Game/NewLevelUnlocked', methods=['POST'])
 def incrementLevel():
     current = int(request.form['mapid'])
+    print ("Map " + str(current) + " completed")
     new = current
     dac = database_access()
     maximum = dac.get_number_of_levels()
