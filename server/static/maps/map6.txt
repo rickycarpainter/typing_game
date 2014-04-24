@@ -45,7 +45,7 @@
          "tilewidth":36
         }, 
         {
-         "firstgid":3,
+         "firstgid":1,
          "image":"images\/textures.png",
          "imageheight":404,
          "imagewidth":180,
