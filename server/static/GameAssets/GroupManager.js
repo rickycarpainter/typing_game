@@ -17,7 +17,7 @@ function GroupManager(gameController, tileEngine) {
 	
 	this.titleScreenMusic = new $.gQ.SoundWrapper("/static/GameAssets/ClowningAround.mp3", true);
 	this.funnyBiteSound = new $.gQ.SoundWrapper("/static/GameAssets/funny_bite.mp3", false); // From http://www.freesfx.co.uk/
-	this.gamePlayMusic = new $.gQ.SoundWrapper("/static/GameAssets/POL-miracle-park-short.wav", true);
+	this.gamePlayMusic = new $.gQ.SoundWrapper("/static/GameAssets/BigBounce.mp3", true); //This loop courtesy of http://www.uniquetracks.com/Free-Music-Loops.html
 	
 	this.init = function(gameWidth, gameHeight) {
 		

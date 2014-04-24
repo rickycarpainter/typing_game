@@ -340,6 +340,7 @@ function GroupManager(gameController, tileEngine) {
 		
 		$("#levelSelection").fadeOut("medium");
 		$("#titlescreen").stopSound();
+		$("#mapBackground").playSound();
 		this.tileEngine.drawMap();
 		this.tileEngine.drawMapItems(this.promptManager);
 		this.resetKeys();
