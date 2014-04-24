@@ -112,6 +112,18 @@ db.session.add(mi)
 mi = MapItems(5,3,18,11)
 db.session.add(mi)
 
+#-----------------ADD MAP6 to DB------------------------------------------
+m = Maps(13,20,'static/maps/map6.txt')
+db.session.add(m)
+mi = MapItems(3,1,2,10)
+db.session.add(mi)
+mi = MapItems(3,2,7,1)
+db.session.add(mi)
+mi = MapItems(3,2,13,11)
+db.session.add(mi)
+mi = MapItems(3,3,16,3)
+db.session.add(mi)
+
 U = User("SkyBear", "my_token", "my_secret", 5)
 db.session.add(U)
 
