@@ -22,6 +22,8 @@ function GroupManager(gameController, tileEngine) {
 		url: "/static/GameAssets/BigBounce.mp3" //This loop courtesy of http://www.uniquetracks.com/Free-Music-Loops.html
 	});
 	
+	this.levelsToGameCount = 0;
+	
 	this.init = function(gameWidth, gameHeight) {
 		
 		var title = new $.gQ.Animation({ imageURL: "/static/GameAssets/images/titlescreen.png",
@@ -343,9 +345,13 @@ function GroupManager(gameController, tileEngine) {
 		
 		$("#levelSelection").fadeOut("medium");
 		$("#titlescreen").stopSound();
-		this.gamePlayMusic.play({
+		
+		if(this.levelsToGameCount === 0) {
+			this.levelsToGameCount++;
+			this.gamePlayMusic.play({
   			loops: 100
-		});
+			});
+		}
 		this.tileEngine.drawMap();
 		this.tileEngine.drawMapItems(this.promptManager);
 		this.resetKeys();
